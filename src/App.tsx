@@ -6,6 +6,7 @@ import {
   Drop,
   EnvelopeSimple,
   Factory,
+  FlowArrow,
   List,
   MapPin,
   Mountains,
@@ -84,6 +85,46 @@ function CountUp({ value, suffix = "" }: { value: number; suffix?: string }) {
   return <><span ref={elementRef}>{value}</span>{suffix}</>
 }
 
+function SectionTransition({ tone }: { tone: "paper" | "white" | "panel" }) {
+  const reduceMotion = useReducedMotion()
+
+  return <div
+    className={cn(
+      "flex h-12 items-center overflow-hidden px-5 sm:h-16 sm:px-8 lg:px-10",
+      tone === "paper" && "bg-paper",
+      tone === "white" && "bg-white",
+      tone === "panel" && "bg-panel",
+    )}
+    aria-hidden="true"
+  >
+    <div className="mx-auto flex w-full max-w-7xl items-center">
+      <motion.span
+        className="h-px flex-1 origin-right bg-line"
+        initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+        whileInView={reduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+        viewport={{ once: true, amount: 0.9 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+      />
+      <motion.span
+        className="mx-4 flex size-9 shrink-0 items-center justify-center border border-line bg-white text-accent"
+        initial={reduceMotion ? false : { opacity: 0, y: 8, scale: 0.96 }}
+        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.9 }}
+        transition={{ duration: 0.38, delay: 0.12, ease: "easeOut" }}
+      >
+        <FlowArrow size={18} weight="regular" />
+      </motion.span>
+      <motion.span
+        className="h-px flex-1 origin-left bg-line"
+        initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+        whileInView={reduceMotion ? undefined : { scaleX: 1, opacity: 1 }}
+        viewport={{ once: true, amount: 0.9 }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+      />
+    </div>
+  </div>
+}
+
 function SectionTitle({ title, description, className }: { title: string; description?: string; className?: string }) {
   return <Reveal className={cn("max-w-3xl", className)}>
     <h2 className="text-balance text-3xl font-semibold leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{title}</h2>
@@ -150,6 +191,8 @@ function App() {
         </div>
       </section>
 
+      <SectionTransition tone="paper" />
+
       <section id="about" className="scroll-mt-24 bg-paper py-20 sm:py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10">
           <div>
@@ -163,7 +206,9 @@ function App() {
         </div>
       </section>
 
-      <section id="business" className="scroll-mt-24 border-y border-line bg-white py-20 sm:py-24 lg:py-32">
+      <SectionTransition tone="white" />
+
+      <section id="business" className="scroll-mt-24 bg-white py-20 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"><SectionTitle title="从矿物原料到电子布" /><p className="max-w-xl text-pretty text-base leading-8 text-steel">四个经营主体覆盖矿物原料加工、池窑拉丝、玻纤纱制造、精密织造与后处理，形成相互衔接的产业协同。</p></div>
           <div className="mt-12 grid gap-x-8 gap-y-12 md:grid-cols-2">
@@ -174,6 +219,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <SectionTransition tone="paper" />
 
       <section id="products" className="scroll-mt-24 bg-paper py-20 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -187,7 +234,9 @@ function App() {
         </div>
       </section>
 
-      <section id="capabilities" className="scroll-mt-24 border-y border-line bg-white py-20 sm:py-24 lg:py-32">
+      <SectionTransition tone="white" />
+
+      <section id="capabilities" className="scroll-mt-24 bg-white py-20 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="grid gap-12 lg:grid-cols-[0.74fr_1.26fr] lg:items-end"><SectionTitle title="设备与工艺能力" description="生产线由行业专业机构参与设计，围绕经纱准备、精密织造、后处理与质量控制建立制造能力。" /><Reveal delay={0.08}><img src="/assets/finishing-line.webp" alt="星科电子布生产线" className="aspect-[16/8] w-full object-cover" loading="lazy" /></Reveal></div>
           <div className="mt-12 grid border-y border-line sm:grid-cols-2 lg:grid-cols-4">
@@ -197,6 +246,8 @@ function App() {
         </div>
       </section>
 
+      <SectionTransition tone="paper" />
+
       <section id="honors" className="scroll-mt-24 bg-paper py-20 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <SectionTitle title="资质与创新成果" description="星科持续推进技术创新、绿色制造与质量体系建设，已获国家高新技术企业、省级绿色工厂等资质，并入选2025年江西省专精特新中小企业名单。" />
@@ -204,7 +255,9 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="scroll-mt-24 border-t border-line bg-panel py-20 sm:py-24">
+      <SectionTransition tone="panel" />
+
+      <section id="contact" className="scroll-mt-24 bg-panel py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:px-10">
           <div><p className="text-sm font-medium text-accent">业务联系</p><h2 className="mt-4 max-w-2xl text-balance text-3xl font-semibold leading-tight text-ink sm:text-4xl lg:text-5xl">与星科讨论产品与合作需求</h2><p className="mt-5 max-w-xl text-pretty text-base leading-8 text-steel">欢迎就电子级玻纤布型号、交付需求与产业合作进行咨询。</p></div>
           <address className="not-italic">{[[Phone, "业务咨询", "18170499588", "tel:18170499588"], [Phone, "固定电话", "0797-8504888 / 8504999", "tel:07978504888"], [EnvelopeSimple, "电子邮箱", "xingkefabric@xingkefabric.com", "mailto:xingkefabric@xingkefabric.com"], [MapPin, "公司地址", "江西省赣州市上犹县黄埠工业园南区", "https://ditu.amap.com/search?query=江西星科电子基材有限公司"]].map(([Icon, label, value, href]) => <a key={label as string} href={href as string} target={(label as string) === "公司地址" ? "_blank" : undefined} rel={(label as string) === "公司地址" ? "noreferrer" : undefined} className="grid grid-cols-[2rem_1fr] gap-4 border-b border-line py-5 text-ink transition-colors duration-150 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><Icon size={23} className="mt-1 text-accent" aria-hidden="true" /><span><span className="block text-xs text-steel">{label as string}</span><span className="mt-1 block text-sm leading-7 sm:text-base">{value as string}</span></span></a>)}</address>
