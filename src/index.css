@@ -47,6 +47,36 @@ body {
   background: var(--color-paper);
 }
 
+.site-brand-name {
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  :lang(en) .site-brand-name {
+    max-width: 25ch;
+    white-space: normal;
+    text-wrap: balance;
+    font-size: clamp(0.64rem, 3.05vw, 0.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+  }
+}
+
+@media (max-width: 359px) {
+  .site-header-inner {
+    padding-inline: 0.75rem;
+  }
+
+  .site-brand-link {
+    gap: 0.5rem;
+  }
+
+  :lang(zh-CN) .site-brand-name,
+  :lang(ja) .site-brand-name {
+    font-size: 0.78125rem;
+  }
+}
+
 ::selection {
   background: var(--color-accent);
   color: #fff;

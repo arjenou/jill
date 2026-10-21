@@ -203,11 +203,11 @@ function Header() {
           <LanguageMenu />
         </div>
       </div>
-      <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Link to="/" onClick={() => setMenuOpen(false)} className="flex min-w-0 flex-1 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:max-w-none xl:flex-none" aria-label="江西星科电子基材有限公司首页">
+      <div className="site-header-inner relative mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+        <Link to="/" onClick={() => setMenuOpen(false)} className="site-brand-link flex min-w-0 flex-1 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:max-w-none xl:flex-none" aria-label="江西星科电子基材有限公司首页">
           <img src="/assets/xingke-mark.png" alt="" className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11" />
           <span className="min-w-0">
-            <span className="block truncate text-sm font-semibold tracking-wide text-ink sm:text-base">江西星科电子基材有限公司</span>
+            <span className="site-brand-name block text-sm font-semibold tracking-wide text-ink sm:text-base">江西星科电子基材有限公司</span>
             <span className="hidden text-[10px] font-medium tracking-[0.08em] text-steel sm:block xl:hidden 2xl:block">JIANGXI XINGKE ELECTRONIC SUBSTRATE</span>
           </span>
         </Link>
