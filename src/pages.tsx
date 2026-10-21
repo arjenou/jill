@@ -229,11 +229,14 @@ export function AboutPage() {
               </div>
             </dl>
           </div>
-          <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
-            {["项目总投资|5.05 亿元", "项目占地|61 亩", "建筑面积|3.2 万平方米", "注册资本|5000 万元"].map((item) => {
-              const [label, value] = item.split("|")
-              return <div key={label} className="bg-white p-7 sm:p-8"><p className="text-sm text-steel">{label}</p><p className="mt-3 text-2xl font-semibold text-navy">{value}</p></div>
-            })}
+          <div>
+            <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
+              {["项目总投资|5.05 亿元", "项目占地|61 亩", "建筑面积|3.2 万平方米", "注册资本|5000 万元"].map((item) => {
+                const [label, value] = item.split("|")
+                return <div key={label} className="bg-white p-7 sm:p-8"><p className="text-sm text-steel">{label}</p><p className="mt-3 text-2xl font-semibold text-navy">{value}</p></div>
+              })}
+            </div>
+            <p className="mt-4 text-xs leading-6 text-steel">日元金额按人民币金额 × 23 估算（1 元人民币 = 23 日元）。</p>
           </div>
         </div>
       </section>
