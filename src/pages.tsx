@@ -407,7 +407,6 @@ export function ProductsPage() {
                   </li>
                 ))}
               </ol>
-              <p className="mt-5 text-xs leading-6 text-steel">画册列示型号用于说明产品体系，具体可供型号、经纬纱规格、处理剂及公差以双方确认的技术规格书为准。</p>
             </div>
           </div>
         </div>
