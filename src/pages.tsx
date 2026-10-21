@@ -157,7 +157,7 @@ export function HomePage() {
               <div className="absolute inset-0 bg-navy/38" />
               <div className="relative flex min-h-[460px] flex-col justify-end p-7 sm:p-10">
                 <p className="text-sm font-semibold text-blue-soft">产品中心</p>
-                <h3 className="mt-3 text-3xl font-semibold">7628 · 2116 · 1080 · 3732</h3>
+                <h3 className="mt-3 text-balance text-3xl font-semibold leading-tight">薄型电子布 · 中薄型电子布 · 标准电子布</h3>
                 <span className="mt-7 inline-flex items-center gap-3 text-sm font-semibold">查看产品体系 <ArrowRight size={18} aria-hidden="true" /></span>
               </div>
             </Link>
