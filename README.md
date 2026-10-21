@@ -1,6 +1,16 @@
 # 江西星科电子基材有限公司 React 官网
 
-基于 React、TypeScript、Vite 与 Tailwind CSS 构建的单页企业官网。
+基于 React、TypeScript、Vite、React Router 与 Tailwind CSS 构建的多页面路由企业官网。
+
+## 页面路由
+
+- `/` 首页
+- `/about` 关于我们
+- `/business` 业务范围
+- `/products` 产品中心
+- `/capabilities` 制造能力
+- `/honors` 荣誉资质
+- `/contact` 联系我们
 
 ## 本地运行
 

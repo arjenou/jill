@@ -49,8 +49,14 @@ summary::-webkit-details-marker {
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
 }
 
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+}
+
 @media (max-width: 1023px) {
-  .hero-grid {
+  .hero-grid,
+  .page-hero-grid {
     grid-template-columns: 1fr;
   }
 }
