@@ -131,8 +131,8 @@ export function HomePage() {
           </div>
         </motion.div>
         <div className="relative min-h-[38svh] overflow-hidden sm:min-h-[46svh] lg:min-h-[calc(100dvh-5rem)]">
-          <motion.img src="/assets/hero-weaving.webp" alt="江西星科电子级玻纤布织造现场" className="absolute inset-0 h-full w-full object-cover object-center" initial={reduceMotion ? false : { opacity: 0.65, scale: 1.035 }} animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }} transition={{ duration: 0.75, ease: "easeOut" }} fetchPriority="high" />
-          <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-navy/86 px-5 py-4 text-xs font-medium tracking-[0.12em] text-white/80 backdrop-blur-sm sm:px-8 lg:px-10">ELECTRONIC MATERIALS · PRECISION WEAVING</div>
+          <motion.img src="/assets/automated-yarn-handling.webp" alt="玻璃纤维纱筒自动化搬运设备" className="absolute inset-0 h-full w-full object-cover object-center" initial={reduceMotion ? false : { opacity: 0.65, scale: 1.035 }} animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }} transition={{ duration: 0.75, ease: "easeOut" }} fetchPriority="high" />
+          <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-navy/86 px-5 py-4 text-xs font-medium tracking-[0.12em] text-white/80 backdrop-blur-sm sm:px-8 lg:px-10">AUTOMATION · PROCESS CONTROL</div>
         </div>
       </section>
 
@@ -148,6 +148,19 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="border-y border-line bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <SectionTitle title="最新动态" description="关注企业制造现场、产业发展与公开媒体报道。" />
+            <Link to="/news" className="inline-flex items-center gap-3 self-start text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">进入新闻中心 <ArrowRight size={18} aria-hidden="true" /></Link>
+          </div>
+          <Link to={`/news/${newsItems[0].slug}`} className="group mt-12 grid border border-line bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:grid-cols-[1.12fr_0.88fr]">
+            <div className="overflow-hidden"><img src={newsItems[0].image} alt={newsItems[0].imageAlt} className="h-full min-h-72 w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" /></div>
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12"><div className="flex items-center gap-4 text-xs font-semibold text-accent"><span>{newsItems[0].category}</span><time dateTime={newsItems[0].date} className="text-steel">{newsItems[0].displayDate}</time></div><h3 className="mt-5 text-balance text-2xl font-semibold leading-snug text-ink sm:text-3xl">{newsItems[0].title}</h3><p className="mt-5 text-pretty text-sm leading-7 text-steel sm:text-base">{newsItems[0].summary}</p><span className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent">阅读全文 <ArrowRight size={18} aria-hidden="true" /></span></div>
+          </Link>
+        </div>
+      </section>
+
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <SectionTitle title="产品与制造能力" description="以真实设备、规范流程和产品组合，为客户快速呈现星科的制造基础。" />
@@ -157,19 +170,25 @@ export function HomePage() {
               <div className="absolute inset-0 bg-navy/38" />
               <div className="relative flex min-h-[460px] flex-col justify-end p-7 sm:p-10">
                 <p className="text-sm font-semibold text-blue-soft">产品中心</p>
-                <h3 className="mt-3 text-balance text-3xl font-semibold leading-tight">薄型电子布 · 中薄型电子布 · 标准电子布</h3>
+                <h3 className="mt-3 text-balance text-3xl font-semibold leading-tight">薄型电子布、中薄型电子布、标准电子布</h3>
                 <span className="mt-7 inline-flex items-center gap-3 text-sm font-semibold">查看产品体系 <ArrowRight size={18} aria-hidden="true" /></span>
               </div>
             </Link>
-            <div className="bg-paper p-7 sm:p-10 lg:p-12">
-              <p className="text-sm font-semibold text-accent">制造能力</p>
-              <h3 className="mt-3 text-3xl font-semibold tracking-[-0.025em] text-ink">从经纱准备到后处理</h3>
-              <div className="mt-8 grid gap-px bg-line sm:grid-cols-2">
-                {capabilities.map(({ icon: Icon, title }) => (
-                  <div key={title} className="flex min-h-28 items-center gap-4 bg-white p-5"><Icon size={25} className="text-accent" aria-hidden="true" /><span className="text-sm font-semibold text-ink">{title}</span></div>
-                ))}
+            <div className="bg-paper">
+              <figure>
+                <img src="/assets/yarn-logistics-line.webp" alt="玻璃纤维纱筒自动化周转与输送区域" className="aspect-[16/7] w-full object-cover" loading="lazy" />
+                <figcaption className="border-b border-line bg-white px-7 py-4 text-sm font-medium text-ink sm:px-10 lg:px-12">玻璃纤维纱筒自动化周转与输送</figcaption>
+              </figure>
+              <div className="p-7 sm:p-10 lg:p-12">
+                <p className="text-sm font-semibold text-accent">制造能力</p>
+                <h3 className="mt-3 text-balance text-3xl font-semibold tracking-[-0.025em] text-ink">从经纱准备到后处理</h3>
+                <div className="mt-8 grid gap-px bg-line sm:grid-cols-2">
+                  {capabilities.map(({ icon: Icon, title }) => (
+                    <div key={title} className="flex min-h-28 items-center gap-4 bg-white p-5"><Icon size={25} className="text-accent" aria-hidden="true" /><span className="text-sm font-semibold text-ink">{title}</span></div>
+                  ))}
+                </div>
+                <Link to="/capabilities" className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">查看完整能力 <ArrowRight size={18} aria-hidden="true" /></Link>
               </div>
-              <Link to="/capabilities" className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">查看完整能力 <ArrowRight size={18} aria-hidden="true" /></Link>
             </div>
           </div>
         </div>
@@ -185,19 +204,6 @@ export function HomePage() {
           </div>
         </div>
         <div className="mx-auto mt-10 max-w-[1440px] px-5 sm:px-8 lg:px-12"><PageLink to="/honors" label="查看荣誉资质" /></div>
-      </section>
-
-      <section className="border-t border-line bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <SectionTitle title="最新动态" description="关注企业制造现场、产业发展与公开媒体报道。" />
-            <Link to="/news" className="inline-flex items-center gap-3 self-start text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">进入新闻中心 <ArrowRight size={18} aria-hidden="true" /></Link>
-          </div>
-          <Link to={`/news/${newsItems[0].slug}`} className="group mt-12 grid border border-line bg-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:grid-cols-[1.12fr_0.88fr]">
-            <div className="overflow-hidden"><img src={newsItems[0].image} alt={newsItems[0].imageAlt} className="h-full min-h-72 w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" /></div>
-            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12"><div className="flex items-center gap-4 text-xs font-semibold text-accent"><span>{newsItems[0].category}</span><time dateTime={newsItems[0].date} className="text-steel">{newsItems[0].displayDate}</time></div><h3 className="mt-5 text-2xl font-semibold leading-snug text-ink sm:text-3xl">{newsItems[0].title}</h3><p className="mt-5 text-sm leading-7 text-steel sm:text-base">{newsItems[0].summary}</p><span className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent">阅读全文 <ArrowRight size={18} aria-hidden="true" /></span></div>
-          </Link>
-        </div>
       </section>
 
       <ContactCta />
