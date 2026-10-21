@@ -13,6 +13,7 @@ import { motion, useReducedMotion } from "motion/react"
 import { Link, useParams } from "react-router-dom"
 import { CountUp, PageHero, PageLink, PageMeta, Reveal, SectionTitle } from "./components"
 import { getLanguage } from "./i18n"
+import { cn } from "./lib"
 import {
   businesses,
   capabilities,
@@ -590,7 +591,7 @@ export function HonorsPage() {
           <SectionTitle title="企业资质" description="以公开证书与专利材料为依据，集中呈现星科在技术创新和绿色制造方面的积累。" />
           <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {honors.map((honor, index) => (
-              <Reveal key={honor.title} delay={index * 0.05}><figure className="h-full bg-white p-5 sm:p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className="max-h-full max-w-full object-contain" loading="lazy" /></div><figcaption className="pt-6"><p className="flex items-center gap-2 text-base font-semibold text-ink"><SealCheck size={20} className="text-accent" aria-hidden="true" /> {honor.title}</p><p className="mt-2 text-sm leading-6 text-steel">{honor.meta}</p></figcaption></figure></Reveal>
+              <Reveal key={honor.title} delay={index * 0.05}><figure className="h-full bg-white p-5 sm:p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className={cn("max-h-full max-w-full object-contain", honor.image === "/assets/honor-specialized-sme.webp" && "rotate-180")} loading="lazy" /></div><figcaption className="pt-6"><p className="flex items-center gap-2 text-base font-semibold text-ink"><SealCheck size={20} className="text-accent" aria-hidden="true" /> {honor.title}</p><p className="mt-2 text-sm leading-6 text-steel">{honor.meta}</p></figcaption></figure></Reveal>
             ))}
           </div>
           <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-3">
