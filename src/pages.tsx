@@ -14,16 +14,19 @@ import { CountUp, PageHero, PageLink, PageMeta, Reveal, SectionTitle } from "./c
 import {
   businesses,
   capabilities,
+  compositeProcesses,
   contacts,
   fieldStories,
   honors,
   manufacturingProcess,
   milestones,
   newsItems,
+  productFamilies,
   productPrinciples,
   products,
   qualityControls,
   stats,
+  upstreamProductGroups,
 } from "./site-data"
 
 function StatsBand() {
@@ -260,13 +263,13 @@ export function AboutPage() {
 export function BusinessPage() {
   return (
     <>
-      <PageMeta title="业务范围" description="了解上犹玻纤产业集群中的矿物原料、玻纤纱、电子布和工业玻纤布制造协同。" />
+      <PageMeta title="业务范围" description="了解上犹玻纤产业集群中的矿物原料、玻璃纤维纱、电子级玻纤布和工业级玻纤布制造协同。" />
       <PageHero title="区域产业协同" description="依托上犹玻纤产业集群，原料、玻纤纱与精密织造环节高效衔接。" eyebrow="Business Scope" image="/assets/yuanyuan-factory.webp" imageAlt="玻璃纤维制造基地" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="从矿物原料到电子布" description="区域内不同经营主体分别承担产业环节，通过上下游配套形成高效协同。" />
+          <SectionTitle title="从矿物原料到玻纤织物" description="区域内不同经营主体分别承担矿物原料加工、池窑拉丝、玻纤纱制造与织物成型等产业环节。" />
           <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-4" aria-label="区域玻纤产业环节">
-            {["矿物原料加工", "池窑拉丝制纱", "电子布精密织造", "工业玻纤布制造"].map((label, index) => (
+            {["矿物原料加工", "池窑拉丝制纱", "电子级玻纤布织造", "工业级玻纤布制造"].map((label, index) => (
               <div key={label} className="relative bg-white p-5">
                 <span className="text-xs font-semibold tabular-nums text-accent">0{index + 1}</span>
                 <p className="mt-3 text-sm font-semibold text-ink">{label}</p>
@@ -290,6 +293,25 @@ export function BusinessPage() {
           <p className="mt-8 border-l-2 border-accent pl-4 text-sm leading-7 text-steel">以上主体为产业链上下游协同企业，均以各自公开经营范围开展业务；本页面不对股权或控制关系作推定。</p>
         </div>
       </section>
+      <section className="border-y border-line bg-blue-pale py-20 sm:py-28">
+        <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
+          <div>
+            <SectionTitle title="元源玻纤产品与成型工艺" description="产品画册覆盖玻纤纱、织物与毡材，并按下游复合材料成型方式建立适配产品系列。" />
+            <div className="mt-9 border-l-2 border-accent pl-5">
+              <p className="text-xs font-semibold tracking-[0.12em] text-accent">典型复材工艺</p>
+              <p className="mt-3 text-sm leading-7 text-steel">{compositeProcesses.join(" / ")}</p>
+            </div>
+          </div>
+          <dl className="border-t border-line">
+            {upstreamProductGroups.map(([title, copy], index) => (
+              <Reveal key={title} delay={index * 0.04} className="grid gap-3 border-b border-line py-6 sm:grid-cols-[190px_1fr] sm:gap-8">
+                <dt className="text-sm font-semibold text-ink">{title}</dt>
+                <dd className="text-sm leading-7 text-steel">{copy}</dd>
+              </Reveal>
+            ))}
+          </dl>
+        </div>
+      </section>
       <section className="border-y border-line bg-white py-20 sm:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-12"><SectionTitle title="星科聚焦精密织造" description="产业协同为生产提供原料与玻纤纱基础，星科则集中建设电子级玻纤布织造与后处理能力。" /><Reveal><img src="/assets/fabric-detail.webp" alt="电子级玻纤布细节" className="aspect-[16/8] w-full object-cover" loading="lazy" /></Reveal></div>
       </section>
@@ -302,17 +324,39 @@ export function ProductsPage() {
   return (
     <>
       <PageMeta title="产品中心" description="查看江西星科 7628、2116、1080、3732 等电子级玻纤布产品。" />
-      <PageHero title="电子级玻纤布产品" description="围绕覆铜板与 PCB 应用，持续完善标准、中薄型和薄型电子布产品组合。" eyebrow="Products" image="/assets/fabric-open.webp" imageAlt="电子级玻纤布产品" />
+      <PageHero title="电子级玻璃纤维布" description="围绕覆铜板与印制电路板应用，形成标准、中薄型、薄型及功能型玻纤布产品系列。" eyebrow="Products" image="/assets/fabric-open.webp" imageAlt="电子级玻璃纤维布产品" />
       <section className="bg-mist py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <ProductTabs />
           <p className="mt-5 text-xs leading-6 text-steel">注：页面参数摘自企业产品画册，仅作选型参考；实际供货型号、处理剂、尺寸与公差以双方确认的技术规格书为准。</p>
         </div>
       </section>
+      <section className="border-y border-line bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-20">
+            <SectionTitle title="画册产品系列" description="按玻璃成分、增强性能与用途划分产品系列，帮助采购和技术团队快速定位规格范围。" />
+            <div>
+              <ol className="border-t border-line">
+                {productFamilies.map((family, index) => (
+                  <li key={family.name} className="grid gap-4 border-b border-line py-6 sm:grid-cols-[220px_1fr] sm:gap-8">
+                    <div>
+                      <p className="text-xs font-semibold tabular-nums text-accent">0{index + 1}</p>
+                      <h3 className="mt-2 text-base font-semibold text-ink">{family.name}</h3>
+                      <p className="mt-2 text-xs leading-6 text-steel">{family.note}</p>
+                    </div>
+                    <p className="self-center text-sm leading-8 text-steel">{family.models}</p>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-5 text-xs leading-6 text-steel">画册列示型号用于说明产品体系，具体可供型号、经纬纱规格、处理剂及公差以双方确认的技术规格书为准。</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="bg-navy py-20 text-white sm:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
-            <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-soft">Product Value</p><h2 className="mt-4 text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">从基材性能理解产品</h2><p className="mt-5 text-base leading-8 text-white/70">电子布既承担结构增强，也参与绝缘、尺寸稳定与树脂界面控制。</p></div>
+            <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-soft">Product Value</p><h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">从基材性能理解产品</h2><p className="mt-5 text-pretty text-base leading-8 text-white/70">电子级玻纤布既承担结构增强，也关系到电气绝缘、尺寸稳定性和树脂含浸表现。</p></div>
             <div className="grid gap-px bg-white/20 sm:grid-cols-2">
               {productPrinciples.map(([title, copy]) => (
                 <div key={title} className="bg-navy p-7 sm:p-8"><h3 className="text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-7 text-white/68">{copy}</p></div>
@@ -332,8 +376,8 @@ export function ProductsPage() {
 export function CapabilitiesPage() {
   return (
     <>
-      <PageMeta title="制造能力" description="了解江西星科的整经浆纱、并轴、喷气织造、后处理和质量控制能力。" />
-      <PageHero title="稳定工艺，稳定品质" description="从经纱准备到布面检验，围绕关键工序建立规范的电子布制造流程。" eyebrow="Manufacturing" image="/assets/finishing-line.webp" imageAlt="星科电子布后处理生产线" />
+      <PageMeta title="制造能力" description="了解江西星科的整浆准备、并轴、喷气织造、电子布后处理、验布与分切复卷能力。" />
+      <PageHero title="稳定工艺，稳定品质" description="从经纱准备到成品放行，围绕关键工序建立规范的电子级玻纤布制造流程。" eyebrow="Manufacturing" image="/assets/finishing-line.webp" imageAlt="星科电子级玻纤布后处理生产线" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <SectionTitle title="设备与工艺能力" description="生产线围绕经纱准备、精密织造、后处理与质量控制建立制造能力。" />
@@ -344,9 +388,31 @@ export function CapabilitiesPage() {
           </div>
         </div>
       </section>
+      <section className="bg-blue-pale py-20 sm:py-28 lg:py-36" aria-label="电子级玻纤布后处理现场">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[0.58fr_1.42fr] lg:items-end lg:gap-20">
+            <SectionTitle title="后处理与验布现场" description="电子级玻纤布织造后进入脱浆、开纤、表面处理、烘干定型、验布和卷装等环节，现场设备与物料周转按工序组织。" />
+            <p className="max-w-xl border-l-2 border-accent pl-5 text-sm leading-7 text-steel">后处理直接影响布面洁净度、开纤状态与树脂含浸性；验布及分切复卷则用于确认外观、幅宽、卷长和批次标识。</p>
+          </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-[1.18fr_0.82fr]">
+            <Reveal>
+              <figure className="bg-white">
+                <img src="/assets/electronic-fabric-finishing.webp" alt="江西星科电子级玻纤布后处理生产区域" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                <figcaption className="flex items-center justify-between gap-6 border-t border-line px-5 py-4 text-sm font-medium text-ink"><span>电子级玻纤布后处理生产区域</span><span className="text-xs font-semibold text-accent">FINISHING</span></figcaption>
+              </figure>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <figure className="bg-white lg:mt-16">
+                <img src="/assets/fabric-inspection-winding.webp" alt="江西星科玻纤布验布及卷装周转区域" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                <figcaption className="flex items-center justify-between gap-6 border-t border-line px-5 py-4 text-sm font-medium text-ink"><span>玻纤布验布及卷装周转区域</span><span className="text-xs font-semibold text-accent">INSPECTION</span></figcaption>
+              </figure>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="六道关键制造环节" description="把电子布制造拆解到每一道工序，明确控制目标与前后衔接。" />
+          <SectionTitle title="六道关键制造环节" description="把电子级玻纤布制造拆解到每一道工序，明确控制项目与前后衔接。" />
           <ol className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
             {manufacturingProcess.map((item, index) => (
               <Reveal key={item.step} delay={index * 0.04} className="bg-paper p-7 sm:p-8">
