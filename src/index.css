@@ -67,6 +67,10 @@ summary::-webkit-details-marker {
   font-size: clamp(1.125rem, 14cqw, 3rem);
 }
 
+:lang(en) .stat-value-long {
+  font-size: clamp(0.875rem, 11.5cqw, 3rem);
+}
+
 @media (max-width: 1023px) {
   .hero-grid,
   .page-hero-grid {
