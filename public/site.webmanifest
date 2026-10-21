@@ -1,0 +1,15 @@
+{
+  "name": "江西星科电子基材有限公司",
+  "short_name": "江西星科",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071321",
+  "theme_color": "#071321",
+  "icons": [
+    {
+      "src": "/assets/xingke-mark.png",
+      "sizes": "618x626",
+      "type": "image/png"
+    }
+  ]
+}
