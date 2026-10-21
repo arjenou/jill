@@ -121,7 +121,7 @@ export function HomePage() {
     <>
       <PageMeta title="电子级玻璃纤维布" description="江西星科专注电子级玻璃纤维布制造，以规范工艺与持续改进服务电子基材产业。" />
       <section className="hero-grid bg-navy text-white">
-        <motion.div className="relative z-10 flex items-center px-5 py-12 sm:px-8 sm:py-14 lg:min-h-[calc(100dvh-5rem)] lg:px-12" initial={reduceMotion ? false : { opacity: 0, x: -24 }} animate={reduceMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.55, ease: "easeOut" }}>
+        <motion.div className="relative z-10 flex items-center px-5 py-12 sm:px-8 sm:py-14 lg:min-h-[calc(100dvh-7rem)] lg:px-12" initial={reduceMotion ? false : { opacity: 0, x: -24 }} animate={reduceMotion ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.55, ease: "easeOut" }}>
           <div className="mx-auto w-full max-w-[600px] lg:mx-0 lg:ml-auto lg:pr-14 xl:pr-20">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-soft">Electronic Glass Fiber Fabric</p>
             <h1 className="mt-5 text-balance text-[clamp(2.75rem,6vw,5.75rem)] font-semibold leading-[1.04] tracking-[-0.045em]">精密织造<br />稳定交付</h1>
@@ -132,7 +132,7 @@ export function HomePage() {
             </div>
           </div>
         </motion.div>
-        <div className="relative min-h-[38svh] overflow-hidden sm:min-h-[46svh] lg:min-h-[calc(100dvh-5rem)]">
+        <div className="relative min-h-[38svh] overflow-hidden sm:min-h-[46svh] lg:min-h-[calc(100dvh-7rem)]">
           <motion.img src="/assets/automated-yarn-handling.webp" alt="玻璃纤维纱筒自动化搬运设备" className="absolute inset-0 h-full w-full object-cover object-center" initial={reduceMotion ? false : { opacity: 0.65, scale: 1.035 }} animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }} transition={{ duration: 0.75, ease: "easeOut" }} fetchPriority="high" />
           <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-navy/86 px-5 py-4 text-xs font-medium tracking-[0.12em] text-white/80 backdrop-blur-sm sm:px-8 lg:px-10">AUTOMATION · PROCESS CONTROL</div>
         </div>

@@ -1,6 +1,6 @@
 /** @jsxImportSource ./i18n-jsx */
 import { useEffect, useRef, useState, type ReactNode } from "react"
-import { ArrowRight } from "@phosphor-icons/react"
+import { ArrowRight, CaretDown, Check, GlobeSimple } from "@phosphor-icons/react"
 import { AnimatePresence, animate, motion, useInView, useReducedMotion } from "motion/react"
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
 import { cn } from "./lib"
@@ -131,6 +131,44 @@ function LanguageSwitcher({ mobile = false }: { mobile?: boolean }) {
   )
 }
 
+function LanguageMenu() {
+  const menuRef = useRef<HTMLDetailsElement>(null)
+  const currentLanguage = getLanguage()
+  const currentOption = languageOptions.find((option) => option.code === currentLanguage) ?? languageOptions[0]
+
+  return (
+    <details ref={menuRef} className="group relative">
+      <summary className="flex h-8 cursor-pointer list-none items-center gap-2 px-2 text-[11px] font-semibold text-steel transition-colors duration-150 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        <GlobeSimple className="size-4" aria-hidden="true" />
+        <span className="text-[10px] font-medium text-steel/80">LANGUAGE</span>
+        <span className="text-ink">{currentOption.label}</span>
+        <CaretDown className="size-3 transition-transform duration-150 group-open:rotate-180" aria-hidden="true" />
+      </summary>
+      <div className="absolute right-0 top-full z-50 w-40 border border-line bg-white p-1.5 shadow-lg">
+        {languageOptions.map((option) => (
+          <button
+            key={option.code}
+            type="button"
+            lang={option.code === "zh" ? "zh-CN" : option.code}
+            aria-pressed={currentLanguage === option.code}
+            onClick={() => {
+              menuRef.current?.removeAttribute("open")
+              setLanguage(option.code)
+            }}
+            className={cn(
+              "flex h-10 w-full items-center justify-between px-3 text-left text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent",
+              currentLanguage === option.code ? "bg-mist text-accent" : "text-ink hover:bg-mist",
+            )}
+          >
+            <span>{option.label}</span>
+            {currentLanguage === option.code ? <Check className="size-4" aria-hidden="true" /> : null}
+          </button>
+        ))}
+      </div>
+    </details>
+  )
+}
+
 export function PageHero({ title, description, image, imageAlt, eyebrow }: { title: string; description: string; image: string; imageAlt: string; eyebrow: string }) {
   const reduceMotion = useReducedMotion()
 
@@ -178,6 +216,11 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-md">
+      <div className="hidden border-b border-line bg-paper/70 xl:block">
+        <div className="mx-auto flex h-8 max-w-[1440px] items-center justify-end px-12">
+          <LanguageMenu />
+        </div>
+      </div>
       <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
         <Link to="/" onClick={() => setMenuOpen(false)} className="flex min-w-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="江西星科电子基材有限公司首页">
           <img src="/assets/xingke-mark.png" alt="" className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11" />
@@ -196,7 +239,6 @@ function Header() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 xl:flex">
-          <LanguageSwitcher />
           <Link to="/contact" className="flex h-11 shrink-0 items-center gap-2 bg-accent px-4 text-sm font-semibold text-white transition-colors duration-150 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 2xl:gap-3 2xl:px-5">
             业务联系 <ArrowRight size={17} aria-hidden="true" />
           </Link>
