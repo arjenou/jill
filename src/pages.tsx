@@ -425,18 +425,55 @@ export function ContactPage() {
 }
 
 export function NewsPage() {
+  const featured = newsItems[0]
+  const categoryCounts = ["媒体聚焦", "项目进展", "产业资讯", "企业动态"].map((category) => ({
+    category,
+    count: newsItems.filter((item) => item.category === category).length,
+  }))
+
   return (
     <>
       <PageMeta title="新闻中心" description="查看江西星科企业动态、产业发展信息与公开媒体报道。" />
       <PageHero title="新闻中心" description="记录制造现场、产业协同与公开媒体关注，以可核实的信息呈现星科发展。" eyebrow="News" image="/assets/news-xingke-workshop-2026.jpg" imageAlt="江西星科电子玻纤布生产现场" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="最新动态" description="新闻内容按企业动态、产业资讯和媒体聚焦进行整理，并保留原始来源。" />
+          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-20">
+            <SectionTitle title="重点报道" description="从公开媒体、政府平台和行业机构中整理与星科制造、区域产业协同直接相关的信息。" />
+            <dl className="grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
+              {categoryCounts.map(({ category, count }) => (
+                <div key={category} className="bg-white p-5">
+                  <dt className="text-xs font-medium text-steel">{category}</dt>
+                  <dd className="mt-2 text-2xl font-semibold tabular-nums text-navy">{count}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <Link to={`/news/${featured.slug}`} className="group mt-12 grid overflow-hidden border border-line bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="overflow-hidden bg-mist"><img src={featured.image} alt={featured.imageAlt} className="h-full min-h-80 w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" /></div>
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-12">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-semibold"><span className="text-accent">{featured.category}</span><time dateTime={featured.date} className="text-steel">{featured.displayDate}</time></div>
+              <h2 className="mt-5 text-balance text-2xl font-semibold leading-snug text-ink sm:text-3xl">{featured.title}</h2>
+              <p className="mt-5 text-pretty text-sm leading-7 text-steel sm:text-base sm:leading-8">{featured.summary}</p>
+              <p className="mt-6 text-xs text-steel">来源：{featured.source}</p>
+              <span className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent">阅读全文 <ArrowRight size={18} aria-hidden="true" /></span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-32">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <SectionTitle title="全部报道" description="按发布时间排列。正文为企业官网摘要，事实与数据均标注原始来源。" />
           <div className="mt-12 border-t border-line">
-            {newsItems.map((item) => (
-              <Link key={item.slug} to={`/news/${item.slug}`} className="group grid gap-7 border-b border-line py-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[260px_1fr_auto] md:items-center">
-                <div className="overflow-hidden bg-mist"><img src={item.image} alt={item.imageAlt} className="aspect-[3/2] w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" /></div>
-                <div><div className="flex flex-wrap items-center gap-4 text-xs font-semibold"><span className="text-accent">{item.category}</span><time dateTime={item.date} className="text-steel">{item.displayDate}</time></div><h2 className="mt-4 text-xl font-semibold leading-snug text-ink sm:text-2xl">{item.title}</h2><p className="mt-3 max-w-3xl text-sm leading-7 text-steel">{item.summary}</p><p className="mt-4 text-xs text-steel">来源：{item.source}</p></div>
+            {newsItems.slice(1).map((item) => (
+              <Link key={item.slug} to={`/news/${item.slug}`} className="group grid gap-6 border-b border-line py-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[120px_220px_1fr_auto] md:items-center lg:grid-cols-[150px_260px_1fr_auto]">
+                <div>
+                  <time dateTime={item.date} className="text-sm font-semibold tabular-nums text-navy">{item.displayDate}</time>
+                  <p className="mt-2 text-xs font-semibold text-accent">{item.category}</p>
+                </div>
+                <div className="overflow-hidden bg-mist"><img src={item.image} alt={item.imageAlt} className="aspect-[3/2] w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" /></div>
+                <div><h2 className="text-balance text-xl font-semibold leading-snug text-ink sm:text-2xl">{item.title}</h2><p className="mt-3 max-w-3xl text-pretty text-sm leading-7 text-steel">{item.summary}</p><p className="mt-4 text-xs text-steel">来源：{item.source}</p></div>
                 <span className="flex size-11 items-center justify-center border border-line bg-white text-accent transition-colors duration-150 group-hover:border-accent group-hover:bg-accent group-hover:text-white"><ArrowRight size={19} aria-hidden="true" /></span>
               </Link>
             ))}
@@ -475,38 +512,42 @@ export function NewsDetailPage() {
           <Link to="/news" className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><ArrowRight className="rotate-180" size={17} aria-hidden="true" /> 返回新闻中心</Link>
           <div className="mt-10 flex flex-wrap items-center gap-4 text-xs font-semibold"><span className="text-accent">{article.category}</span><time dateTime={article.date} className="text-steel">{article.displayDate}</time></div>
           <h1 className="mt-5 max-w-4xl text-balance text-4xl font-semibold leading-[1.18] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl">{article.title}</h1>
-          <p className="mt-7 text-sm leading-7 text-steel">来源：{article.source}　作者：{article.author}</p>
+          <p className="mt-7 text-sm leading-7 text-steel">来源：{article.source}{article.author ? `　作者：${article.author}` : ""}</p>
         </div>
       </header>
 
       <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
         <figure>
           <img src={article.image} alt={article.imageAlt} className="aspect-[3/2] w-full object-cover" />
-          <figcaption className="border-x border-b border-line bg-white px-5 py-4 text-xs leading-6 text-steel">江西星科生产车间内，工作人员装运电子玻纤布成品。图片来源：{article.source}，{article.photographer} 摄。</figcaption>
+          <figcaption className="border-x border-b border-line bg-white px-5 py-4 text-xs leading-6 text-steel">{article.imageCaption}</figcaption>
         </figure>
 
-        <div className="mx-auto mt-14 max-w-3xl text-base leading-9 text-ink sm:text-lg">
-          <p>2026 年 8 月 30 日，江西日报在头版刊发上犹县产业与县域发展报道。报道以工业强基、文旅赋能和融湾创新为主线，介绍上犹持续建设特色产业集群的发展路径。</p>
-          <p className="mt-7">星科电子玻纤布生产现场作为上犹玻纤新型复材产业的代表场景在报道中亮相，呈现企业电子玻纤布成品装运及规范化制造现场。</p>
-          <p className="mt-7">报道指出，上犹围绕玻纤新型复材等特色优势产业，以产业链思维推动企业集聚和上下游协同，玻纤产品由安全防护延伸至电子基材等应用领域。</p>
+        <div className="mx-auto mt-12 max-w-3xl border-l-2 border-accent bg-blue-pale px-6 py-7 sm:px-8">
+          <p className="text-pretty text-lg font-semibold leading-8 text-navy sm:text-xl">{article.lead}</p>
         </div>
 
-        <section className="mx-auto mt-14 max-w-3xl border-y border-line py-9" aria-label="报道中的产业数据">
-          <h2 className="text-2xl font-semibold text-ink">报道中的产业数据</h2>
-          <dl className="mt-7 grid gap-7 sm:grid-cols-3">
-            <div><dt className="text-3xl font-semibold text-navy">202 家</dt><dd className="mt-2 text-sm leading-6 text-steel">上犹玻纤关联企业</dd></div>
-            <div><dt className="text-3xl font-semibold text-navy">161.4 亿元</dt><dd className="mt-2 text-sm leading-6 text-steel">2025 年产业营收</dd></div>
-            <div><dt className="text-3xl font-semibold text-navy">100+</dt><dd className="mt-2 text-sm leading-6 text-steel">产业集群产品种类</dd></div>
-          </dl>
-        </section>
+        <div className="mx-auto mt-12 max-w-3xl text-pretty text-base leading-9 text-ink sm:text-lg">
+          {article.body.map((paragraph) => <p key={paragraph} className="mt-7 first:mt-0">{paragraph}</p>)}
+        </div>
 
-        <figure className="mx-auto mt-14 max-w-3xl">
-          <img src="/assets/news-jiangxi-daily-2026.webp" alt="2026年8月30日江西日报相关头版版面" className="w-full border border-line" loading="lazy" />
-          <figcaption className="mt-3 text-xs leading-6 text-steel">2026 年 8 月 30 日《江西日报》相关版面。图片来源：大江新闻 · 江西日报。</figcaption>
-        </figure>
+        {article.highlights && (
+          <section className="mx-auto mt-14 max-w-3xl border-y border-line py-9" aria-label="报道要点">
+            <h2 className="text-2xl font-semibold text-ink">报道要点</h2>
+            <dl className="mt-7 grid gap-7 sm:grid-cols-3">
+              {article.highlights.map((highlight) => <div key={highlight.label}><dt className="text-2xl font-semibold text-navy sm:text-3xl">{highlight.value}</dt><dd className="mt-2 text-sm leading-6 text-steel">{highlight.label}</dd></div>)}
+            </dl>
+          </section>
+        )}
+
+        {article.secondaryImage && (
+          <figure className="mx-auto mt-14 max-w-3xl">
+            <img src={article.secondaryImage.src} alt={article.secondaryImage.alt} className="w-full border border-line" loading="lazy" />
+            <figcaption className="mt-3 text-xs leading-6 text-steel">{article.secondaryImage.caption}</figcaption>
+          </figure>
+        )}
 
         <div className="mx-auto mt-14 flex max-w-3xl flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm leading-7 text-steel">本文为企业官网摘要，完整内容及版权归原媒体所有。</p>
+          <p className="text-sm leading-7 text-steel">本文为企业官网摘要，完整内容与版权归原发布媒体所有。</p>
           <a href={article.originalUrl} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">查看报道原文 <ArrowRight size={18} aria-hidden="true" /></a>
         </div>
       </div>
