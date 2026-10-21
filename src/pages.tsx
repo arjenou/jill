@@ -27,6 +27,7 @@ import {
   qualityControls,
   stats,
   upstreamProductGroups,
+  upstreamTestReports,
 } from "./site-data"
 
 function StatsBand() {
@@ -351,6 +352,23 @@ export function BusinessPage() {
               </Reveal>
             ))}
           </dl>
+          <div className="border-t border-line pt-12 lg:col-span-2 lg:mt-4">
+            <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+              <SectionTitle title="上游纱线检测" description="元源新材料有限公司对玻璃纤维纱样品开展第三方检测，覆盖欧盟限用物质、高关注物质筛查及理化性能。以下结论均对应报告所述送检样品。" />
+              <ol className="border-t border-line" aria-label="元源玻璃纤维纱第三方检测报告">
+                {upstreamTestReports.map((item, index) => (
+                  <Reveal key={item.report} delay={index * 0.04} className="grid gap-4 border-b border-line py-7 sm:grid-cols-[190px_1fr] sm:gap-8">
+                    <div>
+                      <p className="text-xs font-semibold text-accent">{item.category}</p>
+                      <h3 className="mt-2 text-base font-semibold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-xs tabular-nums text-steel">{item.report} · {item.date}</p>
+                    </div>
+                    <p className="self-center text-sm leading-7 text-steel">{item.summary}</p>
+                  </Reveal>
+                ))}
+              </ol>
+            </div>
+          </div>
         </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28">

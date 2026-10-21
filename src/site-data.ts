@@ -414,6 +414,30 @@ export const upstreamProductGroups = [
   ["玻璃纤维加捻纱 EC", "采用硅烷型浸润剂，面向电子布、玻纤网格布等织造应用。"],
 ]
 
+export const upstreamTestReports = [
+  {
+    category: "限用物质",
+    title: "欧盟 RoHS 检测",
+    report: "SHAEC26008778802",
+    date: "2026.04.10",
+    summary: "送检白色玻璃纤维纱符合欧盟 RoHS 指令 2011/65/EU 及修正指令（EU）2015/863 对十项限用物质的要求。",
+  },
+  {
+    category: "高关注物质",
+    title: "REACH SVHC 筛查",
+    report: "SHAEC26008779902",
+    date: "2026.04.14",
+    summary: "送检玻璃纤维纱的 253 项候选清单 SVHC 与 1 项潜在 SVHC 筛查结果均不高于 0.1%（w/w），报告总结判定通过。",
+  },
+  {
+    category: "理化性能",
+    title: "EC9 玻璃纤维纱检测",
+    report: "F26050018",
+    date: "2026.05.25",
+    summary: "型号 EC9-87.6*1Z/45-C061K-6.4K 的碱金属氧化物含量 0.82%、平均纤维直径 10.0 μm、线密度 87.9 tex、拉伸断裂强度 0.6 N/tex、含水率 0.031%、可燃物含量 0.919%，所检项目符合委托方判定要求。",
+  },
+]
+
 export const compositeProcesses = ["缠绕成型", "拉挤成型", "编织工艺", "挤出与注塑", "喷射成型", "手糊成型"]
 
 export const capabilities = [
