@@ -218,7 +218,15 @@ export function AboutPage() {
       <PageHero title="专注电子级玻纤布制造" description="扎根江西上犹玻纤产业集群，以长期主义建设稳定、规范、可持续的制造能力。" eyebrow="About Xingke" image="/assets/xingke-campus-front.webp" imageAlt="江西星科电子基材有限公司制造基地" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:px-12">
-          <SectionTitle title="公司概况" description="江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。" />
+          <div>
+            <SectionTitle title="公司概况" description="江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。" />
+            <dl className="mt-9 border-y border-line" aria-label="企业登记信息">
+              <div className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline">
+                <dt className="text-sm font-medium text-steel">法定代表人 / 代表者</dt>
+                <dd className="text-lg font-semibold text-navy">田云</dd>
+              </div>
+            </dl>
+          </div>
           <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
             {["项目总投资|5.05 亿元", "项目占地|61 亩", "建筑面积|3.2 万平方米", "注册资本|5000 万元"].map((item) => {
               const [label, value] = item.split("|")
