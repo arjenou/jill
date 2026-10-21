@@ -402,7 +402,7 @@ export const businesses = [
     label: "工业玻纤布",
     description: "配置高速剑杆设备，面向绝缘板材与工业基材等领域提供玻璃纤维布产品。",
     detail: "面向多类绝缘与工业增强应用",
-    image: "/assets/guangjian-line.webp",
+    image: "/assets/guangjian-weaving-hall.webp",
     icon: Stack,
   },
 ]

@@ -335,6 +335,28 @@ export function BusinessPage() {
           <p className="mt-8 border-l-2 border-accent pl-4 text-sm leading-7 text-steel">以上主体为产业链上下游协同企业，均以各自公开经营范围开展业务；本页面不对股权或控制关系作推定。</p>
         </div>
       </section>
+      <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36" aria-label="赣州广建玻纤织造现场">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-20">
+            <SectionTitle title="赣州广建织造现场" description="赣州广建玻纤有限公司面向绝缘板材与工业基材等应用开展工业玻纤布织造。以下图片为企业提供的生产现场资料。" />
+            <p className="max-w-xl border-l-2 border-accent pl-5 text-sm leading-7 text-steel">作为区域玻纤产业链中的织物制造环节，广建以高速剑杆织机完成工业玻纤布织造成形。</p>
+          </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+            <Reveal>
+              <figure className="bg-paper">
+                <img src="/assets/guangjian-weaving-hall.webp" alt="赣州广建工业玻纤布织造车间" className="aspect-[16/10] w-full object-cover" loading="lazy" />
+                <figcaption className="border-t border-line px-5 py-4 text-sm font-medium text-ink">工业玻纤布织造车间</figcaption>
+              </figure>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <figure className="bg-paper">
+                <img src="/assets/guangjian-rapier-looms.webp" alt="赣州广建高速剑杆织机生产区域" className="aspect-[16/10] w-full object-cover" loading="lazy" />
+                <figcaption className="border-t border-line px-5 py-4 text-sm font-medium text-ink">高速剑杆织机生产区域</figcaption>
+              </figure>
+            </Reveal>
+          </div>
+        </div>
+      </section>
       <section className="border-y border-line bg-blue-pale py-20 sm:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
           <div>
