@@ -361,7 +361,6 @@ export function ProductsPage() {
       <section className="bg-mist py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <ProductTabs />
-          <p className="mt-5 text-xs leading-6 text-steel">注：页面参数摘自企业产品画册，仅作选型参考；实际供货型号、处理剂、尺寸与公差以双方确认的技术规格书为准。</p>
         </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28" aria-label="玻璃纤维布产品外观">
