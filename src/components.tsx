@@ -101,50 +101,32 @@ export function PageMeta({ title, description }: { title: string; description: s
   return null
 }
 
-function LanguageSwitcher({ mobile = false }: { mobile?: boolean }) {
-  const currentLanguage = getLanguage()
-
-  return (
-    <div
-      role="group"
-      aria-label="网站语言"
-      className={cn("flex items-center border border-line bg-white", mobile ? "w-full justify-center p-1" : "shrink-0")}
-    >
-      {languageOptions.map((option) => (
-        <button
-          key={option.code}
-          type="button"
-          lang={option.code === "zh" ? "zh-CN" : option.code}
-          aria-label={option.label}
-          aria-pressed={currentLanguage === option.code}
-          onClick={() => setLanguage(option.code)}
-          className={cn(
-            "flex h-10 min-w-10 items-center justify-center px-2 text-xs font-semibold transition-colors duration-150 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
-            currentLanguage === option.code ? "bg-navy text-white" : "text-steel hover:bg-mist hover:text-ink",
-            mobile && "h-11 flex-1",
-          )}
-        >
-          {option.short}
-        </button>
-      ))}
-    </div>
-  )
-}
-
-function LanguageMenu() {
+function LanguageMenu({ compact = false }: { compact?: boolean }) {
   const menuRef = useRef<HTMLDetailsElement>(null)
   const currentLanguage = getLanguage()
   const currentOption = languageOptions.find((option) => option.code === currentLanguage) ?? languageOptions[0]
 
   return (
-    <details ref={menuRef} className="group relative">
-      <summary className="flex h-8 cursor-pointer list-none items-center gap-2 px-2 text-[11px] font-semibold text-steel transition-colors duration-150 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+    <details ref={menuRef} className="group relative shrink-0">
+      <summary
+        aria-label={t("选择网站语言")}
+        className={cn(
+          "flex cursor-pointer list-none items-center font-semibold text-steel transition-colors duration-150 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+          compact ? "size-11 justify-center gap-1" : "h-8 gap-2 px-2 text-[11px]",
+        )}
+      >
         <GlobeSimple className="size-4" aria-hidden="true" />
-        <span className="text-[10px] font-medium text-steel/80">LANGUAGE</span>
-        <span className="text-ink">{currentOption.label}</span>
-        <CaretDown className="size-3 transition-transform duration-150 group-open:rotate-180" aria-hidden="true" />
+        {compact ? (
+          <span className="text-xs text-ink">{currentOption.short}</span>
+        ) : (
+          <>
+            <span className="text-[10px] font-medium text-steel/80">LANGUAGE</span>
+            <span className="text-ink">{currentOption.label}</span>
+            <CaretDown className="size-3 transition-transform duration-150 group-open:rotate-180" aria-hidden="true" />
+          </>
+        )}
       </summary>
-      <div className="absolute right-0 top-full z-50 w-40 border border-line bg-white p-1.5 shadow-lg">
+      <div className={cn("absolute right-0 top-full z-50 w-40 border border-line bg-white p-1.5 shadow-lg", compact && "top-[calc(100%+18px)]")}>
         {languageOptions.map((option) => (
           <button
             key={option.code}
@@ -222,7 +204,7 @@ function Header() {
         </div>
       </div>
       <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <Link to="/" onClick={() => setMenuOpen(false)} className="flex min-w-0 max-w-[calc(100%-4rem)] items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:max-w-none" aria-label="江西星科电子基材有限公司首页">
+        <Link to="/" onClick={() => setMenuOpen(false)} className="flex min-w-0 flex-1 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:max-w-none xl:flex-none" aria-label="江西星科电子基材有限公司首页">
           <img src="/assets/xingke-mark.png" alt="" className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11" />
           <span className="min-w-0">
             <span className="block truncate text-sm font-semibold tracking-wide text-ink sm:text-base">江西星科电子基材有限公司</span>
@@ -244,21 +226,18 @@ function Header() {
           </Link>
         </div>
 
-        <div className="absolute right-5 shrink-0 sm:right-8 xl:hidden">
+        <div className="relative flex shrink-0 items-center gap-1 xl:hidden">
+          <LanguageMenu compact />
           <button type="button" aria-label={menuOpen ? "关闭网站菜单" : "打开网站菜单"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="flex size-11 items-center justify-center text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
             <span className="text-xs font-semibold tracking-[0.12em]">{menuOpen ? "关闭" : "菜单"}</span>
           </button>
           {menuOpen ? (
-            <nav aria-label="移动端导航" className="absolute right-0 top-[59px] w-[min(21rem,calc(100vw-2.5rem))] border border-line bg-white p-3 shadow-[0_24px_60px_rgba(10,35,65,0.16)]">
+            <nav aria-label="移动端导航" className="absolute right-0 top-[62px] w-[min(21rem,calc(100vw-2.5rem))] border border-line bg-white p-3 shadow-[0_24px_60px_rgba(10,35,65,0.16)]">
               {navigation.map(([label, to]) => (
                 <NavLink key={to} to={to} end={to === "/"} onClick={() => setMenuOpen(false)} className={({ isActive }) => cn("flex items-center justify-between border-b border-line px-3 py-3.5 text-sm font-medium last:border-0 hover:bg-mist hover:text-accent", isActive ? "text-accent" : "text-ink")}>
                   {label} <ArrowRight size={16} aria-hidden="true" />
                 </NavLink>
               ))}
-              <div className="mt-3 border-t border-line pt-3">
-                <p className="mb-2 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-steel">网站语言</p>
-                <LanguageSwitcher mobile />
-              </div>
             </nav>
           ) : null}
         </div>

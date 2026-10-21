@@ -81,6 +81,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "作者：": "著者：",
     "生产实景": "生産現場",
     "画册参考参数": "カタログ参考仕様",
+    "选择网站语言": "言語を選択",
   },
   en: {
     "江西星科电子基材有限公司": "Jiangxi Xingke Electronic Substrate Co., Ltd.",
@@ -143,6 +144,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "作者：": "Author: ",
     "生产实景": " production floor",
     "画册参考参数": " catalog reference specifications",
+    "选择网站语言": "Select language",
   },
 }
 
