@@ -227,6 +227,10 @@ export function AboutPage() {
                 <dt className="text-sm font-medium text-steel">法定代表人 / 代表者</dt>
                 <dd className="text-lg font-semibold text-navy">田云</dd>
               </div>
+              <div className="grid gap-2 border-t border-line py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline">
+                <dt className="text-sm font-medium text-steel">董事长 / 实际控制人</dt>
+                <dd className="text-lg font-semibold text-navy">张全雷</dd>
+              </div>
             </dl>
           </div>
           <div>

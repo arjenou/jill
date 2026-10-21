@@ -23,6 +23,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+:lang(zh-CN) {
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
