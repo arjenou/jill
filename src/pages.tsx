@@ -12,6 +12,7 @@ import {
 import { motion, useReducedMotion } from "motion/react"
 import { Link, useParams } from "react-router-dom"
 import { CountUp, PageHero, PageLink, PageMeta, Reveal, SectionTitle } from "./components"
+import { getLanguage } from "./i18n"
 import {
   businesses,
   capabilities,
@@ -165,7 +166,7 @@ export function HomePage() {
 
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="产品与制造能力" description="以真实设备、规范流程和产品组合，为客户快速呈现星科的制造基础。" />
+          <SectionTitle title="产品与制造能力" description="依托生产设备与规范工艺，提供稳定的产品与交付支持。" />
           <div className="mt-12 grid gap-px border border-line bg-line lg:grid-cols-2">
             <Link to="/products" className="group relative min-h-[460px] overflow-hidden bg-navy text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white">
               <img src="/assets/glass-fabric-drape.webp" alt="玻璃纤维布产品织纹" className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" />
@@ -198,7 +199,7 @@ export function HomePage() {
 
       <section className="bg-paper py-20 sm:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-20 lg:px-12">
-          <SectionTitle title="以资质与创新积累支撑长期发展" description="国家高新技术企业、江西省绿色工厂及持续形成的专利成果，构成星科规范制造的重要基础。" />
+          <SectionTitle title="以资质与创新积累支撑长期发展" description="国家高新技术企业、江西省绿色工厂及已获授权专利，共同构成星科规范制造的重要基础。" />
           <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
             {honors.slice(0, 2).map((honor) => (
               <figure key={honor.title} className="bg-white p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className="max-h-full max-w-full object-contain" loading="lazy" /></div><figcaption className="pt-5 text-base font-semibold text-ink">{honor.title}</figcaption></figure>
@@ -221,10 +222,10 @@ export function AboutPage() {
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:px-12">
           <div>
-            <SectionTitle title="公司概况" description="江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。" />
+            <SectionTitle title="公司概况" description="江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售，现已具备年产 1 亿米玻璃纤维布的生产能力。" />
             <dl className="mt-9 border-y border-line" aria-label="企业登记信息">
               <div className="grid gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline">
-                <dt className="text-sm font-medium text-steel">法定代表人 / 代表者</dt>
+                <dt className="text-sm font-medium text-steel">法定代表人</dt>
                 <dd className="text-lg font-semibold text-navy">田云</dd>
               </div>
               <div className="grid gap-2 border-t border-line py-5 sm:grid-cols-[9rem_1fr] sm:items-baseline">
@@ -240,7 +241,7 @@ export function AboutPage() {
                 return <div key={label} className="bg-white p-7 sm:p-8"><p className="text-sm text-steel">{label}</p><p className="mt-3 text-2xl font-semibold text-navy">{value}</p></div>
               })}
             </div>
-            <p className="mt-4 text-xs leading-6 text-steel">日元金额按人民币金额 × 23 估算（1 元人民币 = 23 日元）。</p>
+            <p className="mt-4 hidden text-xs leading-6 text-steel [:lang(ja)_&]:block">日元参考金额按人民币金额 × 23 估算（1 元人民币 = 23 日元；换算基准：2026 年 10 月 21 日）。</p>
           </div>
         </div>
       </section>
@@ -274,7 +275,7 @@ export function AboutPage() {
       <section className="border-b border-line bg-blue-pale py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-center lg:gap-20 lg:px-12">
           <Reveal><figure className="bg-white"><img src="/assets/xingke-finishing-line-team.webp" alt="江西星科电子级玻纤布后处理生产线" className="aspect-[16/10] w-full object-cover" loading="lazy" /><figcaption className="flex items-center gap-3 border-t border-line px-5 py-4 text-sm font-semibold text-ink"><Buildings size={22} className="text-accent" aria-hidden="true" />电子级玻纤布后处理生产区域</figcaption></figure></Reveal>
-          <SectionTitle title="以制造现场为基础" description="围绕电子布生产建立整经、浆纱、并轴、喷气织造及后处理能力，以设备基础和过程控制支持产品稳定性。" />
+          <SectionTitle title="以制造能力为基础" description="围绕电子布生产建立整经、浆纱、并轴、喷气织造及后处理能力，以设备基础和过程控制支持产品稳定性。" />
         </div>
       </section>
       <section className="bg-navy py-20 text-white sm:py-28">
@@ -282,7 +283,7 @@ export function AboutPage() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-soft">Development</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">从项目落地到规范制造</h2>
-            <p className="mt-5 max-w-lg text-base leading-8 text-white/70">以企业正式资料和公开资质为依据，呈现星科已发生、可核验的发展节点。</p>
+            <p className="mt-5 max-w-lg text-base leading-8 text-white/70">公司持续完善生产配置、资质建设与制造管理，稳步推进电子级玻纤布业务发展。</p>
           </div>
           <ol className="border-t border-white/20">
             {milestones.map(([date, event], index) => (
@@ -292,6 +293,10 @@ export function AboutPage() {
               </li>
             ))}
           </ol>
+          <div className="border-t border-white/20 py-6 sm:col-start-2">
+            <p className="text-sm font-semibold text-blue-soft">生产建设</p>
+            <p className="mt-3 text-base leading-8 text-white/88">已配置并投入使用 200 台丰田喷气织机，形成电子级玻纤布织造与后处理能力。</p>
+          </div>
         </div>
       </section>
       <section className="bg-paper py-20 sm:py-28">
@@ -340,7 +345,7 @@ export function BusinessPage() {
               )
             })}
           </div>
-          <p className="mt-8 border-l-2 border-accent pl-4 text-sm leading-7 text-steel">以上主体为产业链上下游协同企业，均以各自公开经营范围开展业务；本页面不对股权或控制关系作推定。</p>
+          <p className="mt-8 border-l-2 border-accent pl-4 text-sm leading-7 text-steel">江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，业务覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造。</p>
         </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36" aria-label="赣州广建玻纤织造现场">
@@ -441,7 +446,7 @@ export function ProductsPage() {
       <section className="border-y border-line bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-20">
-            <SectionTitle title="画册产品系列" description="按玻璃成分、增强性能与用途划分产品系列，帮助采购和技术团队快速定位规格范围。" />
+            <SectionTitle title="集团产品系列" description="集团内企业生产玻璃纤维纱、电子级玻璃纤维布、低介电玻璃纤维布、高强度玻璃纤维布及工业级玻璃纤维布，覆盖多类基材与复合材料应用。" />
             <div>
               <ol className="border-t border-line">
                 {productFamilies.map((family, index) => (
@@ -484,7 +489,7 @@ export function CapabilitiesPage() {
 
   return (
     <>
-      <PageMeta title="制造能力" description="了解江西星科的整浆准备、并轴、喷气织造、电子布后处理、验布与分切复卷能力。" />
+      <PageMeta title="制造能力" description="了解江西星科的整经、浆纱、并轴、喷气织造、电子布后处理、验布与分切复卷能力。" />
       <PageHero title="稳定工艺，稳定品质" description="从经纱准备到成品放行，围绕关键工序建立规范的电子级玻纤布制造流程。" eyebrow="Manufacturing" image="/assets/xingke-finishing-line-team.webp" imageAlt="江西星科电子级玻纤布后处理生产线与现场团队" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
@@ -500,7 +505,7 @@ export function CapabilitiesPage() {
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.58fr_1.42fr] lg:items-end lg:gap-20">
             <SectionTitle title="织造与后处理现场" description="从丰田喷气织机连续织造，到布面卷绕、后处理和成品周转，以真实生产现场呈现电子级玻纤布的制造过程。" />
-            <p className="max-w-xl border-l-2 border-accent pl-5 text-sm leading-7 text-steel">织造环节关注经纬纱张力、布面状态与连续运行；后处理围绕脱浆、开纤、表面处理、烘干定型及卷装组织生产。</p>
+            <p className="max-w-xl border-l-2 border-accent pl-5 text-sm leading-7 text-steel">织造环节关注经纬纱张力、布面状态与连续运行；后处理包括脱浆、开纤、表面处理、烘干定型及卷绕成卷。</p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:items-start">
             <Reveal className="lg:col-span-8">
@@ -553,7 +558,7 @@ export function CapabilitiesPage() {
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="六道关键制造环节" description="把电子级玻纤布制造拆解到每一道工序，明确控制项目与前后衔接。" />
+          <SectionTitle title="六道关键制造环节" description="明确各阶段的关键控制点，确保工序之间顺畅衔接。" />
           <ol className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
             {manufacturingProcess.map((item, index) => (
               <Reveal key={item.step} delay={index * 0.04} className="bg-paper p-7 sm:p-8">
@@ -579,7 +584,7 @@ export function CapabilitiesPage() {
 export function HonorsPage() {
   return (
     <>
-      <PageMeta title="荣誉资质" description="查看江西星科的高新技术企业、绿色工厂与专利成果。" />
+      <PageMeta title="荣誉资质" description="查看江西星科的高新技术企业、绿色工厂与授权专利。" />
       <PageHero title="资质与创新成果" description="持续推进技术创新、绿色制造与规范经营，以积累支撑长期发展。" eyebrow="Honors" image="/assets/xingke-line.webp" imageAlt="江西星科制造现场" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
@@ -592,7 +597,7 @@ export function HonorsPage() {
           <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-3">
             <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">高企认定</p><p className="mt-3 text-sm leading-7 text-steel">江西省 2023 年第四批高新技术企业，证书编号与正式名单顺序相互对应。</p></div>
             <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">绿色制造</p><p className="mt-3 text-sm leading-7 text-steel">以江西省绿色制造名单及企业牌匾为公开展示依据。</p></div>
-            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">专利成果</p><p className="mt-3 text-sm leading-7 text-steel">围绕电子布生产工艺与设备形成发明专利和实用新型专利积累。</p></div>
+            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">授权专利</p><p className="mt-3 text-sm leading-7 text-steel">围绕电子布生产工艺与设备，已获授权专利十余项。</p></div>
           </div>
         </div>
       </section>
@@ -604,24 +609,28 @@ export function HonorsPage() {
 
 export function ContactPage() {
   const iconMap = { phone: Phone, email: EnvelopeSimple, map: MapPin }
+  const language = getLanguage()
 
   return (
     <>
       <PageMeta title="联系我们" description="联系江西星科，咨询电子级玻纤布产品、交付和产业合作。" />
-      <PageHero title="与星科建立联系" description="欢迎就产品型号、交付需求和产业合作与我们沟通。" eyebrow="Contact" image="/assets/xingke-campus-east.webp" imageAlt="江西星科电子基材有限公司制造基地" />
+      <PageHero title="与星科建立联系" description="欢迎联系我们，沟通产品规格、交付要求与合作机会。" eyebrow="Contact" image="/assets/xingke-campus-east.webp" imageAlt="江西星科电子基材有限公司制造基地" />
       <section className="bg-blue-pale py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
           <div>
-            <SectionTitle title="业务联系" description="如需进一步了解产品参数、交付安排或合作方式，请通过以下渠道联系。" />
+            <SectionTitle title="业务联系" description="欢迎联系我们，沟通产品规格、交付要求与合作机会。" />
             <ul className="mt-8 grid gap-3 text-sm text-steel" aria-label="可咨询事项">
-              {["产品型号与规格确认", "样品与技术资料沟通", "生产现场与质量能力交流", "交付需求与产业合作"].map((item) => <li key={item} className="flex items-center gap-3"><Check size={16} className="text-accent" aria-hidden="true" />{item}</li>)}
+              {["产品型号与规格确认", "样品与技术资料申请", "生产现场与质量能力交流", "交付需求与产业合作"].map((item) => <li key={item} className="flex items-center gap-3"><Check size={16} className="text-accent" aria-hidden="true" />{item}</li>)}
             </ul>
           </div>
           <address className="grid gap-px bg-line not-italic sm:grid-cols-2">
             {contacts.map((contact) => {
               const Icon = iconMap[contact.type as keyof typeof iconMap]
               const external = contact.type === "map"
-              return <a key={contact.label} href={contact.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="group flex min-h-48 flex-col justify-between bg-white p-7 text-ink transition-colors duration-150 hover:bg-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"><Icon size={27} className="text-accent" aria-hidden="true" /><span className="mt-9"><span className="block text-xs font-semibold tracking-wide text-steel">{contact.label}</span><span className="mt-2 flex items-end justify-between gap-4 text-sm font-medium leading-7 sm:text-base">{contact.value}<ArrowRight size={17} className="shrink-0 text-accent transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" /></span></span></a>
+              const useInternationalFormat = language === "en" && "internationalValue" in contact
+              const value = useInternationalFormat ? contact.internationalValue : contact.value
+              const href = useInternationalFormat ? contact.internationalHref : contact.href
+              return <a key={`${contact.label}-${contact.value}`} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="group flex min-h-48 flex-col justify-between bg-white p-7 text-ink transition-colors duration-150 hover:bg-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"><Icon size={27} className="text-accent" aria-hidden="true" /><span className="mt-9"><span className="block text-xs font-semibold tracking-wide text-steel">{contact.label}</span><span className="mt-2 flex items-end justify-between gap-4 text-sm font-medium leading-7 sm:text-base">{value}<ArrowRight size={17} className="shrink-0 text-accent transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" /></span></span></a>
             })}
           </address>
         </div>
@@ -671,7 +680,7 @@ export function NewsPage() {
 
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-32">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="全部报道" description="按发布时间排列。正文为企业官网摘要，事实与数据均标注原始来源。" />
+          <SectionTitle title="更多报道" description="按发布时间排列。正文为企业官网摘要，事实与数据均标注原始来源。" />
           <div className="mt-12 border-t border-line">
             {newsItems.slice(1).map((item) => (
               <Link key={item.slug} to={`/news/${item.slug}`} className="group grid gap-6 border-b border-line py-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[120px_220px_1fr_auto] md:items-center lg:grid-cols-[150px_260px_1fr_auto]">

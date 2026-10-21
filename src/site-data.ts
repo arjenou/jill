@@ -254,18 +254,18 @@ export const newsItems: NewsItem[] = [
     category: "企业动态",
     date: "2024-08-08",
     displayDate: "2024.08.08",
-    title: "元源新材与江西星科联合亮相 2024 中国国际复材展",
-    summary: "两家企业联合展示高品质玻璃纤维纱、工业级玻纤布和电子级玻纤布，与行业伙伴交流产品与应用需求。",
+    title: "元源新材与江西星科将联合亮相 2024 中国国际复材展",
+    summary: "两家企业将联合展示高品质玻璃纤维纱、工业级玻纤布和电子级玻纤布，与行业伙伴交流产品与应用需求。",
     image: "/assets/exhibition-booth.webp",
     imageAlt: "元源新材料与江西星科联合展台",
     imageCaption: "元源新材料与江西星科联合展台。企业资料图。",
     source: "中国国际复材展 · 元源新材",
     originalUrl: "https://www.chinacompositesexpo.com/m_cn/news.php?news_id=14761&show=news_detail",
-    lead: "以联合展台集中呈现玻纤纱、工业布和电子布产品，向行业展示区域上下游协同能力。",
+    lead: "两家企业将以联合展台集中呈现玻纤纱、工业布和电子布产品，展示区域上下游协同能力。",
     body: [
-      "2024 中国国际复合材料工业技术展览会期间，元源新材与江西星科联合参展，重点展示玻璃纤维纱、工业级玻纤布及高性能电子级玻纤布。",
-      "展会报道介绍，江西星科围绕电子级玻纤布建设整浆、并轴、喷气织造与后处理能力，产品面向电子基材等应用。",
-      "联合参展让产业链上下游产品在同一场景中集中呈现，也为企业与客户、设备及材料伙伴开展技术交流提供了窗口。",
+      "2024 中国国际复合材料工业技术展览会将于 9 月 2 日至 4 日举行，元源新材料与江西星科将联合参展，重点展示玻璃纤维纱、工业级玻纤布及高性能电子级玻纤布。",
+      "江西星科将重点介绍围绕电子级玻纤布建设的整经、浆纱、并轴、喷气织造与后处理能力，产品面向电子基材等应用。",
+      "联合参展将使产业链上下游产品在同一场景中集中呈现，并为企业与客户、设备及材料伙伴开展技术交流提供窗口。",
     ],
     highlights: [
       { value: "3 类", label: "联合展示的主要产品类别" },
@@ -278,16 +278,16 @@ export const newsItems: NewsItem[] = [
 export const stats = [
   { value: 2021, suffix: "", label: "公司成立" },
   { value: 200, suffix: " 台", label: "丰田喷气织机" },
-  { value: 1, suffix: " 亿米", label: "项目规划年产能" },
-  { value: 10, suffix: "+", label: "专利成果" },
+  { value: 1, suffix: " 亿米", label: "现有年产能" },
+  { value: 10, suffix: "+", label: "授权专利" },
 ]
 
 export const products = [
   {
     code: "7628",
-    type: "标准电子级玻纤布",
+    type: "厚型电子级玻纤布",
     title: "覆铜板常用厚型基布",
-    description: "采用 G75 玻璃纤维纱平纹织造，关注经纬密、基重、布面均匀性与批次一致性。",
+    description: "采用 G75 玻璃纤维纱平纹织造，对经纬密、基重、布面均匀性与批次一致性实施过程控制。",
     applications: ["覆铜板", "多层 PCB", "工业电子"],
     image: "/assets/fabric-rolls.webp",
     specs: [
@@ -335,7 +335,7 @@ export const products = [
     code: "3732",
     type: "电子与工业用玻纤布",
     title: "覆盖绝缘与增强场景",
-    description: "面向电子、电气绝缘与工业复合材料应用，提供稳定的玻纤织物基材。",
+    description: "面向电子、电气绝缘与工业复合材料应用。具体技术参数及表面处理要求，请联系业务团队确认。",
     applications: ["电气绝缘", "电子基材", "工业复材"],
     image: "/assets/fabric-inspection.webp",
     specs: [],
@@ -344,7 +344,7 @@ export const products = [
 
 export const productFamilies = [
   {
-    name: "标准电子级玻纤布",
+    name: "电子级玻璃纤维布",
     note: "覆盖薄型、中薄型与厚型电子基布",
     models: "1017 / 1015 / 1027 / 1037 / 104 / 101 / 1035 / 106 / 1067 / 1065 / 1081 / 1086 / 1078 / 1080 / 3313 / 2165 / 2112 / 2313 / 2113 / 2117 / 2116 / 1652 / 1504 / 1506 / 7627 / 7628 / 7630 / 7638 / 7667",
   },
@@ -360,13 +360,13 @@ export const productFamilies = [
   },
   {
     name: "工业级玻璃纤维布",
-    note: "面向绝缘与复合材料增强应用",
-    models: "985 / 1528 / 116 / 792 / S125 / 3911",
+    note: "面向电气绝缘与复合材料增强应用",
+    models: "3732 / 985 / 1528 / 116 / 792 / S125 / 3911",
   },
 ]
 
 export const productPrinciples = [
-  ["尺寸稳定性", "关注经纬密、基重、公称厚度与后处理的一致性，为后续层压和加工提供稳定基材。"],
+  ["尺寸稳定性", "关注经纬密、基重、实际厚度与后处理的一致性，为后续层压和加工提供稳定基材。"],
   ["电气绝缘", "玻纤布兼具增强与绝缘作用，是覆铜板及印制电路板的重要基础材料。"],
   ["树脂含浸性", "通过脱浆、开纤与表面处理改善布面孔隙和树脂含浸表现。"],
   ["批次管理", "从经纱准备到成品检验持续记录关键过程，支持批次质量追溯。"],
@@ -392,7 +392,7 @@ export const businesses = [
   {
     name: "江西星科",
     label: "电子级玻纤布",
-    description: "以整浆、并轴、喷气织造及后处理设备为基础，生产多型号电子级玻璃纤维布。",
+    description: "以整经、浆纱、并轴、喷气织造及后处理设备为基础，生产多型号电子级玻璃纤维布。",
     detail: "一期配置 200 台丰田喷气织机",
     image: "/assets/xingke-finishing-line-team.webp",
     icon: Rows,
@@ -441,8 +441,8 @@ export const upstreamTestReports = [
 export const compositeProcesses = ["缠绕成型", "拉挤成型", "编织工艺", "挤出与注塑", "喷射成型", "手糊成型"]
 
 export const capabilities = [
-  { icon: ArrowsHorizontal, title: "整浆准备", copy: "2 台高速整浆设备，完成整经与浆纱，为经纱排列和张力一致性建立基础。" },
-  { icon: Rows, title: "并轴控制", copy: "配置 6 轴并轴设备，控制织轴经密及各片经纱张力一致性。" },
+  { icon: ArrowsHorizontal, title: "整经与浆纱", copy: "2 台高速整浆设备完成整经与浆纱，为经纱排列和张力一致性建立基础。" },
+  { icon: Rows, title: "并轴控制", copy: "配置可并合 6 个经轴的并轴设备，将纱片合并并卷绕成 1 个织轴。" },
   { icon: Wind, title: "喷气织造", copy: "一期配置 200 台丰田喷气织机，支持多型号电子级玻纤布生产。" },
   { icon: Drop, title: "后处理与验布", copy: "覆盖脱浆、开纤、表面处理、烘干定型及成品验布等关键环节。" },
 ]
@@ -450,22 +450,21 @@ export const capabilities = [
 export const manufacturingProcess = [
   { step: "01", title: "整经", copy: "将玻纤经纱平行排列并均匀卷绕，关注排列、张力与卷绕状态。" },
   { step: "02", title: "浆纱", copy: "对经纱进行上浆保护，降低毛羽与断经，为连续织造建立稳定基础。" },
-  { step: "03", title: "并轴", copy: "通过多轴并合形成织轴，控制经密与各片经纱之间的张力一致性。" },
+  { step: "03", title: "并轴", copy: "将 6 个经轴的纱片并合并卷绕成 1 个织轴，控制经密与各片经纱之间的张力一致性。" },
   { step: "04", title: "喷气织造", copy: "围绕经密、纬密、张力与设备运行状态进行精密织造，控制断经、断纬及布面疵点。" },
   { step: "05", title: "后处理", copy: "按产品要求完成脱浆、开纤、表面处理与烘干定型，改善布面孔隙和树脂含浸性。" },
-  { step: "06", title: "验布与分切复卷", copy: "检查外观、幅宽、基重和公称厚度，并按交付要求完成分切复卷、包装与批次标识。" },
+  { step: "06", title: "验布与分切复卷", copy: "检查外观、幅宽和基重，检测实际厚度并核对规格要求，再按交付要求完成分切复卷、包装与批次标识。" },
 ]
 
 export const qualityControls = [
   ["原纱与经纱", "原纱品种与批次、经纱排列、张力、上浆和织轴状态"],
   ["织造过程", "经密、纬密、设备运行状态与布面疵点"],
   ["后处理", "脱浆、开纤、处理剂施加与烘干定型状态"],
-  ["成品放行", "外观、幅宽、基重、公称厚度、卷长和批次追溯记录"],
+  ["成品放行", "外观、幅宽、基重、实际厚度、卷长和批次追溯记录"],
 ]
 
 export const milestones = [
   ["2021.05", "江西星科电子基材有限公司成立"],
-  ["一期建设", "建设电子级玻璃纤维布生产线，完善整浆、并轴、织造与后处理配置"],
   ["2023.12", "通过国家高新技术企业认定"],
   ["2024", "入选江西省绿色制造名单，获评江西省绿色工厂"],
   ["2025.09", "获评江西省专精特新中小企业，有效期至 2028 年 9 月"],
@@ -476,7 +475,7 @@ export const honors = [
   { title: "江西省绿色工厂", meta: "2024 年度江西省绿色制造名单", image: "/assets/honor-green.webp" },
   { title: "江西省专精特新中小企业", meta: "有效期 2025.09.26 - 2028.09.25", image: "/assets/honor-specialized-sme.webp" },
   { title: "发明专利", meta: "围绕电子布工艺与设备持续创新", image: "/assets/honor-patent-invention.webp" },
-  { title: "实用新型专利", meta: "形成十余项专利成果", image: "/assets/honor-patent-utility.webp" },
+  { title: "实用新型专利", meta: "已获授权专利十余项", image: "/assets/honor-patent-utility.webp" },
 ]
 
 export const fieldStories = [
@@ -497,8 +496,9 @@ export const fieldStories = [
 ]
 
 export const contacts = [
-  { type: "phone", label: "业务咨询", value: "18170499588", href: "tel:18170499588" },
-  { type: "phone", label: "固定电话", value: "0797-8504888 / 8504999", href: "tel:07978504888" },
+  { type: "phone", label: "业务咨询", value: "18170499588", href: "tel:18170499588", internationalValue: "+86 181 7049 9588", internationalHref: "tel:+8618170499588" },
+  { type: "phone", label: "固定电话", value: "0797-8504888", href: "tel:07978504888", internationalValue: "+86 797 850 4888", internationalHref: "tel:+867978504888" },
+  { type: "phone", label: "固定电话", value: "0797-8504999", href: "tel:07978504999", internationalValue: "+86 797 850 4999", internationalHref: "tel:+867978504999" },
   { type: "email", label: "电子邮箱", value: "xingkefabric@xingkefabric.com", href: "mailto:xingkefabric@xingkefabric.com" },
   { type: "map", label: "公司地址", value: "江西省赣州市上犹县黄埠工业园南区", href: "https://ditu.amap.com/search?query=江西星科电子基材有限公司" },
 ]

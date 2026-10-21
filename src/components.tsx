@@ -81,8 +81,8 @@ export function PageMeta({ title, description }: { title: string; description: s
 
   useEffect(() => {
     applyDocumentLanguage()
-    const localizedTitle = t(title)
-    const localizedDescription = t(description)
+    const localizedTitle = title
+    const localizedDescription = description
     const companyName = t("江西星科电子基材有限公司")
     const fullTitle = `${localizedTitle}｜${companyName}`
     const pageUrl = new URL(pathname, "https://www.xingkefabric.com").toString()

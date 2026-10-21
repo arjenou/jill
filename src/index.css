@@ -11,7 +11,7 @@
   --color-accent-strong: #073d7d;
   --color-blue-pale: #e8f0f8;
   --color-blue-soft: #bcd3eb;
-  --font-sans: "Avenir Next", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Hiragino Sans GB", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-sans: system-ui, sans-serif;
 }
 
 :root {
@@ -24,7 +24,15 @@
 }
 
 :lang(zh-CN) {
-  --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", system-ui, sans-serif;
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", Arial, sans-serif;
+}
+
+:lang(ja) {
+  --font-sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, Meiryo, "Noto Sans JP", sans-serif;
+}
+
+:lang(en) {
+  --font-sans: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
