@@ -11,7 +11,20 @@ import {
 import { motion, useReducedMotion } from "motion/react"
 import { Link, useParams } from "react-router-dom"
 import { CountUp, PageHero, PageLink, PageMeta, Reveal, SectionTitle } from "./components"
-import { businesses, capabilities, contacts, honors, newsItems, products, stats } from "./site-data"
+import {
+  businesses,
+  capabilities,
+  contacts,
+  fieldStories,
+  honors,
+  manufacturingProcess,
+  milestones,
+  newsItems,
+  productPrinciples,
+  products,
+  qualityControls,
+  stats,
+} from "./site-data"
 
 function StatsBand() {
   return (
@@ -77,6 +90,16 @@ function ProductTabs() {
                   <li key={application} className="flex items-center gap-2 text-sm font-medium text-ink"><Check size={17} className="text-accent" aria-hidden="true" /> {application}</li>
                 ))}
               </ul>
+              {product.specs.length > 0 && (
+                <dl className="mt-8 grid grid-cols-2 gap-px bg-line" aria-label={`${product.code}画册参考参数`}>
+                  {product.specs.map(([label, value]) => (
+                    <div key={label} className="bg-paper p-4">
+                      <dt className="text-xs text-steel">{label}</dt>
+                      <dd className="mt-1 text-sm font-semibold text-ink">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
             </div>
             <img src={product.image} alt={`${product.code}${product.type}生产实景`} className="h-full min-h-80 w-full object-cover" loading="lazy" />
           </motion.div>
@@ -201,6 +224,23 @@ export function AboutPage() {
           <SectionTitle title="以制造现场为基础" description="围绕电子布生产建立整经、浆纱、并轴、喷气织造及后处理能力，以设备基础和过程控制支持产品稳定性。" />
         </div>
       </section>
+      <section className="bg-navy py-20 text-white sm:py-28">
+        <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-soft">Development</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">从项目落地到规范制造</h2>
+            <p className="mt-5 max-w-lg text-base leading-8 text-white/70">以企业正式资料和公开资质为依据，呈现星科已发生、可核验的发展节点。</p>
+          </div>
+          <ol className="border-t border-white/20">
+            {milestones.map(([date, event], index) => (
+              <li key={`${date}-${event}`} className="grid gap-3 border-b border-white/20 py-6 sm:grid-cols-[150px_1fr] sm:gap-8">
+                <span className="text-sm font-semibold tabular-nums text-blue-soft">{String(index + 1).padStart(2, "0")} · {date}</span>
+                <span className="text-base leading-8 text-white/88">{event}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
       <section className="bg-paper py-20 sm:py-28">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <SectionTitle title="经营理念" description="以务实的制造态度面对每一道工序，以持续改进回应客户对质量、交付和协同的长期要求。" />
@@ -225,6 +265,15 @@ export function BusinessPage() {
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <SectionTitle title="从矿物原料到电子布" description="区域内不同经营主体分别承担产业环节，通过上下游配套形成高效协同。" />
+          <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-4" aria-label="区域玻纤产业环节">
+            {["矿物原料加工", "池窑拉丝制纱", "电子布精密织造", "工业玻纤布制造"].map((label, index) => (
+              <div key={label} className="relative bg-white p-5">
+                <span className="text-xs font-semibold tabular-nums text-accent">0{index + 1}</span>
+                <p className="mt-3 text-sm font-semibold text-ink">{label}</p>
+                {index < 3 && <ArrowRight size={18} className="absolute -right-2.5 top-1/2 z-10 hidden -translate-y-1/2 bg-white text-accent sm:block" aria-hidden="true" />}
+              </div>
+            ))}
+          </div>
           <div className="mt-14 grid border-t border-line md:grid-cols-2">
             {businesses.map((item, index) => {
               const Icon = item.icon
@@ -238,6 +287,7 @@ export function BusinessPage() {
               )
             })}
           </div>
+          <p className="mt-8 border-l-2 border-accent pl-4 text-sm leading-7 text-steel">以上主体为产业链上下游协同企业，均以各自公开经营范围开展业务；本页面不对股权或控制关系作推定。</p>
         </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28">
@@ -254,7 +304,22 @@ export function ProductsPage() {
       <PageMeta title="产品中心" description="查看江西星科 7628、2116、1080、3732 等电子级玻纤布产品。" />
       <PageHero title="电子级玻纤布产品" description="围绕覆铜板与 PCB 应用，持续完善标准、中薄型和薄型电子布产品组合。" eyebrow="Products" image="/assets/fabric-open.webp" imageAlt="电子级玻纤布产品" />
       <section className="bg-mist py-20 sm:py-28 lg:py-36">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12"><ProductTabs /></div>
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <ProductTabs />
+          <p className="mt-5 text-xs leading-6 text-steel">注：页面参数摘自企业产品画册，仅作选型参考；实际供货型号、处理剂、尺寸与公差以双方确认的技术规格书为准。</p>
+        </div>
+      </section>
+      <section className="bg-navy py-20 text-white sm:py-28">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-soft">Product Value</p><h2 className="mt-4 text-3xl font-semibold tracking-[-0.025em] sm:text-4xl">从基材性能理解产品</h2><p className="mt-5 text-base leading-8 text-white/70">电子布既承担结构增强，也参与绝缘、尺寸稳定与树脂界面控制。</p></div>
+            <div className="grid gap-px bg-white/20 sm:grid-cols-2">
+              {productPrinciples.map(([title, copy]) => (
+                <div key={title} className="bg-navy p-7 sm:p-8"><h3 className="text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-7 text-white/68">{copy}</p></div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-20 lg:px-12"><Reveal><img src="/assets/fabric-inspection.webp" alt="电子级玻纤布检验" className="aspect-[16/9] w-full object-cover" loading="lazy" /></Reveal><SectionTitle title="面向实际应用的稳定制造" description="产品信息以实际生产与交付为基础。具体型号、技术指标及适配需求，请与星科业务团队进一步沟通确认。" /></div>
@@ -279,10 +344,24 @@ export function CapabilitiesPage() {
           </div>
         </div>
       </section>
+      <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <SectionTitle title="六道关键制造环节" description="把电子布制造拆解到每一道工序，明确控制目标与前后衔接。" />
+          <ol className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
+            {manufacturingProcess.map((item, index) => (
+              <Reveal key={item.step} delay={index * 0.04} className="bg-paper p-7 sm:p-8">
+                <span className="text-xs font-semibold tabular-nums text-accent">PROCESS {item.step}</span>
+                <h2 className="mt-5 text-xl font-semibold text-ink">{item.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-steel">{item.copy}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36" aria-label="质量管理">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-20 lg:px-12">
           <Reveal className="grid grid-cols-[1.18fr_0.82fr] gap-3 sm:gap-5"><img src="/assets/fabric-inspection.webp" alt="电子级玻纤布在线检验" className="h-full min-h-[420px] w-full object-cover" loading="lazy" /><div className="grid gap-3 sm:gap-5"><img src="/assets/yarn-array.webp" alt="玻纤纱织造准备" className="h-full min-h-48 w-full object-cover" loading="lazy" /><img src="/assets/fabric-open.webp" alt="电子级玻纤布布面" className="h-full min-h-48 w-full object-cover" loading="lazy" /></div></Reveal>
-          <div><SectionTitle title="质量来自每一道工序" description="对张力、织造状态与布面质量的持续关注，是一致性交付的基础。" /><ul className="mt-9 space-y-5">{["标准化生产流程", "过程质量控制", "持续改进机制"].map((item) => <li key={item} className="flex items-center gap-4 text-base font-semibold text-ink"><span className="flex size-8 items-center justify-center bg-blue-pale text-accent"><Check size={17} aria-hidden="true" /></span>{item}</li>)}</ul></div>
+          <div><SectionTitle title="质量来自每一道工序" description="对张力、织造状态、后处理和布面质量的持续关注，是一致性交付的基础。" /><dl className="mt-9 border-t border-line">{qualityControls.map(([title, copy]) => <div key={title} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[110px_1fr] sm:gap-5"><dt className="flex items-center gap-3 text-sm font-semibold text-ink"><Check size={17} className="text-accent" aria-hidden="true" />{title}</dt><dd className="text-sm leading-7 text-steel">{copy}</dd></div>)}</dl></div>
         </div>
       </section>
       <ContactCta />
@@ -298,10 +377,15 @@ export function HonorsPage() {
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <SectionTitle title="企业资质" description="以公开证书与专利材料为依据，集中呈现星科在技术创新和绿色制造方面的积累。" />
-          <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {honors.map((honor, index) => (
               <Reveal key={honor.title} delay={index * 0.05}><figure className="h-full bg-white p-5 sm:p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className="max-h-full max-w-full object-contain" loading="lazy" /></div><figcaption className="pt-6"><p className="flex items-center gap-2 text-base font-semibold text-ink"><SealCheck size={20} className="text-accent" aria-hidden="true" /> {honor.title}</p><p className="mt-2 text-sm leading-6 text-steel">{honor.meta}</p></figcaption></figure></Reveal>
             ))}
+          </div>
+          <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-3">
+            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">高企认定</p><p className="mt-3 text-sm leading-7 text-steel">江西省 2023 年第四批高新技术企业，证书编号与正式名单顺序相互对应。</p></div>
+            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">绿色制造</p><p className="mt-3 text-sm leading-7 text-steel">以江西省绿色制造名单及企业牌匾为公开展示依据。</p></div>
+            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">专利成果</p><p className="mt-3 text-sm leading-7 text-steel">围绕电子布生产工艺与设备形成发明专利和实用新型专利积累。</p></div>
           </div>
         </div>
       </section>
@@ -320,7 +404,12 @@ export function ContactPage() {
       <PageHero title="与星科建立联系" description="欢迎就产品型号、交付需求和产业合作与我们沟通。" eyebrow="Contact" image="/assets/xingke-factory.webp" imageAlt="江西星科电子基材有限公司厂区" />
       <section className="bg-blue-pale py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
-          <SectionTitle title="业务联系" description="如需进一步了解产品参数、交付安排或合作方式，请通过以下渠道联系。" />
+          <div>
+            <SectionTitle title="业务联系" description="如需进一步了解产品参数、交付安排或合作方式，请通过以下渠道联系。" />
+            <ul className="mt-8 grid gap-3 text-sm text-steel" aria-label="可咨询事项">
+              {["产品型号与规格确认", "样品与技术资料沟通", "生产现场与质量能力交流", "交付需求与产业合作"].map((item) => <li key={item} className="flex items-center gap-3"><Check size={16} className="text-accent" aria-hidden="true" />{item}</li>)}
+            </ul>
+          </div>
           <address className="grid gap-px bg-line not-italic sm:grid-cols-2">
             {contacts.map((contact) => {
               const Icon = iconMap[contact.type as keyof typeof iconMap]
@@ -350,6 +439,19 @@ export function NewsPage() {
                 <div><div className="flex flex-wrap items-center gap-4 text-xs font-semibold"><span className="text-accent">{item.category}</span><time dateTime={item.date} className="text-steel">{item.displayDate}</time></div><h2 className="mt-4 text-xl font-semibold leading-snug text-ink sm:text-2xl">{item.title}</h2><p className="mt-3 max-w-3xl text-sm leading-7 text-steel">{item.summary}</p><p className="mt-4 text-xs text-steel">来源：{item.source}</p></div>
                 <span className="flex size-11 items-center justify-center border border-line bg-white text-accent transition-colors duration-150 group-hover:border-accent group-hover:bg-accent group-hover:text-white"><ArrowRight size={19} aria-hidden="true" /></span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="border-t border-line bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <SectionTitle title="企业影像" description="从生产班组到行业交流，用真实场景记录制造企业的日常。" />
+          <div className="mt-12 grid gap-px border border-line bg-line lg:grid-cols-2">
+            {fieldStories.map((story) => (
+              <article key={story.title} className="bg-paper">
+                <div className="overflow-hidden"><img src={story.image} alt={story.alt} className="aspect-[16/9] w-full object-cover transition-transform duration-150 hover:scale-[1.015]" loading="lazy" /></div>
+                <div className="p-7 sm:p-8"><p className="text-xs font-semibold tracking-[0.12em] text-accent">{story.label}</p><h2 className="mt-3 text-xl font-semibold text-ink sm:text-2xl">{story.title}</h2><p className="mt-4 text-sm leading-7 text-steel">{story.copy}</p></div>
+              </article>
             ))}
           </div>
         </div>
