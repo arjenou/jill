@@ -72,6 +72,8 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "新闻中心": "ニュース",
     "联系我们": "お問い合わせ",
     "整经与浆纱": "整経・サイジング",
+    "整经": "整経",
+    "浆纱": "サイジング（糊付け）",
     "并轴控制": "ビーミング管理",
     "并轴": "ビーム組立",
     "喷气织造": "エアジェット織布",
@@ -101,11 +103,21 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "以制造能力为基础": "確かな生産技術を基盤に",
     "园区与制造基地": "工業団地と生産拠点",
     "厂房与园区道路": "工場棟と工業団地内道路",
+    "江西星科厂房及园区道路": "江西星科の工場棟および工業団地内の道路",
     "办公与现场管理配套": "オフィス・付帯設備",
     "更多报道": "その他の記事",
     "样品与技术资料申请": "サンプル・技術資料のご依頼",
     "欢迎联系我们，沟通产品规格、交付要求与合作机会。": "製品仕様、納期条件、協業についてお気軽にお問い合わせください。",
-    "织造环节关注经纬纱张力、布面状态与连续运行；后处理包括脱浆、开纤、表面处理、烘干定型及卷绕成卷。": "製織工程では経糸・緯糸の張力、生地の状態、連続運転を管理します。後処理には、脱糊、開繊、表面処理、乾燥・熱処理、巻取りが含まれます。",
+    "织造环节关注经纬纱张力、布面状态与连续运行；后处理包括脱浆、开纤、表面处理、烘干定型及卷绕成卷。": "製織工程では経糸・緯糸の張力、生地の状態、連続運転を管理します。糊抜き、開繊、表面処理、乾燥・熱セット、検反などの主要工程に対応します。",
+    "覆盖脱浆、开纤、表面处理、烘干定型及成品验布等关键环节。": "糊抜き、開繊、表面処理、乾燥・熱セット、検反などの主要工程に対応します。",
+    "从丰田喷气织机连续织造，到布面卷绕、后处理和成品周转，以真实生产现场呈现电子级玻纤布的制造过程。": "豊田エアジェット織機による連続製織から、生地の巻取り、後処理、製品の搬送まで、電子級ガラス繊維クロスの製造工程を実際の生産現場で紹介します。",
+    "玻璃纤维纱筒自动化周转与输送": "ガラス繊維糸ボビンの自動搬送",
+    "玻璃纤维纱筒自动化周转与输送区域": "ガラス繊維糸ボビンの自動搬送エリア",
+    "薄型、中薄型及厚型电子级玻纤布": "薄手・中薄手・厚手の電子級ガラス繊維クロス",
+    "产品覆盖薄型、中薄型及厚型电子级玻纤布，并提供低介电、高强度及工业用途玻纤布系列。": "薄手・中薄手・厚手の電子級ガラス繊維クロスに加え、低誘電、高強度および産業用のガラス繊維クロスを取り揃えています。",
+    "集团产业链协同": "グループ・サプライチェーン連携",
+    "集团内关联企业覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造，形成上下游协同的生产体系。": "グループ関連企業が鉱物原料加工、ガラス繊維糸製造、電子級・産業用ガラス繊維クロスの製織を担い、川上から川下まで連携した生産体制を構築しています。",
+    "江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，分别承担矿物原料加工、池窑拉丝制纱及玻纤织物制造等产业环节。": "江西星科、江西鴻錠、元源新材料、贛州広建は、同一の実質的支配者の傘下にある関連企業です。各社が鉱物原料加工、池窯によるガラス繊維糸製造、ガラス繊維クロス製造などの工程を担っています。",
     "六道关键制造环节": "6つの主要製造工程",
     "明确各阶段的关键控制点，确保工序之间顺畅衔接。": "各工程の重要管理点を明確にし、工程間を円滑につなぎます。",
     "依托生产设备与规范工艺，提供稳定的产品与交付支持。": "生産設備と標準化された工程により、安定した製品供給を支えています。",
@@ -187,6 +199,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "新闻中心": "News",
     "联系我们": "Contact",
     "整经与浆纱": "Warping and Sizing",
+    "浆纱": "Sizing",
     "并轴控制": "Beam Assembly",
     "并轴": "Beam Assembly",
     "喷气织造": "Air-Jet Weaving",
@@ -209,6 +222,20 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "六道关键制造环节": "Six Key Manufacturing Stages",
     "明确各阶段的关键控制点，确保工序之间顺畅衔接。": "Define the key control points and ensure smooth transitions between stages.",
     "织造环节关注经纬纱张力、布面状态与连续运行；后处理包括脱浆、开纤、表面处理、烘干定型及卷绕成卷。": "The weaving stage focuses on warp and weft tension, fabric condition and continuous operation. Finishing operations include desizing, fiber opening, surface treatment, drying, setting and winding into rolls.",
+    "经纱、纬纱在喷气织机上完成布面成形与连续卷绕。": "Warp and weft yarns are interlaced on air-jet looms to form fabric, which is continuously wound into rolls.",
+    "对经纱进行上浆保护，降低毛羽与断经，为连续织造建立稳定基础。": "The warp yarns are sized to protect them, reduce fuzz and warp breaks, and support continuous weaving.",
+    "薄型、中薄型及厚型电子级玻纤布": "Thin, Medium-Thin and Thick Electronic-Grade Glass Fiber Fabrics",
+    "产品覆盖薄型、中薄型及厚型电子级玻纤布，并提供低介电、高强度及工业用途玻纤布系列。": "Our product range includes thin, medium-thin and thick electronic-grade glass fiber fabrics, as well as low-dielectric, high-strength and industrial glass fiber fabrics.",
+    "集团产业链协同": "Group Supply-Chain Collaboration",
+    "集团内关联企业覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造，形成上下游协同的生产体系。": "Affiliated group companies cover mineral processing, glass fiber yarn manufacturing, and electronic-grade and industrial glass fiber fabric weaving, forming a coordinated upstream-to-downstream production system.",
+    "江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，分别承担矿物原料加工、池窑拉丝制纱及玻纤织物制造等产业环节。": "Jiangxi Xingke, Jiangxi Hongding, Yuanyuan New Materials and Ganzhou Guangjian are affiliated companies under the same actual controller. They respectively undertake mineral processing, tank-furnace glass fiber yarn production and glass fiber fabric manufacturing.",
+    "编织工艺": "Weaving Process",
+    "织造过程": "Weaving Process",
+    "缠绕成型": "Filament Winding",
+    "拉挤成型": "Pultrusion",
+    "挤出与注塑": "Extrusion and Injection Molding",
+    "喷射成型": "Spray Molding",
+    "手糊成型": "Hand Lay-Up",
     "配置可并合 6 个经轴的并轴设备，将纱片合并并卷绕成 1 个织轴。": "The beam assembling machine combines warp sheets from six warp beams onto one loom beam.",
     "将 6 个经轴的纱片并合并卷绕成 1 个织轴，控制经密与各片经纱之间的张力一致性。": "Warp sheets from six warp beams are assembled onto one loom beam while yarn density and sheet tension are controlled.",
     "样品与技术资料申请": "Sample and Technical Data Requests",
@@ -259,6 +286,10 @@ const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, strin
     ["電子グレードのガラス繊維クロス", "電子級ガラス繊維クロス"],
     ["電子グレードのガラス繊維布", "電子級ガラス繊維クロス"],
     ["電子ガラス繊維布", "電子級ガラス繊維クロス"],
+    ["グラスファイバークロス", "ガラス繊維クロス"],
+    ["グラスファイバー生地", "ガラス繊維クロス"],
+    ["グラスファイバー糸", "ガラス繊維糸"],
+    ["グラスファイバー", "ガラス繊維"],
     ["上友", "上猶"],
     ["上祐", "上猶"],
     ["上裕", "上猶"],
@@ -328,64 +359,15 @@ export function t(value: string): string {
 function normalizeTarget(value: string, language: Exclude<Language, "zh">): string {
   let normalized = value
   for (const [source, target] of targetNormalizations[language]) normalized = normalized.replaceAll(source, target)
-  if (language === "ja") normalized = isJapaneseArticlePage() ? toPoliteJapanese(normalized) : toPlainJapanese(normalized)
+  if (language === "ja") {
+    if (isJapaneseArticlePage()) normalized = toPoliteJapanese(normalized)
+    else normalized = normalized.replaceAll("。", " ").replace(/\s{2,}/gu, " ").trim()
+  }
   return normalized
 }
 
 function isJapaneseArticlePage(): boolean {
   return typeof window !== "undefined" && /^\/news\/[^/]+\/?$/u.test(window.location.pathname)
-}
-
-function toPlainJapanese(value: string): string {
-  const replacements: Array<[string, string]> = [
-    ["ではありません", "ではない"],
-    ["ではございません", "ではない"],
-    ["となっております", "となっている"],
-    ["されております", "されている"],
-    ["しております", "している"],
-    ["ております", "ている"],
-    ["となっています", "となっている"],
-    ["されています", "されている"],
-    ["しています", "している"],
-    ["していました", "していた"],
-    ["されました", "された"],
-    ["となりました", "となった"],
-    ["ありました", "あった"],
-    ["いました", "いた"],
-    ["でした", "だった"],
-    ["となります", "となる"],
-    ["になります", "になる"],
-    ["できます", "できる"],
-    ["含まれます", "含まれる"],
-    ["求められます", "求められる"],
-    ["使用されます", "使用される"],
-    ["評価されます", "評価される"],
-    ["されます", "される"],
-    ["あります", "ある"],
-    ["います", "いる"],
-    ["行います", "行う"],
-    ["目指します", "目指す"],
-    ["示します", "示す"],
-    ["進めます", "進める"],
-    ["高めます", "高める"],
-    ["支えます", "支える"],
-    ["応えます", "応える"],
-    ["つなげます", "つなげる"],
-    ["取り組みます", "取り組む"],
-    ["向上させます", "向上"],
-    ["築きます", "築く"],
-    ["巻き取られます", "巻き取られる"],
-    ["巻き付けます", "巻き付ける"],
-    ["生まれます", "生まれる"],
-    ["役立てます", "役立てる"],
-    ["組み込まれるようにします", "組み込む"],
-    ["です", ""],
-  ]
-
-  let plain = value
-  for (const [source, target] of replacements) plain = plain.replaceAll(source, target)
-  plain = plain.replace(/([\p{Script=Han}\p{Script=Katakana}ー]+)します/gu, "$1")
-  return plain.replaceAll("。", " ").replace(/\s{2,}/gu, " ").trim()
 }
 
 function toPoliteJapanese(value: string): string {

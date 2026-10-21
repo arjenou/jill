@@ -173,7 +173,7 @@ export function HomePage() {
               <div className="absolute inset-0 bg-navy/38" />
               <div className="relative flex min-h-[460px] flex-col justify-end p-7 sm:p-10">
                 <p className="text-sm font-semibold text-blue-soft">产品中心</p>
-                <h3 className="mt-3 text-balance text-3xl font-semibold leading-tight">薄型电子布、中薄型电子布、标准电子布</h3>
+                <h3 className="mt-3 text-balance text-3xl font-semibold leading-tight">薄型、中薄型及厚型电子级玻纤布</h3>
                 <span className="mt-7 inline-flex items-center gap-3 text-sm font-semibold">查看产品体系 <ArrowRight size={18} aria-hidden="true" /></span>
               </div>
             </Link>
@@ -319,10 +319,10 @@ export function BusinessPage() {
   return (
     <>
       <PageMeta title="业务范围" description="了解上犹玻纤产业集群中的矿物原料、玻璃纤维纱、电子级玻纤布和工业级玻纤布制造协同。" />
-      <PageHero title="区域产业协同" description="依托上犹玻纤产业集群，原料、玻纤纱与精密织造环节高效衔接。" eyebrow="Business Scope" image="/assets/yuanyuan-factory.webp" imageAlt="玻璃纤维制造基地" />
+      <PageHero title="集团产业链协同" description="集团内关联企业覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造，形成上下游协同的生产体系。" eyebrow="Business Scope" image="/assets/yuanyuan-factory.webp" imageAlt="玻璃纤维制造基地" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="从矿物原料到玻纤织物" description="区域内不同经营主体分别承担矿物原料加工、池窑拉丝、玻纤纱制造与织物成型等产业环节。" />
+          <SectionTitle title="从矿物原料到玻纤织物" description="江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，分别承担矿物原料加工、池窑拉丝制纱及玻纤织物制造等产业环节。" />
           <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-4" aria-label="区域玻纤产业环节">
             {["矿物原料加工", "池窑拉丝制纱", "电子级玻纤布织造", "工业级玻纤布制造"].map((label, index) => (
               <div key={label} className="relative bg-white p-5">
@@ -345,7 +345,6 @@ export function BusinessPage() {
               )
             })}
           </div>
-          <p className="mt-8 border-l-2 border-accent pl-4 text-sm leading-7 text-steel">江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，业务覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造。</p>
         </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36" aria-label="赣州广建玻纤织造现场">
@@ -418,7 +417,7 @@ export function ProductsPage() {
   return (
     <>
       <PageMeta title="产品中心" description="查看江西星科 7628、2116、1080、3732 等电子级玻纤布产品。" />
-      <PageHero title="电子级玻璃纤维布" description="围绕覆铜板与印制电路板应用，形成标准、中薄型、薄型及功能型玻纤布产品系列。" eyebrow="Products" image="/assets/glass-fabric-drape.webp" imageAlt="玻璃纤维布产品织纹与卷展状态" />
+      <PageHero title="电子级玻璃纤维布" description="产品覆盖薄型、中薄型及厚型电子级玻纤布，并提供低介电、高强度及工业用途玻纤布系列。" eyebrow="Products" image="/assets/glass-fabric-drape.webp" imageAlt="玻璃纤维布产品织纹与卷展状态" />
       <section className="bg-mist py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <ProductTabs />
