@@ -134,7 +134,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "后处理与验布": "Finishing & inspection",
     "丰田喷气织机": "Toyota air-jet looms",
     " 台": "",
-    " 亿米": "00 million m",
+    " 亿米": "00\u00a0million\u00a0m",
     "业务联系": "Contact Us",
     "来源：": "Source: ",
     "作者：": "Author: ",

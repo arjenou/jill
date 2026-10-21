@@ -54,6 +54,19 @@ summary::-webkit-details-marker {
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
 }
 
+.stat-card {
+  container-type: inline-size;
+}
+
+.stat-value {
+  font-size: clamp(1.5rem, 15cqw, 3rem);
+  line-height: 1.1;
+}
+
+.stat-value-long {
+  font-size: clamp(1.125rem, 14cqw, 3rem);
+}
+
 @media (max-width: 1023px) {
   .hero-grid,
   .page-hero-grid {

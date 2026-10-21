@@ -42,7 +42,7 @@ export function SectionTitle({ title, description, className }: { title: string;
   return (
     <Reveal className={cn("max-w-3xl", className)}>
       <SectionLine />
-      <h2 className="text-balance text-3xl font-semibold leading-[1.25] tracking-[-0.025em] text-ink sm:text-4xl lg:text-[3.25rem]">{title}</h2>
+      <h2 className="text-balance text-[clamp(1.875rem,4vw,3.25rem)] font-semibold leading-[1.25] tracking-[-0.025em] text-ink">{title}</h2>
       {description ? <p className="mt-6 max-w-2xl text-pretty text-base leading-8 text-steel sm:text-lg">{description}</p> : null}
     </Reveal>
   )
@@ -144,7 +144,7 @@ export function PageHero({ title, description, image, imageAlt, eyebrow }: { tit
       >
         <div className="mx-auto w-full max-w-[620px] lg:mx-0 lg:ml-auto lg:pr-16">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-soft">{eyebrow}</p>
-          <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.12] tracking-[-0.035em] sm:text-5xl lg:text-6xl">{title}</h1>
+          <h1 className="mt-5 text-balance text-[clamp(2.25rem,5vw,3.75rem)] font-semibold leading-[1.12] tracking-[-0.035em]">{title}</h1>
           <p className="mt-6 max-w-xl text-pretty text-base leading-8 text-white/74 sm:text-lg">{description}</p>
         </div>
       </motion.div>

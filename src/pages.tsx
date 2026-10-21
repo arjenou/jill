@@ -36,8 +36,8 @@ function StatsBand() {
     <section aria-label="企业关键数据" className="border-b border-line bg-white">
       <div className="mx-auto grid max-w-[1440px] grid-cols-2 px-5 sm:px-8 lg:grid-cols-4 lg:px-12">
         {stats.map((stat, index) => (
-          <div key={stat.label} className={`py-8 sm:py-10 lg:py-12 ${index % 2 === 0 ? "border-r border-line pr-5" : "pl-5"} ${index === 1 ? "lg:border-r lg:pr-8" : ""} ${index === 2 ? "border-r border-line pr-5 lg:pl-8" : ""} ${index === 3 ? "lg:pl-8" : ""}`}>
-            <p className="text-3xl font-semibold tracking-[-0.035em] text-navy sm:text-4xl lg:text-5xl"><CountUp value={stat.value} suffix={stat.suffix} /></p>
+          <div key={stat.label} className={`stat-card py-8 sm:py-10 lg:py-12 ${index % 2 === 0 ? "border-r border-line pr-5" : "pl-5"} ${index === 1 ? "lg:border-r lg:pr-8" : ""} ${index === 2 ? "border-r border-line pr-5 lg:pl-8" : ""} ${index === 3 ? "lg:pl-8" : ""}`}>
+            <p className={`stat-value whitespace-nowrap font-semibold tabular-nums tracking-[-0.035em] text-navy ${index === 2 ? "stat-value-long" : ""}`}><CountUp value={stat.value} suffix={stat.suffix} /></p>
             <p className="mt-3 text-sm font-medium text-steel">{stat.label}</p>
           </div>
         ))}
@@ -711,7 +711,7 @@ export function NewsDetailPage() {
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <Link to="/news" className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><ArrowRight className="rotate-180" size={17} aria-hidden="true" /> 返回新闻中心</Link>
           <div className="mt-10 flex flex-wrap items-center gap-4 text-xs font-semibold"><span className="text-accent">{article.category}</span><time dateTime={article.date} className="text-steel">{article.displayDate}</time></div>
-          <h1 className="mt-5 max-w-4xl text-balance text-4xl font-semibold leading-[1.18] tracking-[-0.035em] text-ink sm:text-5xl lg:text-6xl">{article.title}</h1>
+          <h1 className="mt-5 max-w-4xl text-balance text-[clamp(2.25rem,5vw,3.75rem)] font-semibold leading-[1.18] tracking-[-0.035em] text-ink">{article.title}</h1>
           <p className="mt-7 text-sm leading-7 text-steel">来源：{article.source}{article.author ? `　作者：${article.author}` : ""}</p>
         </div>
       </header>
