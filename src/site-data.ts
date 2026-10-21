@@ -203,9 +203,9 @@ export const newsItems: NewsItem[] = [
     displayDate: "2025.05.15",
     title: "元源新材料年产 15 万吨玻纤项目正式开工",
     summary: "项目面向电子级玻纤纱等高性能产品，进一步完善上犹从矿物原料、玻纤纱到高端织布的产业链配套。",
-    image: "/assets/yuanyuan-factory.webp",
-    imageAlt: "元源新材料生产基地",
-    imageCaption: "元源新材料生产基地。企业资料图。",
+    image: "/assets/yuanyuan-project-groundbreaking.webp",
+    imageAlt: "元源新材料年产15万吨玻璃纤维池窑拉丝及制品生产线项目开工现场",
+    imageCaption: "元源新材料年产 15 万吨玻璃纤维池窑拉丝及制品生产线项目开工现场。企业资料图。",
     source: "上犹县融媒体中心 · 中国建材信息总网",
     originalUrl: "https://www.cbminfo.com/mobile/_470515/1639283/7383816/index.html",
     lead: "新增池窑拉丝能力将更好衔接区域电子布等下游制造环节，强化本地产业链配套。",
@@ -219,6 +219,11 @@ export const newsItems: NewsItem[] = [
       { value: "7-9 μm", label: "报道所述电子纱直径方向" },
       { value: "2025.05", label: "项目开工时间" },
     ],
+    secondaryImage: {
+      src: "/assets/yuanyuan-project-ceremony.webp",
+      alt: "元源新材料年产15万吨玻纤项目开工仪式",
+      caption: "项目开工仪式现场。企业资料图。",
+    },
   },
   {
     slug: "shangyou-industry-opening-2025",
@@ -389,7 +394,7 @@ export const businesses = [
     label: "电子级玻纤布",
     description: "以整浆、并轴、喷气织造及后处理设备为基础，生产多型号电子级玻璃纤维布。",
     detail: "一期配置 200 台丰田喷气织机",
-    image: "/assets/xingke-line.webp",
+    image: "/assets/xingke-finishing-line-team.webp",
     icon: Rows,
   },
   {

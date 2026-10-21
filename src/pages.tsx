@@ -144,7 +144,7 @@ export function HomePage() {
             <SectionTitle title="扎根上犹，服务电子基材产业" description="江西星科电子基材有限公司成立于 2021 年，主要从事电子级玻璃纤维布生产和销售。" />
             <div className="mt-9"><PageLink to="/about" label="了解公司" /></div>
           </div>
-          <Reveal delay={0.08} className="overflow-hidden"><img src="/assets/xingke-factory.webp" alt="江西星科电子基材有限公司厂区" className="aspect-[16/10] w-full object-cover transition-transform duration-150 hover:scale-[1.015]" /></Reveal>
+          <Reveal delay={0.08} className="overflow-hidden"><img src="/assets/xingke-campus-front.webp" alt="江西星科电子基材有限公司制造基地" className="aspect-[16/10] w-full object-cover transition-transform duration-150 hover:scale-[1.015]" /></Reveal>
         </div>
       </section>
 
@@ -153,7 +153,7 @@ export function HomePage() {
           <SectionTitle title="产品与制造能力" description="以真实设备、规范流程和产品组合，为客户快速呈现星科的制造基础。" />
           <div className="mt-12 grid gap-px border border-line bg-line lg:grid-cols-2">
             <Link to="/products" className="group relative min-h-[460px] overflow-hidden bg-navy text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white">
-              <img src="/assets/fabric-rolls.webp" alt="电子级玻纤布产品" className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" />
+              <img src="/assets/glass-fabric-drape.webp" alt="玻璃纤维布产品织纹" className="absolute inset-0 h-full w-full object-cover opacity-50 transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" />
               <div className="absolute inset-0 bg-navy/38" />
               <div className="relative flex min-h-[460px] flex-col justify-end p-7 sm:p-10">
                 <p className="text-sm font-semibold text-blue-soft">产品中心</p>
@@ -209,7 +209,7 @@ export function AboutPage() {
   return (
     <>
       <PageMeta title="关于我们" description="了解江西星科的公司概况、制造基地和发展基础。" />
-      <PageHero title="专注电子级玻纤布制造" description="扎根江西上犹玻纤产业集群，以长期主义建设稳定、规范、可持续的制造能力。" eyebrow="About Xingke" image="/assets/xingke-factory.webp" imageAlt="江西星科电子基材有限公司厂区" />
+      <PageHero title="专注电子级玻纤布制造" description="扎根江西上犹玻纤产业集群，以长期主义建设稳定、规范、可持续的制造能力。" eyebrow="About Xingke" image="/assets/xingke-campus-front.webp" imageAlt="江西星科电子基材有限公司制造基地" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:px-12">
           <SectionTitle title="公司概况" description="江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。" />
@@ -221,9 +221,36 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36">
+      <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36" aria-label="园区与制造基地">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <SectionTitle title="园区与制造基地" description="厂房、办公和配套设施集中布局于黄埠工业园南区，为连续生产、仓储周转和现场管理提供空间基础。" />
+          <div className="mt-12 grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+            <Reveal>
+              <figure>
+                <img src="/assets/xingke-campus-aerial.webp" alt="江西星科制造基地及周边产业园区航拍" className="aspect-[3/2] w-full object-cover" loading="lazy" />
+                <figcaption className="mt-4 text-sm font-medium text-ink">制造基地与园区产业配套</figcaption>
+              </figure>
+            </Reveal>
+            <div className="grid gap-7">
+              <Reveal delay={0.05}>
+                <figure>
+                  <img src="/assets/xingke-campus-east.webp" alt="江西星科厂房及园区道路" className="aspect-[3/2] w-full object-cover" loading="lazy" />
+                  <figcaption className="mt-4 text-sm font-medium text-ink">厂房与园区道路</figcaption>
+                </figure>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <figure>
+                  <img src="/assets/xingke-office-building.webp" alt="江西星科办公楼及配套区域" className="aspect-[3/2] w-full object-cover" loading="lazy" />
+                  <figcaption className="mt-4 text-sm font-medium text-ink">办公与现场管理配套</figcaption>
+                </figure>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="border-b border-line bg-blue-pale py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-center lg:gap-20 lg:px-12">
-          <Reveal className="relative"><img src="/assets/xingke-line.webp" alt="江西星科生产线" className="aspect-[16/10] w-full object-cover" loading="lazy" /><div className="absolute bottom-0 left-0 bg-white p-6"><Buildings size={26} className="text-accent" aria-hidden="true" /><p className="mt-3 text-sm font-semibold text-ink">黄埠工业园南区制造基地</p></div></Reveal>
+          <Reveal><figure className="bg-white"><img src="/assets/xingke-finishing-line-team.webp" alt="江西星科电子级玻纤布后处理生产线" className="aspect-[16/10] w-full object-cover" loading="lazy" /><figcaption className="flex items-center gap-3 border-t border-line px-5 py-4 text-sm font-semibold text-ink"><Buildings size={22} className="text-accent" aria-hidden="true" />电子级玻纤布后处理生产区域</figcaption></figure></Reveal>
           <SectionTitle title="以制造现场为基础" description="围绕电子布生产建立整经、浆纱、并轴、喷气织造及后处理能力，以设备基础和过程控制支持产品稳定性。" />
         </div>
       </section>
@@ -324,11 +351,30 @@ export function ProductsPage() {
   return (
     <>
       <PageMeta title="产品中心" description="查看江西星科 7628、2116、1080、3732 等电子级玻纤布产品。" />
-      <PageHero title="电子级玻璃纤维布" description="围绕覆铜板与印制电路板应用，形成标准、中薄型、薄型及功能型玻纤布产品系列。" eyebrow="Products" image="/assets/fabric-open.webp" imageAlt="电子级玻璃纤维布产品" />
+      <PageHero title="电子级玻璃纤维布" description="围绕覆铜板与印制电路板应用，形成标准、中薄型、薄型及功能型玻纤布产品系列。" eyebrow="Products" image="/assets/glass-fabric-drape.webp" imageAlt="玻璃纤维布产品织纹与卷展状态" />
       <section className="bg-mist py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <ProductTabs />
           <p className="mt-5 text-xs leading-6 text-steel">注：页面参数摘自企业产品画册，仅作选型参考；实际供货型号、处理剂、尺寸与公差以双方确认的技术规格书为准。</p>
+        </div>
+      </section>
+      <section className="border-y border-line bg-white py-20 sm:py-28" aria-label="玻璃纤维布产品外观">
+        <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+          <SectionTitle title="产品外观与织纹" description="通过近景呈现玻纤布的平纹组织、布面状态与铺展形态。图片用于产品外观展示，不对应单一型号。" />
+          <div className="mt-12 grid gap-5 lg:grid-cols-[1.12fr_0.88fr] lg:items-end">
+            <Reveal>
+              <figure>
+                <img src="/assets/glass-fabric-fold.webp" alt="玻璃纤维布平纹组织和折叠形态" className="aspect-[3/2] w-full object-cover" loading="lazy" />
+                <figcaption className="mt-4 text-sm font-medium text-ink">平纹组织与布面均匀性</figcaption>
+              </figure>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <figure>
+                <img src="/assets/glass-fabric-texture.webp" alt="玻璃纤维布织纹和铺展状态近景" className="aspect-[3/2] w-full object-cover" loading="lazy" />
+                <figcaption className="mt-4 text-sm font-medium text-ink">织纹细节与铺展状态</figcaption>
+              </figure>
+            </Reveal>
+          </div>
         </div>
       </section>
       <section className="border-y border-line bg-white py-20 sm:py-28">
@@ -377,7 +423,7 @@ export function CapabilitiesPage() {
   return (
     <>
       <PageMeta title="制造能力" description="了解江西星科的整浆准备、并轴、喷气织造、电子布后处理、验布与分切复卷能力。" />
-      <PageHero title="稳定工艺，稳定品质" description="从经纱准备到成品放行，围绕关键工序建立规范的电子级玻纤布制造流程。" eyebrow="Manufacturing" image="/assets/finishing-line.webp" imageAlt="星科电子级玻纤布后处理生产线" />
+      <PageHero title="稳定工艺，稳定品质" description="从经纱准备到成品放行，围绕关键工序建立规范的电子级玻纤布制造流程。" eyebrow="Manufacturing" image="/assets/xingke-finishing-line-team.webp" imageAlt="江西星科电子级玻纤布后处理生产线与现场团队" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <SectionTitle title="设备与工艺能力" description="生产线围绕经纱准备、精密织造、后处理与质量控制建立制造能力。" />
@@ -467,7 +513,7 @@ export function ContactPage() {
   return (
     <>
       <PageMeta title="联系我们" description="联系江西星科，咨询电子级玻纤布产品、交付和产业合作。" />
-      <PageHero title="与星科建立联系" description="欢迎就产品型号、交付需求和产业合作与我们沟通。" eyebrow="Contact" image="/assets/xingke-factory.webp" imageAlt="江西星科电子基材有限公司厂区" />
+      <PageHero title="与星科建立联系" description="欢迎就产品型号、交付需求和产业合作与我们沟通。" eyebrow="Contact" image="/assets/xingke-campus-east.webp" imageAlt="江西星科电子基材有限公司制造基地" />
       <section className="bg-blue-pale py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
           <div>
@@ -485,7 +531,7 @@ export function ContactPage() {
           </address>
         </div>
       </section>
-      <section className="border-y border-line bg-white py-20 sm:py-28"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-12"><div><p className="text-sm font-semibold text-accent">公司地址</p><h2 className="mt-4 text-3xl font-semibold tracking-[-0.025em] text-ink sm:text-4xl">江西省赣州市上犹县<br />黄埠工业园南区</h2><a href="https://ditu.amap.com/search?query=江西星科电子基材有限公司" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">在地图中查看 <ArrowRight size={18} aria-hidden="true" /></a></div><img src="/assets/xingke-factory.webp" alt="江西星科厂区" className="aspect-[16/8] w-full object-cover" loading="lazy" /></div></section>
+      <section className="border-y border-line bg-white py-20 sm:py-28"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-12"><div><p className="text-sm font-semibold text-accent">公司地址</p><h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.025em] text-ink sm:text-4xl">江西省赣州市上犹县<br />黄埠工业园南区</h2><a href="https://ditu.amap.com/search?query=江西星科电子基材有限公司" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">在地图中查看 <ArrowRight size={18} aria-hidden="true" /></a></div><img src="/assets/xingke-campus-front.webp" alt="江西星科制造基地全景" className="aspect-[16/8] w-full object-cover" loading="lazy" /></div></section>
     </>
   )
 }

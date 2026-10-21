@@ -114,6 +114,7 @@ export function PageHero({ title, description, image, imageAlt, eyebrow }: { tit
           src={image}
           alt={imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
+          fetchPriority="high"
           initial={reduceMotion ? false : { opacity: 0.7, scale: 1.025 }}
           animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
           transition={{ duration: 0.62, ease: "easeOut" }}
