@@ -472,9 +472,9 @@ export function CapabilitiesPage() {
             <SectionTitle title="织造与后处理现场" description="从丰田喷气织机连续织造，到布面卷绕、后处理和成品周转，以真实生产现场呈现电子级玻纤布的制造过程。" />
             <p className="max-w-xl border-l-2 border-accent pl-5 text-sm leading-7 text-steel">织造环节关注经纬纱张力、布面状态与连续运行；后处理围绕脱浆、开纤、表面处理、烘干定型及卷装组织生产。</p>
           </div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1.32fr_0.68fr] lg:items-stretch">
-            <Reveal>
-              <figure className="h-full bg-white">
+          <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:items-start">
+            <Reveal className="lg:col-span-8">
+              <figure className="bg-white">
                 {reduceMotion ? (
                   <img src="/assets/xingke-finishing-process-poster.webp" alt="电子级玻纤布后处理生产线" className="aspect-video h-auto w-full object-cover" loading="lazy" />
                 ) : (
@@ -494,30 +494,30 @@ export function CapabilitiesPage() {
                 <figcaption className="flex items-center justify-between gap-6 border-t border-line px-5 py-4 text-sm font-medium text-ink"><span>电子级玻纤布后处理生产线运行</span><span className="text-xs font-semibold text-accent">PROCESS IN MOTION</span></figcaption>
               </figure>
             </Reveal>
-            <Reveal delay={0.06} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-              <figure className="flex h-full flex-col bg-white">
-                <img src="/assets/xingke-toyota-looms.webp" alt="江西星科丰田喷气织机阵列" className="min-h-0 flex-1 object-cover" loading="lazy" />
+            <Reveal delay={0.06} className="grid gap-5 sm:grid-cols-2 lg:col-span-4 lg:row-span-2 lg:grid-cols-1">
+              <figure className="bg-white">
+                <img src="/assets/xingke-toyota-looms.webp" alt="江西星科丰田喷气织机阵列" className="aspect-[16/10] w-full object-cover" loading="lazy" />
                 <figcaption className="border-t border-line px-5 py-4 text-sm font-medium text-ink">丰田喷气织机阵列</figcaption>
               </figure>
-              <figure className="flex h-full flex-col bg-white">
-                <img src="/assets/xingke-finishing-rolls.webp" alt="江西星科后处理生产线与成品卷装" className="min-h-0 flex-1 object-cover" loading="lazy" />
+              <figure className="bg-white">
+                <img src="/assets/xingke-finishing-rolls.webp" alt="江西星科后处理生产线与成品卷装" className="aspect-[16/10] w-full object-cover" loading="lazy" />
                 <figcaption className="border-t border-line px-5 py-4 text-sm font-medium text-ink">后处理线与成品卷装</figcaption>
               </figure>
             </Reveal>
-          </div>
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
-            <Reveal>
-              <figure className="grid bg-white sm:grid-cols-[0.82fr_1.18fr]">
-                <img src="/assets/xingke-7628-weaving.webp" alt="7628 电子级玻纤布织造现场" className="aspect-[4/3] h-full w-full object-cover" loading="lazy" />
-                <figcaption className="flex flex-col justify-center border-t border-line p-6 sm:border-l sm:border-t-0"><span className="text-xs font-semibold tracking-[0.14em] text-accent">WEAVING</span><strong className="mt-3 text-lg font-semibold text-ink">7628 电子布织造现场</strong><span className="mt-3 text-sm leading-7 text-steel">经纱、纬纱在喷气织机上完成布面成形与连续卷绕。</span></figcaption>
-              </figure>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <figure className="grid bg-white sm:grid-cols-[0.82fr_1.18fr]">
-                <img src="/assets/xingke-fabric-forming.webp" alt="电子级玻纤布布面成形与卷绕" className="aspect-[4/3] h-full w-full object-cover" loading="lazy" />
-                <figcaption className="flex flex-col justify-center border-t border-line p-6 sm:border-l sm:border-t-0"><span className="text-xs font-semibold tracking-[0.14em] text-accent">FABRIC FORMING</span><strong className="mt-3 text-lg font-semibold text-ink">布面成形与卷绕</strong><span className="mt-3 text-sm leading-7 text-steel">通过运行状态与布面观察，持续关注织造过程的一致性。</span></figcaption>
-              </figure>
-            </Reveal>
+            <div className="grid gap-5 md:grid-cols-2 lg:col-span-8">
+              <Reveal>
+                <figure className="grid bg-white sm:grid-cols-[0.82fr_1.18fr]">
+                  <img src="/assets/xingke-7628-weaving.webp" alt="7628 电子级玻纤布织造现场" className="aspect-[4/3] h-full w-full object-cover" loading="lazy" />
+                  <figcaption className="flex flex-col justify-center border-t border-line p-6 sm:border-l sm:border-t-0"><span className="text-xs font-semibold tracking-[0.14em] text-accent">WEAVING</span><strong className="mt-3 text-lg font-semibold text-ink">7628 电子布织造现场</strong><span className="mt-3 text-sm leading-7 text-steel">经纱、纬纱在喷气织机上完成布面成形与连续卷绕。</span></figcaption>
+                </figure>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <figure className="grid bg-white sm:grid-cols-[0.82fr_1.18fr]">
+                  <img src="/assets/xingke-fabric-forming.webp" alt="电子级玻纤布布面成形与卷绕" className="aspect-[4/3] h-full w-full object-cover" loading="lazy" />
+                  <figcaption className="flex flex-col justify-center border-t border-line p-6 sm:border-l sm:border-t-0"><span className="text-xs font-semibold tracking-[0.14em] text-accent">FABRIC FORMING</span><strong className="mt-3 text-lg font-semibold text-ink">布面成形与卷绕</strong><span className="mt-3 text-sm leading-7 text-steel">通过运行状态与布面观察，持续关注织造过程的一致性。</span></figcaption>
+                </figure>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
