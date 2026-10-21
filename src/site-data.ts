@@ -15,8 +15,26 @@ export const navigation = [
   ["产品中心", "/products"],
   ["制造能力", "/capabilities"],
   ["荣誉资质", "/honors"],
+  ["新闻中心", "/news"],
   ["联系我们", "/contact"],
 ] as const
+
+export const newsItems = [
+  {
+    slug: "jiangxi-daily-shangyou-industry-2026",
+    category: "媒体聚焦",
+    date: "2026-08-30",
+    displayDate: "2026.08.30",
+    title: "江西日报头版关注上犹产业发展，星科生产现场亮相",
+    summary: "江西日报头版报道上犹以工业强基、文旅赋能与融湾创新推动县域发展，星科电子玻纤布生产现场作为上犹玻纤新型复材产业代表场景亮相。",
+    image: "/assets/news-xingke-workshop-2026.jpg",
+    imageAlt: "江西星科生产车间内电子玻纤布成品装运现场",
+    source: "大江新闻 · 江西日报",
+    author: "刘新权",
+    photographer: "朱海鹏",
+    originalUrl: "https://dj.jxnews.com.cn/webDetails/newsPc?id=14772452&tenantId=312&uid=6846a9b003bcf90019b9c9c0&sign=1",
+  },
+]
 
 export const stats = [
   { value: 2021, suffix: "", label: "公司成立" },

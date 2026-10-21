@@ -9,6 +9,8 @@ const ProductsPage = lazy(() => import("./pages").then((module) => ({ default: m
 const CapabilitiesPage = lazy(() => import("./pages").then((module) => ({ default: module.CapabilitiesPage })))
 const HonorsPage = lazy(() => import("./pages").then((module) => ({ default: module.HonorsPage })))
 const ContactPage = lazy(() => import("./pages").then((module) => ({ default: module.ContactPage })))
+const NewsPage = lazy(() => import("./pages").then((module) => ({ default: module.NewsPage })))
+const NewsDetailPage = lazy(() => import("./pages").then((module) => ({ default: module.NewsDetailPage })))
 const NotFoundPage = lazy(() => import("./pages").then((module) => ({ default: module.NotFoundPage })))
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
             <Route path="products" element={<ProductsPage />} />
             <Route path="capabilities" element={<CapabilitiesPage />} />
             <Route path="honors" element={<HonorsPage />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path="news/:slug" element={<NewsDetailPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>

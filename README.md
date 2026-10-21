@@ -10,6 +10,7 @@
 - `/products` 产品中心
 - `/capabilities` 制造能力
 - `/honors` 荣誉资质
+- `/news` 新闻中心
 - `/contact` 联系我们
 
 ## 本地运行
