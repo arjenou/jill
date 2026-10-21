@@ -35,8 +35,8 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "中薄型电子布": "中薄型電子クロス",
     "薄型电子布": "薄型電子クロス",
     "标准型电子布": "標準型電子クロス",
-    "精密织造": "精密織造",
-    "稳定交付": "安定供給",
+    "精密织造": "確かな製織",
+    "稳定交付": "安定供給を実現",
     "联系星科": "星科へのお問い合わせ",
     "了解制造能力": "生産体制を見る",
     "查看产品体系": "製品情報を見る",
@@ -160,6 +160,7 @@ const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, strin
     ["上陽", "上猶"],
     ["上犹", "上猶"],
     ["黄埔工業団地", "黄埠工業団地"],
+    ["上海の新しいガラス繊維", "上猶の新しいガラス繊維"],
     ["江西省紅定", "江西鴻錠"],
   ],
   en: [
@@ -221,7 +222,96 @@ export function t(value: string): string {
 function normalizeTarget(value: string, language: Exclude<Language, "zh">): string {
   let normalized = value
   for (const [source, target] of targetNormalizations[language]) normalized = normalized.replaceAll(source, target)
+  if (language === "ja") normalized = isJapaneseArticlePage() ? toPoliteJapanese(normalized) : toPlainJapanese(normalized)
   return normalized
+}
+
+function isJapaneseArticlePage(): boolean {
+  return typeof window !== "undefined" && /^\/news\/[^/]+\/?$/u.test(window.location.pathname)
+}
+
+function toPlainJapanese(value: string): string {
+  const replacements: Array<[string, string]> = [
+    ["ではありません", "ではない"],
+    ["ではございません", "ではない"],
+    ["となっております", "となっている"],
+    ["されております", "されている"],
+    ["しております", "している"],
+    ["ております", "ている"],
+    ["となっています", "となっている"],
+    ["されています", "されている"],
+    ["しています", "している"],
+    ["していました", "していた"],
+    ["されました", "された"],
+    ["となりました", "となった"],
+    ["ありました", "あった"],
+    ["いました", "いた"],
+    ["でした", "だった"],
+    ["となります", "となる"],
+    ["になります", "になる"],
+    ["できます", "できる"],
+    ["含まれます", "含まれる"],
+    ["求められます", "求められる"],
+    ["使用されます", "使用される"],
+    ["評価されます", "評価される"],
+    ["されます", "される"],
+    ["あります", "ある"],
+    ["います", "いる"],
+    ["行います", "行う"],
+    ["目指します", "目指す"],
+    ["示します", "示す"],
+    ["進めます", "進める"],
+    ["高めます", "高める"],
+    ["支えます", "支える"],
+    ["応えます", "応える"],
+    ["つなげます", "つなげる"],
+    ["取り組みます", "取り組む"],
+    ["向上させます", "向上"],
+    ["築きます", "築く"],
+    ["巻き取られます", "巻き取られる"],
+    ["巻き付けます", "巻き付ける"],
+    ["生まれます", "生まれる"],
+    ["役立てます", "役立てる"],
+    ["組み込まれるようにします", "組み込む"],
+    ["です", ""],
+  ]
+
+  let plain = value
+  for (const [source, target] of replacements) plain = plain.replaceAll(source, target)
+  plain = plain.replace(/([\p{Script=Han}\p{Script=Katakana}ー]+)します/gu, "$1")
+  return plain.replaceAll("。", " ").replace(/\s{2,}/gu, " ").trim()
+}
+
+function toPoliteJapanese(value: string): string {
+  const replacements: Array<[RegExp, string]> = [
+    [/である(?=。|$)/gu, "です"],
+    [/だった(?=。|$)/gu, "でした"],
+    [/となった(?=。|$)/gu, "となりました"],
+    [/されている(?=。|$)/gu, "されています"],
+    [/している(?=。|$)/gu, "しています"],
+    [/していた(?=。|$)/gu, "していました"],
+    [/された(?=。|$)/gu, "されました"],
+    [/となる(?=。|$)/gu, "となります"],
+    [/できる(?=。|$)/gu, "できます"],
+    [/ある(?=。|$)/gu, "あります"],
+    [/いる(?=。|$)/gu, "います"],
+    [/示す(?=。|$)/gu, "示します"],
+    [/進める(?=。|$)/gu, "進めます"],
+    [/高める(?=。|$)/gu, "高めます"],
+    [/支える(?=。|$)/gu, "支えます"],
+    [/つなぐ(?=。|$)/gu, "つなぎます"],
+    [/報じた(?=。|$)/gu, "報じました"],
+    [/述べた(?=。|$)/gu, "述べました"],
+    [/進めていた(?=。|$)/gu, "進めていました"],
+    [/重点を置いた(?=。|$)/gu, "重点を置きました"],
+    [/(?<![でま])した(?=。|$)/gu, "しました"],
+    [/する(?=。|$)/gu, "します"],
+    [/なる(?=。|$)/gu, "なります"],
+  ]
+
+  let polite = value
+  for (const [pattern, replacement] of replacements) polite = polite.replace(pattern, replacement)
+  return polite
 }
 
 export function localizeDeep<T>(value: T): T {
