@@ -1,9 +1,11 @@
+/** @jsxImportSource ./i18n-jsx */
 import { useEffect, useRef, useState, type ReactNode } from "react"
 import { ArrowRight } from "@phosphor-icons/react"
 import { AnimatePresence, animate, motion, useInView, useReducedMotion } from "motion/react"
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
 import { cn } from "./lib"
 import { navigation } from "./site-data"
+import { applyDocumentLanguage, getLanguage, languageOptions, setLanguage, t } from "./i18n"
 
 export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const reduceMotion = useReducedMotion()
@@ -78,18 +80,55 @@ export function PageMeta({ title, description }: { title: string; description: s
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const fullTitle = `${title}｜江西星科电子基材有限公司`
+    applyDocumentLanguage()
+    const localizedTitle = t(title)
+    const localizedDescription = t(description)
+    const companyName = t("江西星科电子基材有限公司")
+    const fullTitle = `${localizedTitle}｜${companyName}`
     const pageUrl = new URL(pathname, "https://www.xingkefabric.com").toString()
     document.title = fullTitle
     const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
-    if (meta) meta.content = description
+    if (meta) meta.content = localizedDescription
     document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute("href", pageUrl)
     document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.setAttribute("content", fullTitle)
-    document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute("content", description)
+    document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute("content", localizedDescription)
+    document.querySelector<HTMLMetaElement>('meta[property="og:site_name"]')?.setAttribute("content", companyName)
     document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute("content", pageUrl)
+    document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]')?.setAttribute("content", fullTitle)
+    document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')?.setAttribute("content", localizedDescription)
   }, [description, pathname, title])
 
   return null
+}
+
+function LanguageSwitcher({ mobile = false }: { mobile?: boolean }) {
+  const currentLanguage = getLanguage()
+
+  return (
+    <div
+      role="group"
+      aria-label="网站语言"
+      className={cn("flex items-center border border-line bg-white", mobile ? "w-full justify-center p-1" : "shrink-0")}
+    >
+      {languageOptions.map((option) => (
+        <button
+          key={option.code}
+          type="button"
+          lang={option.code === "zh" ? "zh-CN" : option.code}
+          aria-label={option.label}
+          aria-pressed={currentLanguage === option.code}
+          onClick={() => setLanguage(option.code)}
+          className={cn(
+            "flex h-10 min-w-10 items-center justify-center px-2 text-xs font-semibold transition-colors duration-150 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+            currentLanguage === option.code ? "bg-navy text-white" : "text-steel hover:bg-mist hover:text-ink",
+            mobile && "h-11 flex-1",
+          )}
+        >
+          {option.short}
+        </button>
+      ))}
+    </div>
+  )
 }
 
 export function PageHero({ title, description, image, imageAlt, eyebrow }: { title: string; description: string; image: string; imageAlt: string; eyebrow: string }) {
@@ -135,6 +174,8 @@ export function PageLink({ to, label, inverse = false }: { to: string; label: st
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  useEffect(() => applyDocumentLanguage(), [])
+
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-md">
       <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -142,11 +183,11 @@ function Header() {
           <img src="/assets/xingke-mark.png" alt="" className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11" />
           <span className="min-w-0">
             <span className="block truncate text-sm font-semibold tracking-wide text-ink sm:text-base">江西星科电子基材有限公司</span>
-            <span className="hidden text-[10px] font-medium tracking-[0.08em] text-steel sm:block">JIANGXI XINGKE ELECTRONIC SUBSTRATE</span>
+            <span className="hidden text-[10px] font-medium tracking-[0.08em] text-steel sm:block xl:hidden 2xl:block">JIANGXI XINGKE ELECTRONIC SUBSTRATE</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:flex" aria-label="主要导航">
+        <nav className="hidden items-center gap-3 2xl:gap-5 xl:flex" aria-label="主要导航">
           {navigation.map(([label, to]) => (
             <NavLink key={to} to={to} end={to === "/"} className={({ isActive }) => cn("relative py-2 text-[13px] font-medium transition-colors duration-150 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:bg-accent after:transition-transform after:duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent", isActive ? "text-accent after:scale-x-100" : "text-ink after:scale-x-0 hover:text-accent hover:after:scale-x-100")}>
               {label}
@@ -154,9 +195,12 @@ function Header() {
           ))}
         </nav>
 
-        <Link to="/contact" className="hidden h-11 shrink-0 items-center gap-3 bg-accent px-5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 xl:flex">
-          业务联系 <ArrowRight size={17} aria-hidden="true" />
-        </Link>
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
+          <LanguageSwitcher />
+          <Link to="/contact" className="flex h-11 shrink-0 items-center gap-2 bg-accent px-4 text-sm font-semibold text-white transition-colors duration-150 hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 2xl:gap-3 2xl:px-5">
+            业务联系 <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
 
         <div className="absolute right-5 shrink-0 sm:right-8 xl:hidden">
           <button type="button" aria-label={menuOpen ? "关闭网站菜单" : "打开网站菜单"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="flex size-11 items-center justify-center text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
@@ -169,6 +213,10 @@ function Header() {
                   {label} <ArrowRight size={16} aria-hidden="true" />
                 </NavLink>
               ))}
+              <div className="mt-3 border-t border-line pt-3">
+                <p className="mb-2 px-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-steel">网站语言</p>
+                <LanguageSwitcher mobile />
+              </div>
             </nav>
           ) : null}
         </div>

@@ -1,3 +1,4 @@
+/** @jsxImportSource ./i18n-jsx */
 import * as Tabs from "@radix-ui/react-tabs"
 import {
   ArrowRight,
