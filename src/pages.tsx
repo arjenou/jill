@@ -108,7 +108,7 @@ function ProductTabs() {
                 </dl>
               )}
             </div>
-            <img src={product.image} alt={`${product.code}${product.type}生产实景`} className="h-full min-h-80 w-full object-cover" loading="lazy" />
+            <img src={product.image} alt={`${product.code} · ${product.type} · 生产实景`} className="h-full min-h-80 w-full object-cover" loading="lazy" />
           </motion.div>
         </Tabs.Content>
       ))}
@@ -200,9 +200,9 @@ export function HomePage() {
 
       <section className="bg-paper py-20 sm:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-20 lg:px-12">
-          <SectionTitle title="以资质与创新积累支撑长期发展" description="国家高新技术企业、江西省绿色工厂及已获授权专利，共同构成星科规范制造的重要基础。" />
-          <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
-            {honors.slice(0, 2).map((honor) => (
+          <SectionTitle title="以资质与创新积累支撑长期发展" description="国家高新技术企业、江西省绿色工厂、江西省专精特新中小企业及已获授权专利，共同构成星科规范制造的重要基础。" />
+          <div className="grid gap-px border border-line bg-line md:grid-cols-3">
+            {honors.slice(0, 3).map((honor) => (
               <figure key={honor.title} className="bg-white p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className="max-h-full max-w-full object-contain" loading="lazy" /></div><figcaption className="pt-5 text-base font-semibold text-ink">{honor.title}</figcaption></figure>
             ))}
           </div>
@@ -338,7 +338,7 @@ export function BusinessPage() {
               const Icon = item.icon
               return (
                 <Reveal key={item.name} delay={index * 0.05} className={`group border-b border-line py-9 md:p-9 ${index % 2 === 0 ? "md:border-r" : ""}`}>
-                  <div className="overflow-hidden bg-mist"><img src={item.image} alt={`${item.name}${item.label}`} className="aspect-[16/9] w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" /></div>
+                  <div className="overflow-hidden bg-mist"><img src={item.image} alt={`${item.name} · ${item.label}`} className="aspect-[16/9] w-full object-cover transition-transform duration-150 group-hover:scale-[1.015]" loading="lazy" /></div>
                   <div className="mt-7 flex items-start justify-between gap-6"><div><p className="text-xs font-semibold tracking-[0.12em] text-accent">{item.label}</p><h2 className="mt-2 text-2xl font-semibold text-ink">{item.name}</h2></div><Icon size={29} className="shrink-0 text-accent" aria-hidden="true" /></div>
                   <p className="mt-4 text-base leading-8 text-steel">{item.description}</p>
                   <p className="mt-6 border-l-2 border-accent pl-4 text-sm font-semibold text-ink">{item.detail}</p>
@@ -584,7 +584,7 @@ export function CapabilitiesPage() {
 export function HonorsPage() {
   return (
     <>
-      <PageMeta title="荣誉资质" description="查看江西星科的高新技术企业、绿色工厂与授权专利。" />
+      <PageMeta title="荣誉资质" description="查看江西星科的高新技术企业、绿色工厂、专精特新中小企业资质与授权专利。" />
       <PageHero title="资质与创新成果" description="持续推进技术创新、绿色制造与规范经营，以积累支撑长期发展。" eyebrow="Honors" image="/assets/xingke-line.webp" imageAlt="江西星科制造现场" />
       <section className="bg-paper py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
@@ -595,7 +595,7 @@ export function HonorsPage() {
             ))}
           </div>
           <div className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-3">
-            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">高企认定</p><p className="mt-3 text-sm leading-7 text-steel">江西省 2023 年第四批高新技术企业，证书编号与正式名单顺序相互对应。</p></div>
+            <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">高企认定</p><p className="mt-3 text-sm leading-7 text-steel">列入江西省 2023 年第四批高新技术企业名单。</p></div>
             <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">绿色制造</p><p className="mt-3 text-sm leading-7 text-steel">以江西省绿色制造名单及企业牌匾为公开展示依据。</p></div>
             <div className="bg-white p-6"><p className="text-xs font-semibold text-accent">授权专利</p><p className="mt-3 text-sm leading-7 text-steel">围绕电子布生产工艺与设备，已获授权专利十余项。</p></div>
           </div>
@@ -618,7 +618,7 @@ export function ContactPage() {
       <section className="bg-blue-pale py-20 sm:py-28 lg:py-36">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20 lg:px-12">
           <div>
-            <SectionTitle title="业务联系" description="欢迎联系我们，沟通产品规格、交付要求与合作机会。" />
+            <SectionTitle title="业务联系" description="可就以下事项与我们联系：" />
             <ul className="mt-8 grid gap-3 text-sm text-steel" aria-label="可咨询事项">
               {["产品型号与规格确认", "样品与技术资料申请", "生产现场与质量能力交流", "交付需求与产业合作"].map((item) => <li key={item} className="flex items-center gap-3"><Check size={16} className="text-accent" aria-hidden="true" />{item}</li>)}
             </ul>
@@ -627,7 +627,7 @@ export function ContactPage() {
             {contacts.map((contact) => {
               const Icon = iconMap[contact.type as keyof typeof iconMap]
               const external = contact.type === "map"
-              const useInternationalFormat = language === "en" && "internationalValue" in contact
+              const useInternationalFormat = language !== "zh" && "internationalValue" in contact
               const value = useInternationalFormat ? contact.internationalValue : contact.value
               const href = useInternationalFormat ? contact.internationalHref : contact.href
               return <a key={`${contact.label}-${contact.value}`} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="group flex min-h-48 flex-col justify-between bg-white p-7 text-ink transition-colors duration-150 hover:bg-mist focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"><Icon size={27} className="text-accent" aria-hidden="true" /><span className="mt-9"><span className="block text-xs font-semibold tracking-wide text-steel">{contact.label}</span><span className="mt-2 flex items-end justify-between gap-4 text-sm font-medium leading-7 sm:text-base">{value}<ArrowRight size={17} className="shrink-0 text-accent transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" /></span></span></a>
@@ -635,7 +635,7 @@ export function ContactPage() {
           </address>
         </div>
       </section>
-      <section className="border-y border-line bg-white py-20 sm:py-28"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-12"><div><p className="text-sm font-semibold text-accent">公司地址</p><h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.025em] text-ink sm:text-4xl">江西省赣州市上犹县<br />黄埠工业园南区</h2><a href="https://ditu.amap.com/search?query=江西星科电子基材有限公司" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">在地图中查看 <ArrowRight size={18} aria-hidden="true" /></a></div><img src="/assets/xingke-campus-front.webp" alt="江西星科制造基地全景" className="aspect-[16/8] w-full object-cover" loading="lazy" /></div></section>
+      <section className="border-y border-line bg-white py-20 sm:py-28"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:px-12"><div><p className="text-sm font-semibold text-accent">地图位置</p><h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.025em] text-ink sm:text-4xl">江西省赣州市上犹县<br />黄埠工业园南区</h2><a href="https://ditu.amap.com/search?query=江西星科电子基材有限公司" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">在地图中查看 <ArrowRight size={18} aria-hidden="true" /></a></div><img src="/assets/xingke-campus-front.webp" alt="江西星科制造基地全景" className="aspect-[16/8] w-full object-cover" loading="lazy" /></div></section>
     </>
   )
 }
@@ -680,7 +680,7 @@ export function NewsPage() {
 
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-32">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-          <SectionTitle title="更多报道" description="按发布时间排列。正文为企业官网摘要，事实与数据均标注原始来源。" />
+          <SectionTitle title="更多报道" description="各篇正文为本站根据原报道编写的摘要，事实与数据均注明原始来源。" />
           <div className="mt-12 border-t border-line">
             {newsItems.slice(1).map((item) => (
               <Link key={item.slug} to={`/news/${item.slug}`} className="group grid gap-6 border-b border-line py-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:grid-cols-[120px_220px_1fr_auto] md:items-center lg:grid-cols-[150px_260px_1fr_auto]">
@@ -763,7 +763,7 @@ export function NewsDetailPage() {
         )}
 
         <div className="mx-auto mt-14 flex max-w-3xl flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm leading-7 text-steel">本文为企业官网摘要，完整内容与版权归原发布媒体所有。</p>
+          <p className="text-sm leading-7 text-steel">本文为本站根据原报道编写的摘要，完整内容与版权归原发布媒体所有。</p>
           <a href={article.originalUrl} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-accent hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">查看报道原文 <ArrowRight size={18} aria-hidden="true" /></a>
         </div>
       </div>

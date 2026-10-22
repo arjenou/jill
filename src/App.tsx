@@ -2,6 +2,7 @@
 import { lazy, Suspense } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Layout } from "./components"
+import { getRouterBasename } from "./i18n"
 
 const HomePage = lazy(() => import("./pages").then((module) => ({ default: module.HomePage })))
 const AboutPage = lazy(() => import("./pages").then((module) => ({ default: module.AboutPage })))
@@ -16,7 +17,7 @@ const NotFoundPage = lazy(() => import("./pages").then((module) => ({ default: m
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={getRouterBasename()}>
       <Suspense fallback={<div className="min-h-dvh bg-paper" aria-label="页面加载中" />}>
         <Routes>
           <Route element={<Layout />}>

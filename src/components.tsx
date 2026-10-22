@@ -5,7 +5,7 @@ import { AnimatePresence, animate, motion, useInView, useReducedMotion } from "m
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom"
 import { cn } from "./lib"
 import { navigation } from "./site-data"
-import { applyDocumentLanguage, getLanguage, languageOptions, setLanguage, t } from "./i18n"
+import { applyDocumentLanguage, getLanguage, getLocalizedPath, languageOptions, setLanguage, t, type Language } from "./i18n"
 
 export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const reduceMotion = useReducedMotion()
@@ -81,11 +81,12 @@ export function PageMeta({ title, description }: { title: string; description: s
 
   useEffect(() => {
     applyDocumentLanguage()
+    const language = getLanguage()
     const localizedTitle = title
     const localizedDescription = description
     const companyName = t("江西星科电子基材有限公司")
     const fullTitle = `${localizedTitle}｜${companyName}`
-    const pageUrl = new URL(pathname, "https://www.xingkefabric.com").toString()
+    const pageUrl = new URL(getLocalizedPath(pathname, language), "https://www.xingkefabric.com").toString()
     document.title = fullTitle
     const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]')
     if (meta) meta.content = localizedDescription
@@ -96,6 +97,26 @@ export function PageMeta({ title, description }: { title: string; description: s
     document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute("content", pageUrl)
     document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]')?.setAttribute("content", fullTitle)
     document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')?.setAttribute("content", localizedDescription)
+
+    const alternates: Array<[string, Language]> = [["zh-CN", "zh"], ["en", "en"], ["ja", "ja"]]
+    for (const [hreflang, alternateLanguage] of alternates) {
+      let link = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${hreflang}"]`)
+      if (!link) {
+        link = document.createElement("link")
+        link.rel = "alternate"
+        link.hreflang = hreflang
+        document.head.append(link)
+      }
+      link.href = new URL(getLocalizedPath(pathname, alternateLanguage), "https://www.xingkefabric.com").toString()
+    }
+    let defaultLink = document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="x-default"]')
+    if (!defaultLink) {
+      defaultLink = document.createElement("link")
+      defaultLink.rel = "alternate"
+      defaultLink.hreflang = "x-default"
+      document.head.append(defaultLink)
+    }
+    defaultLink.href = new URL(getLocalizedPath(pathname, "zh"), "https://www.xingkefabric.com").toString()
   }, [description, pathname, title])
 
   return null

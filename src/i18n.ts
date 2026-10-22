@@ -3,6 +3,11 @@ import { generatedTranslations } from "./translations.generated"
 export type Language = "zh" | "ja" | "en"
 
 const STORAGE_KEY = "xingke-language"
+const languagePrefixes: Record<Language, string> = {
+  zh: "",
+  ja: "/ja",
+  en: "/en",
+}
 const languageCodes: Record<Language, string> = {
   zh: "zh-CN",
   ja: "ja",
@@ -40,13 +45,13 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "了解制造能力": "生産体制を見る",
     "查看产品体系": "製品情報を見る",
     "项目总投资": "プロジェクト総投資額",
-    "5.05 亿元": "5.05億元（約116.15億円）",
+    "5.05 亿元": "5億500万人民元（約116.15億円）",
     "项目占地": "敷地面積",
     "61 亩": "約40,667㎡",
     "建筑面积": "延床面積",
     "3.2 万平方米": "32,000㎡",
     "注册资本": "登録資本金",
-    "5000 万元": "5,000万元（約11.5億円）",
+    "5000 万元": "5,000万人民元（約11.5億円）",
     "日元参考金额按人民币金额 × 23 估算（1 元人民币 = 23 日元；换算基准：2026 年 10 月 21 日）。": "参考円換算は人民元金額 × 23 で算出（1人民元＝23円、換算基準日：2026年10月21日）",
     "7 亿余元": "161億円超",
     "稳定制造": "安定した生産",
@@ -74,11 +79,13 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "整经与浆纱": "整経・サイジング",
     "整经": "整経",
     "浆纱": "サイジング（糊付け）",
-    "并轴控制": "ビーミング管理",
-    "并轴": "ビーム組立",
-    "喷气织造": "エアジェット織布",
+    "并轴控制": "ビーミング（経糸ビームの合わせ巻き）",
+    "并轴": "ビーミング（経糸ビームの合わせ巻き）",
+    "喷气织造": "エアジェット製織",
     "后处理与验布": "後処理・検反",
-    "丰田喷气织机": "豊田エアジェット織機",
+    "丰田喷气织机": "トヨタ製エアジェット織機",
+    "丰田喷气织机阵列": "トヨタ製エアジェット織機列",
+    "江西星科丰田喷气织机阵列": "江西星科のトヨタ製エアジェット織機列",
     " 台": "台",
     " 亿米": "億メートル+",
     "业务联系": "お問い合わせ",
@@ -91,15 +98,16 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "厚型电子级玻纤布": "厚型電子級ガラス繊維クロス",
     "电子级玻璃纤维布": "電子級ガラス繊維クロス",
     "集团产品系列": "製品ラインアップ",
-    "工业级玻璃纤维布": "産業用ガラス繊維クロス",
+    "工业级玻璃纤维布": "工業用ガラス繊維クロス",
     "面向电气绝缘与复合材料增强应用": "電気絶縁および複合材料の補強用途向け",
     "产品外观与织纹": "製品外観と織組織",
     "通过近景呈现玻纤布的平纹组织、布面状态与铺展形态。图片用于产品外观展示，不对应单一型号。": "ガラス繊維クロスの平織組織、生地表面、展開状態をクローズアップで紹介します。写真は製品外観の紹介を目的としており、特定の品番を示すものではありません。",
     "采用 G75 玻璃纤维纱平纹织造，对经纬密、基重、布面均匀性与批次一致性实施过程控制。": "G75ガラス繊維糸を使用した平織で、経緯密度、坪量、生地の均一性、ロット間の安定性を工程内で管理しています。",
-    "面向电子、电气绝缘与工业复合材料应用。具体技术参数及表面处理要求，请联系业务团队确认。": "電子材料、電気絶縁、産業用複合材料向けです。技術仕様および表面処理の要件は営業担当までお問い合わせください。",
+    "面向电子、电气绝缘与工业复合材料应用。具体技术参数及表面处理要求，请联系业务团队确认。": "電子材料、電気絶縁、産業用複合材料向けです。詳細は当社営業担当までお問い合わせください。",
     "江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，业务覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造。": "江西星科、江西鴻錠、元源新材料、贛州広建は、同一の実質的支配者の傘下にある関連企業です。鉱物原料加工、ガラス繊維糸製造、電子級および産業用ガラス繊維クロスの製織を手がけています。",
     "配置可并合 6 个经轴的并轴设备，将纱片合并并卷绕成 1 个织轴。": "6本の整経ビームの経糸をまとめ、1本の織機用ビームに巻き取るビーム組立設備を備えています。",
     "将 6 个经轴的纱片并合并卷绕成 1 个织轴，控制经密与各片经纱之间的张力一致性。": "6本の整経ビームの経糸をまとめて1本の織機用ビームに巻き取り、経糸密度と各シートの張力を管理します。",
+    "将 6 个经轴的纱片并合后卷绕成 1 个织轴，控制经密与各片经纱之间的张力一致性。": "6本の整経ビームの経糸シートを合わせて1本の織機用ビームに巻き取り、経糸密度と各シートの張力を均一に管理します。",
     "以制造能力为基础": "確かな生産技術を基盤に",
     "园区与制造基地": "工業団地と生産拠点",
     "厂房与园区道路": "工場棟と工業団地内道路",
@@ -122,12 +130,16 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "明确各阶段的关键控制点，确保工序之间顺畅衔接。": "各工程の重要管理点を明確にし、工程間を円滑につなぎます。",
     "依托生产设备与规范工艺，提供稳定的产品与交付支持。": "生産設備と標準化された工程により、安定した製品供給を支えています。",
     "国家高新技术企业、江西省绿色工厂及已获授权专利，共同构成星科规范制造的重要基础。": "国家ハイテク企業、江西省グリーン工場、登録済み特許を基盤に、標準化された生産を推進しています。",
+    "国家高新技术企业、江西省绿色工厂、江西省专精特新中小企业及已获授权专利，共同构成星科规范制造的重要基础。": "国家ハイテク企業、江西省グリーン工場、江西省「専精特新」中小企業の認定と登録済み特許が、星科の標準化された生産を支えています。",
+    "江西省绿色工厂": "江西省グリーン工場",
     "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。": "江西星科電子基材有限公司は2021年5月に設立され、江西省贛州市上猶県黄埠工業団地南区で電子級ガラス繊維クロスの製造・販売を行っています。",
-    "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售，现已具备年产 1 亿米玻璃纤维布的生产能力。": "江西星科電子基材有限公司は2021年5月に設立され、江西省贛州市上猶県黄埠工業団地南区で電子級ガラス繊維クロスの製造・販売を行っています。現在、年間1億メートルのガラス繊維クロス生産能力を備えています。",
+    "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售，现已具备年产 1 亿米玻璃纤维布的生产能力。": "江西星科電子基材有限公司は2021年5月に設立され、江西省贛州市上猶県黄埠工業団地南区で電子級ガラス繊維クロスの製造・販売を行っています。現在、年間1億メートル+のガラス繊維クロス生産能力を備えています。",
+    "厂房、办公和配套设施集中布局于黄埠工业园南区，为连续生产、仓储周转和现场管理提供空间基础。": "工場棟、事務所、付帯設備を黄埠工業団地南区に集約し、連続生産、保管・物流、現場管理を支えています。",
     "围绕电子布生产建立整经、浆纱、并轴、喷气织造及后处理能力，以设备基础和过程控制支持产品稳定性。": "電子クロスの生産に必要な整経、サイジング、ビーム組立、エアジェット製織、後処理の体制を整え、設備と工程管理によって製品の安定性を支えています。",
     "公司持续完善生产配置、资质建设与制造管理，稳步推进电子级玻纤布业务发展。": "生産設備、認証、製造管理を継続的に整備し、電子級ガラス繊維クロス事業を着実に発展させています。",
     "生产建设": "生産体制",
     "已配置并投入使用 200 台丰田喷气织机，形成电子级玻纤布织造与后处理能力。": "豊田エアジェット織機200台を導入・稼働し、電子級ガラス繊維クロスの製織・後処理体制を構築しています。",
+    "一期配置 200 台丰田喷气织机，支持多型号电子级玻纤布生产。": "第1期ではトヨタ製エアジェット織機200台を導入し、複数品番の電子級ガラス繊維クロス生産に対応しています。",
     "集团内企业生产玻璃纤维纱、电子级玻璃纤维布、低介电玻璃纤维布、高强度玻璃纤维布及工业级玻璃纤维布，覆盖多类基材与复合材料应用。": "グループ各社は、ガラス繊維糸、電子級・低誘電・高強度・産業用のガラス繊維クロスを生産し、各種基材および複合材料用途に対応しています。",
     "关注经纬密、基重、实际厚度与后处理的一致性，为后续层压和加工提供稳定基材。": "経緯密度、坪量、実測厚さ、後処理の一貫性を管理し、積層・加工工程に安定した基材を提供します。",
     "以整经、浆纱、并轴、喷气织造及后处理设备为基础，生产多型号电子级玻璃纤维布。": "整経、サイジング、ビーム組立、エアジェット製織、後処理設備を基盤に、各種電子級ガラス繊維クロスを生産しています。",
@@ -146,6 +158,36 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "江西星科将重点介绍围绕电子级玻纤布建设的整经、浆纱、并轴、喷气织造与后处理能力，产品面向电子基材等应用。": "江西星科は、電子級ガラス繊維クロスの整経、サイジング、ビーム組立、エアジェット製織、後処理の生産体制を紹介します。製品は電子基材などの用途に対応します。",
     "联合参展将使产业链上下游产品在同一场景中集中呈现，并为企业与客户、设备及材料伙伴开展技术交流提供窗口。": "共同出展により、サプライチェーン上の各製品を一堂に紹介し、お客様や設備・材料パートナーとの技術交流の機会を設けます。",
     "面向多类绝缘与工业增强应用": "各種電気絶縁・産業用補強用途向け",
+    "了解江西星科的公司概况、制造基地和发展基础。": "江西星科の会社概要、製造拠点、事業基盤をご紹介します。",
+    "专注电子级玻纤布制造": "電子級ガラス繊維クロスに特化",
+    "扎根江西上犹玻纤产业集群，以长期主义建设稳定、规范、可持续的制造能力。": "江西省上猶のガラス繊維産業集積を基盤に、安定性、標準化、持続可能性を重視した生産体制を長期的に構築しています。",
+    "以务实的制造态度面对每一道工序，以持续改进回应客户对质量、交付和协同的长期要求。": "一つひとつの工程に誠実に取り組み、継続的な改善を通じて、品質、納期、連携に関するお客様の長期的なニーズに応えます。",
+    "聚焦电子级玻璃纤维布，以规范工艺与持续改进服务电子基材产业。": "電子級ガラス繊維クロスを専門に、標準化された工程と継続的な改善で電子基板業界に貢献しています。",
+    "关注企业制造现场、产业发展与公开媒体报道。": "製造現場の様子、産業の動向、メディア掲載情報をお届けします。",
+    "进入新闻中心": "ニュース一覧へ",
+    "了解公司": "会社情報へ",
+    "查看完整能力": "生産体制の詳細へ",
+    "查看荣誉资质": "認証・受賞へ",
+    "讨论产品与合作需求": "製品・事業連携のご相談",
+    "欢迎就电子级玻纤布型号、交付要求和产业合作联系我们。": "品番、納期、事業連携など、お気軽にお問い合わせください。",
+    "了解江西星科的整经、浆纱、并轴、喷气织造、电子布后处理、验布与分切复卷能力。": "江西星科の整経、サイジング、ビーミング、エアジェット製織、後処理、検反・スリット・巻き直しの体制をご紹介します。",
+    "查看江西星科的高新技术企业、绿色工厂、专精特新中小企业资质与授权专利。": "江西星科の国家ハイテク企業認定、江西省グリーン工場、「専精特新」中小企業認定および登録特許をご紹介します。",
+    "企业资质": "企業資格",
+    "以公开证书与专利材料为依据，集中呈现星科在技术创新和绿色制造方面的积累。": "公開されている認定証と特許資料に基づき、星科の技術革新とグリーン製造における取り組みをご紹介します。",
+    "绿色制造": "グリーン製造",
+    "以江西省绿色制造名单及企业牌匾为公开展示依据。": "江西省グリーン製造リストおよび企業の銘板を公開表示の根拠としています。",
+    "持续推进技术创新、绿色制造与规范经营，以积累支撑长期发展。": "技術革新、グリーン製造、標準化された運営を継続的に推進し、長期的な発展につなげています。",
+    "与星科建立联系": "江西星科へのお問い合わせ",
+    "江西省专精特新中小企业": "江西省「専精特新」中小企業",
+    "获评江西省专精特新中小企业，有效期至 2028 年 9 月": "江西省「専精特新」中小企業（専門化・精密化・特色化・新規性を備えた中小企業）に認定され、有効期限は2028年9月までです。",
+    "班前沟通，把质量要求落实到当班生产": "始業前ミーティングで品質要件を当日の生産に落とし込む",
+    "可就以下事项与我们联系：": "以下の内容について、お気軽にお問い合わせください。",
+    "各篇正文为本站根据原报道编写的摘要，事实与数据均注明原始来源。": "各記事は原報道に基づいて当サイトが作成した要約です。事実と数値には出典を明記しています。",
+    "本文为本站根据原报道编写的摘要，完整内容与版权归原发布媒体所有。": "この記事は原報道に基づいて当サイトが作成した要約です。全文と著作権は原発行元に帰属します。",
+    "地图位置": "所在地",
+    "江西日报头版报道上犹以工业强基、文旅赋能与融湾创新推动县域发展，星科电子玻纤布生产现场作为上犹玻纤新型复材产业代表场景亮相。": "江西日報は一面で、上猶県が産業基盤の強化、文化・観光の振興、広東・香港・マカオ大湾区との連携を通じて地域発展を進める取り組みを報じ、星科電子の電子級ガラス繊維クロス生産現場を上猶県の新型ガラス繊維複合材料産業を代表する事例として紹介しました。",
+    "江西星科电子玻纤布生产现场作为上犹玻纤新型复材产业的代表场景在报道中亮相，呈现企业电子玻纤布成品装运及规范化制造现场。": "星科電子の生産現場が、上猶県の新型ガラス繊維複合材料産業を代表する事例として紹介され、電子クロス製品の出荷と標準化された製造現場が掲載されました。",
+    "新华社以图文报道呈现上犹玻纤产业链，星科电子生产车间与元源新材料制造、研发场景共同亮相。": "新華社は写真と記事で上猶県のガラス繊維産業チェーンを紹介し、星科電子の生産現場と元源新材料の製造・研究開発拠点を取り上げました。",
   },
   en: {
     "江西星科电子基材有限公司": "Jiangxi Xingke Electronic Substrate Co., Ltd.",
@@ -171,7 +213,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "项目总投资": "Project investment",
     "5.05 亿元": "RMB 505 million",
     "项目占地": "Site area",
-    "61 亩": "Approx. 40,667 m²",
+    "61 亩": "Approx. 40,700 m² (61 mu)",
     "建筑面积": "Building area",
     "3.2 万平方米": "32,000 m²",
     "注册资本": "Registered capital",
@@ -205,6 +247,8 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "喷气织造": "Air-Jet Weaving",
     "后处理与验布": "Finishing and Inspection",
     "丰田喷气织机": "Toyota Air-Jet Looms",
+    "丰田喷气织机阵列": "Toyota Air-Jet Loom Array",
+    "江西星科丰田喷气织机阵列": "Jiangxi Xingke Toyota Air-Jet Loom Array",
     " 台": "",
     " 亿米": "00\u00a0million\u00a0Meter+",
     "业务联系": "Sales Enquiries",
@@ -216,7 +260,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "选择网站语言": "Select language",
     "厚型电子级玻纤布": "Heavy Electronic-Grade Glass Fiber Fabric",
     "集团产品系列": "Product Portfolio",
-    "采用 G75 玻璃纤维纱平纹织造，对经纬密、基重、布面均匀性与批次一致性实施过程控制。": "Woven from G75 glass fiber yarn in a plain weave, this fabric is manufactured with controlled yarn density, basis weight and batch consistency.",
+    "采用 G75 玻璃纤维纱平纹织造，对经纬密、基重、布面均匀性与批次一致性实施过程控制。": "Woven from G75 glass fiber yarn in a plain weave, this fabric is manufactured with controlled warp and weft density, basis weight, surface uniformity and batch consistency.",
     "面向电子、电气绝缘与工业复合材料应用。具体技术参数及表面处理要求，请联系业务团队确认。": "Designed for electronics, electrical insulation and industrial composite applications. Please contact our sales team to confirm specific technical parameters and surface treatment requirements.",
     "日元参考金额按人民币金额 × 23 估算（1 元人民币 = 23 日元；换算基准：2026 年 10 月 21 日）。": "Japanese yen reference amounts are estimated at RMB × 23 (RMB 1 = JPY 23; conversion reference date: October 21, 2026).",
     "了解江西星科的整经、浆纱、并轴、喷气织造、电子布后处理、验布与分切复卷能力。": "Explore Jiangxi Xingke's capabilities in warping, sizing, beam assembly, air-jet weaving, electronic glass fabric finishing, inspection, slitting and rewinding.",
@@ -233,8 +277,8 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "集团产业链协同": "Group Supply-Chain Collaboration",
     "集团内关联企业覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造，形成上下游协同的生产体系。": "Affiliated group companies cover mineral processing, glass fiber yarn manufacturing, and electronic-grade and industrial glass fiber fabric weaving, forming a coordinated upstream-to-downstream production system.",
     "江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，分别承担矿物原料加工、池窑拉丝制纱及玻纤织物制造等产业环节。": "Jiangxi Xingke, Jiangxi Hongding, Yuanyuan New Materials and Ganzhou Guangjian are affiliated companies under the same actual controller. They respectively undertake mineral processing, tank-furnace glass fiber yarn production and glass fiber fabric manufacturing.",
-    "编织工艺": "Weaving Process",
-    "织造过程": "Weaving Process",
+    "编织工艺": "Braiding",
+    "织造过程": "Braiding",
     "缠绕成型": "Filament Winding",
     "拉挤成型": "Pultrusion",
     "挤出与注塑": "Extrusion and Injection Molding",
@@ -242,6 +286,7 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "手糊成型": "Hand Lay-Up",
     "配置可并合 6 个经轴的并轴设备，将纱片合并并卷绕成 1 个织轴。": "The beam assembling machine combines warp sheets from six warp beams onto one loom beam.",
     "将 6 个经轴的纱片并合并卷绕成 1 个织轴，控制经密与各片经纱之间的张力一致性。": "Warp sheets from six warp beams are assembled onto one loom beam while yarn density and sheet tension are controlled.",
+    "将 6 个经轴的纱片并合后卷绕成 1 个织轴，控制经密与各片经纱之间的张力一致性。": "Warp sheets from six warp beams are combined and wound onto one loom beam while warp density and tension consistency across the sheets are controlled.",
     "样品与技术资料申请": "Sample and Technical Data Requests",
     "欢迎联系我们，沟通产品规格、交付要求与合作机会。": "Contact us to discuss product specifications, delivery requirements and partnership opportunities.",
     "江西星科与江西鸿锭、元源新材料、赣州广建为同一实际控制人旗下的关联企业，业务覆盖矿物原料加工、玻纤纱制造及电子级与工业级玻纤布织造。": "Jiangxi Xingke, Jiangxi Hongding, Yuanyuan New Materials and Ganzhou Guangjian are affiliated companies under the same actual controller. Their operations cover mineral processing, glass fiber yarn production, and the weaving of electronic-grade and industrial glass fiber fabrics.",
@@ -250,12 +295,14 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "更多报道": "More Reports",
     "依托生产设备与规范工艺，提供稳定的产品与交付支持。": "Production equipment and standardized processes support consistent products and reliable delivery.",
     "国家高新技术企业、江西省绿色工厂及已获授权专利，共同构成星科规范制造的重要基础。": "National High-Tech Enterprise status, Jiangxi Green Factory recognition and granted patents support Xingke's standardized manufacturing.",
-    "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。": "Founded in May 2021, Jiangxi Xingke Electronic Substrate Co., Ltd. manufactures and sells electronic-grade glass fiber fabric in the southern area of Huangbu Industrial Park, Shangyou County, Ganzhou, Jiangxi.",
-    "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售，现已具备年产 1 亿米玻璃纤维布的生产能力。": "Founded in May 2021, Jiangxi Xingke Electronic Substrate Co., Ltd. manufactures and sells electronic-grade glass fiber fabric in the southern area of Huangbu Industrial Park, Shangyou County, Ganzhou, Jiangxi. The company now has an annual production capacity of 100 million meters of glass fiber fabric.",
+    "国家高新技术企业、江西省绿色工厂、江西省专精特新中小企业及已获授权专利，共同构成星科规范制造的重要基础。": "National High-Tech Enterprise status, Jiangxi Green Factory recognition, Jiangxi Province SRDI SME recognition and granted patents support Xingke’s standardized manufacturing.",
+    "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售。": "Founded in May 2021, Jiangxi Xingke Electronic Substrate Co., Ltd. manufactures and sells electronic-grade glass fiber fabric at Huangbu Industrial Park (South Zone), Shangyou County, Ganzhou, Jiangxi, China.",
+    "江西星科电子基材有限公司成立于 2021 年 5 月，位于江西省赣州市上犹县黄埠工业园南区，主要从事电子级玻璃纤维布生产和销售，现已具备年产 1 亿米玻璃纤维布的生产能力。": "Founded in May 2021, Jiangxi Xingke Electronic Substrate Co., Ltd. manufactures and sells electronic-grade glass fiber fabric at Huangbu Industrial Park (South Zone), Shangyou County, Ganzhou, Jiangxi, China. The company now has an annual production capacity of 100 million meters of glass fiber fabric.",
+    "厂房、办公和配套设施集中布局于黄埠工业园南区，为连续生产、仓储周转和现场管理提供空间基础。": "Factory buildings, offices and supporting facilities are concentrated at Huangbu Industrial Park (South Zone), supporting continuous production, storage, logistics and on-site management.",
     "围绕电子布生产建立整经、浆纱、并轴、喷气织造及后处理能力，以设备基础和过程控制支持产品稳定性。": "Xingke combines warping, sizing, beam assembly, air-jet weaving and finishing capabilities, supported by production equipment and process control.",
     "公司持续完善生产配置、资质建设与制造管理，稳步推进电子级玻纤布业务发展。": "Xingke continues to strengthen production capacity, credentials and manufacturing management as its electronic-grade glass fiber fabric business develops.",
     "生产建设": "Production Capacity",
-    "已配置并投入使用 200 台丰田喷气织机，形成电子级玻纤布织造与后处理能力。": "Two hundred Toyota air-jet looms are installed and in operation, supporting electronic-grade glass fiber fabric weaving and finishing.",
+    "已配置并投入使用 200 台丰田喷气织机，形成电子级玻纤布织造与后处理能力。": "200 Toyota air-jet looms are installed and in operation, supporting electronic-grade glass fiber fabric weaving and finishing.",
     "集团内企业生产玻璃纤维纱、电子级玻璃纤维布、低介电玻璃纤维布、高强度玻璃纤维布及工业级玻璃纤维布，覆盖多类基材与复合材料应用。": "Group companies manufacture glass fiber yarn, electronic-grade, low-dielectric, high-strength and industrial glass fiber fabrics for a range of substrate and composite applications.",
     "关注经纬密、基重、实际厚度与后处理的一致性，为后续层压和加工提供稳定基材。": "Warp and weft density, basis weight, actual thickness and finishing consistency are controlled to support downstream lamination and processing.",
     "以整经、浆纱、并轴、喷气织造及后处理设备为基础，生产多型号电子级玻璃纤维布。": "Warping, sizing, beam assembly, air-jet weaving and finishing equipment support the production of multiple electronic-grade glass fiber fabric styles.",
@@ -274,6 +321,50 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "江西星科将重点介绍围绕电子级玻纤布建设的整经、浆纱、并轴、喷气织造与后处理能力，产品面向电子基材等应用。": "Jiangxi Xingke will present its warping, sizing, beam assembly, air-jet weaving and finishing capabilities for electronic-grade glass fiber fabric used in electronic substrate applications.",
     "联合参展将使产业链上下游产品在同一场景中集中呈现，并为企业与客户、设备及材料伙伴开展技术交流提供窗口。": "The joint exhibition will bring upstream and downstream products together and create opportunities for technical discussions with customers, equipment suppliers and material partners.",
     "面向多类绝缘与工业增强应用": "For a Range of Electrical Insulation and Industrial Reinforcement Applications",
+    "讨论产品与合作需求": "Let’s Work Together",
+    "欢迎就电子级玻纤布型号、交付要求和产业合作联系我们。": "Contact us to discuss fabric styles, delivery requirements and industry partnerships.",
+    "关注企业制造现场、产业发展与公开媒体报道。": "Updates on our manufacturing, industry developments and media coverage.",
+    "进入新闻中心": "View all news",
+    "了解公司": "About us",
+    "聚焦电子级玻璃纤维布，以规范工艺与持续改进服务电子基材产业。": "We manufacture electronic-grade glass fiber fabric for the electronic substrate industry, backed by standardized processes and continuous improvement.",
+    "以资质与创新积累支撑长期发展": "Credentials and Innovation for Long-Term Growth",
+    "专注电子级玻纤布制造": "Dedicated to Electronic-Grade Glass Fiber Fabric",
+    "扎根江西上犹玻纤产业集群，以长期主义建设稳定、规范、可持续的制造能力。": "Rooted in the glass fiber industry cluster of Shangyou, Jiangxi, we take a long-term approach to building stable, standardized and sustainable manufacturing.",
+    "以务实的制造态度面对每一道工序，以持续改进回应客户对质量、交付和协同的长期要求。": "We take a practical approach to every process and continuously improve to meet customers’ long-term needs for quality, delivery and collaboration.",
+    "电子级玻纤布既承担结构增强，也关系到电气绝缘、尺寸稳定性和树脂含浸表现。": "Electronic-grade glass fiber fabric provides structural reinforcement and also affects electrical insulation, dimensional stability and resin impregnation.",
+    "产品信息以实际生产与交付为基础。具体型号、技术指标及适配需求，请与星科业务团队进一步沟通确认。": "Product information is based on actual manufacturing and delivery. For specific styles, technical specifications and application requirements, please contact our sales team.",
+    "从经纱准备到成品放行，围绕关键工序建立规范的电子级玻纤布制造流程。": "From warp preparation to final release, each key process follows a standardized procedure.",
+    "记录制造现场、产业协同与公开媒体关注，以可核实的信息呈现星科发展。": "News from our production floor, industry partners and the media, presented with verifiable sources.",
+    "从公开媒体、政府平台和行业机构中整理与星科制造、区域产业协同直接相关的信息。": "Selected reports from media, government and industry sources related to Xingke and regional industry.",
+    "班前沟通，把质量要求落实到当班生产": "Pre-Shift Briefings Put Quality Requirements into Practice",
+    "持续推进技术创新、绿色制造与规范经营，以积累支撑长期发展。": "We continue to advance technological innovation, green manufacturing and standardized operations.",
+    "以公开证书与专利材料为依据，集中呈现星科在技术创新和绿色制造方面的积累。": "Based on publicly available certificates and granted patent records, this section presents Xingke’s progress in technological innovation and green manufacturing.",
+    "以江西省绿色制造名单及企业牌匾为公开展示依据。": "Based on the Jiangxi Green Manufacturing list and the company plaque.",
+    "与星科建立联系": "Get in touch with Xingke",
+    "可就以下事项与我们联系：": "You can contact us about:",
+    "各篇正文为本站根据原报道编写的摘要，事实与数据均注明原始来源。": "Each article is a summary prepared by this site based on the original report. Facts and figures identify their original sources.",
+    "本文为本站根据原报道编写的摘要，完整内容与版权归原发布媒体所有。": "This article is a summary prepared by this site based on the original report. The full content and copyright belong to the original publisher.",
+    "江西省赣州市上犹县黄埠工业园南区": "South Zone, Huangbu Industrial Park, Shangyou County, Ganzhou, Jiangxi, China",
+    "黄埠工业园南区": "Huangbu Industrial Park (South Zone)",
+    "江西省专精特新中小企业": "Jiangxi Province SRDI (Specialized, Refined, Distinctive and Innovative) SME",
+    "获评江西省专精特新中小企业，有效期至 2028 年 9 月": "Recognized as a Jiangxi Province “Specialized, Refined, Distinctive and Innovative” (SRDI) SME, valid until September 2028",
+    "列入江西省 2023 年第四批高新技术企业名单。": "Listed in the fourth group of National High-Tech Enterprises recognized in Jiangxi Province in 2023.",
+    "3 类": "3 categories",
+    "联合展示的主要产品类别": "Main product categories on display",
+    "2024 年展会展位": "China Composites Expo 2024",
+    "媒体聚焦": "Media Focus",
+    "发明专利": "Invention Patents",
+    "绿色制造": "Green Manufacturing",
+    "国家高新技术企业": "National High-Tech Enterprise",
+    "覆铜板": "Copper-Clad Laminates",
+    "消费电子": "Consumer Electronics",
+    "数字设备": "Digital Devices",
+    "经济日报": "Economic Daily",
+    "地图位置": "Map Location",
+    "江西日报头版报道上犹以工业强基、文旅赋能与融湾创新推动县域发展，星科电子玻纤布生产现场作为上犹玻纤新型复材产业代表场景亮相。": "Jiangxi Daily reported on Shangyou’s industrial development on its front page. Xingke Electronics’ production site was featured in the report as a representative part of the county’s advanced glass fiber composites industry.",
+    "江西星科电子玻纤布生产现场作为上犹玻纤新型复材产业的代表场景在报道中亮相，呈现企业电子玻纤布成品装运及规范化制造现场。": "The report featured Xingke Electronics’ production workshop and showed finished electronic glass fiber fabric being prepared for shipment in a standardized manufacturing environment.",
+    "新华社以图文报道呈现上犹玻纤产业链，星科电子生产车间与元源新材料制造、研发场景共同亮相。": "The report featured Xingke Electronics’ production workshop and Yuanyuan New Materials’ manufacturing and R&D facilities.",
+    "项目报道提出，生产线将面向 7 至 9 微米直径电子玻纤纱等产品，服务电子信息与玻璃纤维安全防护制品等下游应用。": "The production line is designed for electronic-grade glass fiber yarn with diameters of 7–9 μm, serving downstream applications including electronic information products and glass fiber safety and protective products.",
     "整经": "Warping",
     "电气绝缘": "Electrical Insulation",
     "基重": "Basis Weight",
@@ -289,6 +380,7 @@ const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, strin
     ["電子グレードのグラスファイバークロス", "電子級ガラス繊維クロス"],
     ["電子グレードのガラス繊維クロス", "電子級ガラス繊維クロス"],
     ["電子グレードのガラス繊維布", "電子級ガラス繊維クロス"],
+    ["電子グレード", "電子級"],
     ["電子ガラス繊維布", "電子級ガラス繊維クロス"],
     ["グラスファイバークロス", "ガラス繊維クロス"],
     ["グラスファイバー生地", "ガラス繊維クロス"],
@@ -303,6 +395,18 @@ const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, strin
     ["黄埔工業団地", "黄埠工業団地"],
     ["上海の新しいガラス繊維", "上猶の新しいガラス繊維"],
     ["江西省紅定", "江西鴻錠"],
+    ["豊田エアジェット織機", "トヨタ製エアジェット織機"],
+    ["豊田製エアジェット織機", "トヨタ製エアジェット織機"],
+    ["トヨタ エアジェット織機", "トヨタ製エアジェット織機"],
+    ["エアジェット織布", "エアジェット製織"],
+    ["ビーム組立", "ビーミング（経糸ビームの合わせ巻き）"],
+    ["産業用ガラス繊維クロス", "工業用ガラス繊維クロス"],
+    ["Ganzhou Guangjian", "贛州広建"],
+    ["Yuanyuan New Materials", "元源新材料"],
+    ["Xingke Electronics", "星科電子"],
+    ["Xingke", "星科"],
+    ["Xingke ビジネス チーム", "当社営業担当"],
+    ["江西省星科", "江西星科"],
   ],
   en: [
     ["electronic grade fiberglass cloth", "electronic-grade glass fiber fabric"],
@@ -311,6 +415,8 @@ const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, strin
     ["Electronic grade glass fiber cloth", "Electronic-grade glass fiber fabric"],
     ["electronic fiberglass cloth", "electronic glass fiber fabric"],
     ["Electronic fiberglass cloth", "Electronic glass fiber fabric"],
+    ["electronic-grade fiberglass cloth", "electronic-grade glass fiber fabric"],
+    ["Electronic-grade fiberglass cloth", "Electronic-grade glass fiber fabric"],
     ["electronic cloth", "electronic glass fabric"],
     ["Electronic cloth", "Electronic glass fabric"],
     ["Shanghai's new fiberglass", "Shangyou's new glass fiber"],
@@ -325,14 +431,35 @@ export const languageOptions: Array<{ code: Language; short: string; label: stri
 
 export function getLanguage(): Language {
   if (typeof window === "undefined") return "zh"
-  const stored = window.localStorage.getItem(STORAGE_KEY)
-  return stored === "ja" || stored === "en" ? stored : "zh"
+  if (/^\/ja(?:\/|$)/u.test(window.location.pathname)) return "ja"
+  if (/^\/en(?:\/|$)/u.test(window.location.pathname)) return "en"
+  return "zh"
 }
 
 export function setLanguage(language: Language) {
   if (typeof window === "undefined" || language === getLanguage()) return
   window.localStorage.setItem(STORAGE_KEY, language)
-  window.location.reload()
+  const routePath = stripLanguagePrefix(window.location.pathname)
+  const nextPath = getLocalizedPath(routePath, language)
+  window.location.assign(`${nextPath}${window.location.search}${window.location.hash}`)
+}
+
+export function getRouterBasename(): string {
+  if (typeof window === "undefined") return "/"
+  if (/^\/ja(?:\/|$)/u.test(window.location.pathname)) return "/ja"
+  if (/^\/en(?:\/|$)/u.test(window.location.pathname)) return "/en"
+  return "/"
+}
+
+export function stripLanguagePrefix(pathname: string): string {
+  const stripped = pathname.replace(/^\/(?:ja|en)(?=\/|$)/u, "")
+  return stripped || "/"
+}
+
+export function getLocalizedPath(pathname: string, language: Language): string {
+  const routePath = stripLanguagePrefix(pathname)
+  const normalizedRoute = routePath === "/" ? "/" : `${routePath.replace(/\/$/u, "")}/`
+  return `${languagePrefixes[language]}${normalizedRoute}`
 }
 
 export function applyDocumentLanguage() {
@@ -348,7 +475,8 @@ export function t(value: string): string {
 
   const dictionary = generatedTranslations[language] as Record<string, string>
   const manual = manualTranslations[language]
-  const exact = manual[value] ?? dictionary[value]
+  const legacyKey = value.replaceAll("元源新材料", "元源新材")
+  const exact = manual[value] ?? manual[legacyKey] ?? dictionary[value] ?? dictionary[legacyKey]
   if (exact !== undefined) return normalizeTarget(exact, language)
 
   let translated = value
@@ -364,14 +492,10 @@ function normalizeTarget(value: string, language: Exclude<Language, "zh">): stri
   let normalized = value
   for (const [source, target] of targetNormalizations[language]) normalized = normalized.replaceAll(source, target)
   if (language === "ja") {
-    if (isJapaneseArticlePage()) normalized = toPoliteJapanese(normalized)
-    else normalized = normalized.replaceAll("。", " ").replace(/\s{2,}/gu, " ").trim()
+    normalized = toPoliteJapanese(normalized)
+    if (/(?:です|ます|でした|ました|ています|されています|ください)$/u.test(normalized)) normalized += "。"
   }
   return normalized
-}
-
-function isJapaneseArticlePage(): boolean {
-  return typeof window !== "undefined" && /^\/news\/[^/]+\/?$/u.test(window.location.pathname)
 }
 
 function toPoliteJapanese(value: string): string {
