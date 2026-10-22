@@ -203,7 +203,7 @@ export function HomePage() {
           <SectionTitle title="以资质与创新积累支撑长期发展" description="国家高新技术企业、江西省绿色工厂、江西省专精特新中小企业及已获授权专利，共同构成星科规范制造的重要基础。" />
           <div className="grid gap-px border border-line bg-line md:grid-cols-3">
             {honors.slice(0, 3).map((honor) => (
-              <figure key={honor.title} className="bg-white p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className="max-h-full max-w-full object-contain" loading="lazy" /></div><figcaption className="pt-5 text-base font-semibold text-ink">{honor.title}</figcaption></figure>
+              <figure key={honor.title} className="bg-white p-6"><div className="flex aspect-[4/3] items-center justify-center bg-mist p-5"><img src={honor.image} alt={honor.title} className={cn("max-h-full max-w-full object-contain", honor.image === "/assets/honor-specialized-sme.webp" && "rotate-180")} loading="lazy" /></div><figcaption className="pt-5 text-base font-semibold text-ink">{honor.title}</figcaption></figure>
             ))}
           </div>
         </div>
