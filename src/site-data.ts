@@ -85,7 +85,7 @@ export const newsItems: NewsItem[] = [
     image: "/assets/xingke-line.webp",
     imageAlt: "江西星科电子级玻纤布生产线",
     imageCaption: "江西星科电子级玻纤布生产线。企业资料图。",
-    source: "新浪财经 · 转载报道",
+    source: "中国经营网，经新浪财经转载",
     originalUrl: "https://finance.sina.com.cn/jjxw/2026-06-26/doc-iniesvke2052405.shtml",
     lead: "从原料和玻纤纱，到电子布与复合材料终端，上犹正把单个制造环节连接为完整产业链。",
     body: [
@@ -96,7 +96,7 @@ export const newsItems: NewsItem[] = [
     highlights: [
       { value: "200+", label: "产业集群企业" },
       { value: "63 家", label: "规模以上企业" },
-      { value: "161.4 亿元", label: "报道所述集群年营收" },
+      { value: "150 亿元+", label: "2024 年集群销售收入" },
     ],
   },
   {
@@ -216,7 +216,7 @@ export const newsItems: NewsItem[] = [
     ],
     highlights: [
       { value: "15 万吨", label: "项目设计年产能" },
-      { value: "7-9 μm", label: "报道所述电子纱直径方向" },
+      { value: "7-9 μm", label: "报道所述电子玻纤单丝直径范围" },
       { value: "2025.05", label: "项目开工时间" },
     ],
     secondaryImage: {
@@ -319,7 +319,7 @@ export const products = [
     code: "1080",
     type: "薄型电子级玻纤布",
     title: "面向薄型化电子基材",
-    description: "采用 D450 玻璃纤维纱平纹织造，重点控制薄型布的经纬密、基重、公称厚度与布面均匀性。",
+    description: "采用 D450 玻璃纤维纱平纹织造，重点控制经纬密、基重、实际厚度与布面均匀性。",
     applications: ["轻薄基板", "高密度 PCB", "数字设备"],
     image: "/assets/fabric-open.webp",
     specs: [
@@ -334,7 +334,7 @@ export const products = [
   {
     code: "3732",
     type: "电子与工业用玻纤布",
-    title: "覆盖绝缘与增强场景",
+    title: "覆盖电气绝缘与增强应用",
     description: "面向电子、电气绝缘与工业复合材料应用。具体技术参数及表面处理要求，请联系业务团队确认。",
     applications: ["电气绝缘", "电子基材", "工业复材"],
     image: "/assets/fabric-inspection.webp",
@@ -400,8 +400,8 @@ export const businesses = [
   {
     name: "赣州广建",
     label: "工业玻纤布",
-    description: "配置高速剑杆设备，面向绝缘板材与工业基材等领域提供玻璃纤维布产品。",
-    detail: "面向多类绝缘与工业增强应用",
+    description: "配置高速剑杆设备，面向电气绝缘板材与工业基材等领域提供玻璃纤维布产品。",
+    detail: "面向多类电气绝缘与工业增强应用",
     image: "/assets/guangjian-weaving-hall.webp",
     icon: Stack,
   },

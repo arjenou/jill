@@ -351,7 +351,7 @@ export function BusinessPage() {
       <section className="border-y border-line bg-white py-20 sm:py-28 lg:py-36" aria-label="赣州广建玻纤织造现场">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-20">
-            <SectionTitle title="赣州广建织造现场" description="赣州广建玻纤有限公司面向绝缘板材与工业基材等应用开展工业玻纤布织造。以下图片为企业提供的生产现场资料。" />
+            <SectionTitle title="赣州广建织造现场" description="赣州广建玻纤有限公司面向电气绝缘板材与工业基材等应用开展工业玻纤布织造。以下图片为企业提供的生产现场资料。" />
             <p className="max-w-xl border-l-2 border-accent pl-5 text-sm leading-7 text-steel">作为区域玻纤产业链中的织物制造环节，广建以高速剑杆织机完成工业玻纤布织造成形。</p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
