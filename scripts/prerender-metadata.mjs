@@ -91,20 +91,61 @@ const normalize = (value, language) => {
       .replaceAll("Yuanyuan New Materials", "元源新材料")
       .replaceAll("Xingke Electronics", "星科電子")
       .replaceAll("江西興科", "江西星科")
+      .replaceAll("グラスファイバー", "ガラス繊維")
+      .replaceAll("上友", "上猶")
+      .replaceAll("元源新素材", "元源新材料")
+      .replaceAll("元源新資料", "元源新材料")
       .replaceAll("電子グレード", "電子級")
       .replaceAll("産業用ガラス繊維クロス", "工業用ガラス繊維クロス")
   }
   return value
 }
 
+const normalizeCompanyNames = (value, language) => {
+  if (language === "zh") {
+    return value
+      .replaceAll("江西星科电子基材有限公司", "__XINGKE_LEGAL_ZH__")
+      .replaceAll("江西鸿锭新型材料有限公司", "__HONGDING_LEGAL_ZH__")
+      .replaceAll("赣州广建玻纤有限公司", "__GUANGJIAN_LEGAL_ZH__")
+      .replaceAll("江西星科", "星科")
+      .replaceAll("星科電子", "星科")
+      .replaceAll("江西鸿锭", "江西鸿锭新型材料有限公司")
+      .replaceAll("赣州广建", "广建")
+      .replaceAll("__XINGKE_LEGAL_ZH__", "江西星科电子基材有限公司")
+      .replaceAll("__HONGDING_LEGAL_ZH__", "江西鸿锭新型材料有限公司")
+      .replaceAll("__GUANGJIAN_LEGAL_ZH__", "赣州广建玻纤有限公司")
+  }
+  if (language === "ja") {
+    return value
+      .replaceAll("江西星科電子基材有限公司", "__XINGKE_LEGAL_JA__")
+      .replaceAll("江西鴻錠新型材料有限公司", "__HONGDING_LEGAL_JA__")
+      .replaceAll("江西星科", "星科")
+      .replaceAll("江西鴻錠", "江西鴻錠新型材料有限公司")
+      .replaceAll("贛州広建玻纤有限公司", "広建")
+      .replaceAll("贛州広建", "広建")
+      .replaceAll("__XINGKE_LEGAL_JA__", "江西星科電子基材有限公司")
+      .replaceAll("__HONGDING_LEGAL_JA__", "江西鴻錠新型材料有限公司")
+  }
+  return value
+    .replaceAll("Jiangxi Xingke Electronic Substrate Co., Ltd.", "__XINGKE_LEGAL_EN__")
+    .replaceAll("Jiangxi Hongding New Materials Co., Ltd.", "__HONGDING_LEGAL_EN__")
+    .replaceAll("Jiangxi Xingke", "Xingke")
+    .replaceAll("Xingke Electronics", "Xingke")
+    .replaceAll("Jiangxi Hongding", "Jiangxi Hongding New Materials Co., Ltd.")
+    .replaceAll("Ganzhou Guangjian Fiberglass Co., Ltd.", "Guangjian")
+    .replaceAll("Ganzhou Guangjian", "Guangjian")
+    .replaceAll("__XINGKE_LEGAL_EN__", "Jiangxi Xingke Electronic Substrate Co., Ltd.")
+    .replaceAll("__HONGDING_LEGAL_EN__", "Jiangxi Hongding New Materials Co., Ltd.")
+}
+
 function translate(value, language) {
-  if (language === "zh") return value
+  if (language === "zh") return normalizeCompanyNames(value, language)
   const legacy = value.replaceAll("元源新材料", "元源新材")
   const direct = overrides[language]?.[value]
     ?? overrides[language]?.[legacy]
     ?? generated[language]?.[value]
     ?? generated[language]?.[legacy]
-  return normalize(direct ?? value, language)
+  return normalizeCompanyNames(normalize(direct ?? value, language), language)
 }
 
 const routes = [
@@ -146,10 +187,10 @@ for (const [route, sourceTitle, sourceDescription] of routes) {
 
     html = replaceMeta(html, 'name="description"', description)
     html = replaceMeta(html, 'name="keywords"', language === "zh"
-      ? "江西星科,电子级玻纤布,电子布,玻璃纤维布,7628,2116,1080,3732,上犹玻纤"
+      ? "星科,江西星科电子基材有限公司,电子级玻纤布,电子布,玻璃纤维布,7628,2116,1080,3732,上犹玻纤"
       : language === "en"
-        ? "Jiangxi Xingke,electronic-grade glass fiber fabric,electronic glass fabric,7628,2116,1080,3732,Shangyou glass fiber"
-        : "江西星科,電子級ガラス繊維クロス,電子クロス,ガラス繊維クロス,7628,2116,1080,3732,上猶ガラス繊維")
+        ? "Xingke,Jiangxi Xingke Electronic Substrate Co. Ltd.,electronic-grade glass fiber fabric,electronic glass fabric,7628,2116,1080,3732,Shangyou glass fiber"
+        : "星科,江西星科電子基材有限公司,電子級ガラス繊維クロス,電子クロス,ガラス繊維クロス,7628,2116,1080,3732,上猶ガラス繊維")
     html = replaceMeta(html, 'property="og:locale"', config.locale)
     html = replaceMeta(html, 'property="og:title"', title)
     html = replaceMeta(html, 'property="og:description"', description)

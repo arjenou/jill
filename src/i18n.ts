@@ -22,6 +22,15 @@ const openGraphLocales: Record<Language, string> = {
 
 const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>> = {
   ja: {
+    "江西鸿锭新型材料有限公司": "江西鴻錠新型材料有限公司",
+    "广建": "広建",
+    "媒体走进上犹玻纤产业链，星科电子的电子级玻纤布生产、元源新材料的玻纤纱制造及区域协同成为报道重点。": "メディアが上猶のガラス繊維産業チェーンを取材し、星科の電子級ガラス繊維クロス生産、元源新材料のガラス繊維糸製造、地域連携を紹介しました。",
+    "经济日报报道赣州支持企业成长的“榕树行动”，元源新材料在技术突破和带动下游企业集聚方面的实践被列为案例。": "経済日報は、贛州市の企業育成策「榕樹行動」を報じ、元源新材料の技術革新と川下企業の集積を促す取り組みを事例として紹介しました。",
+    "报道以元源新材料为案例，呈现企业依托既有玻纤制造基础，向电子级玻纤纱等更高附加值产品延伸的路径。": "元源新材料を事例に、既存のガラス繊維製造基盤を生かし、電子級ガラス繊維糸など高付加価値製品へ展開する取り組みを紹介しています。",
+    "赣南日报报道上犹优质企业持续增资扩产，元源新材料二期项目作为玻纤新材料产业扩容提质案例受到关注。": "贛南日報は、上猶の優良企業による継続的な増資・増産を報じ、元源新材料の第2期プロジェクトをガラス繊維新材料産業の生産能力拡大と高度化の事例として紹介しました。",
+    "江西日报报道上犹工业运行与数字化转型，元源新材料通过 ERP 系统和智能设备推进订单、生产、质检协同管理。": "江西日報は上猶の工業生産とデジタル化を報じ、元源新材料がERPシステムとスマート設備を活用して受注・生産・品質検査を連携管理する取り組みを紹介しました。",
+    "中国国际复材展 · 元源新材料": "中国国際複合材料展 · 元源新材料",
+    "江西星科车间班前沟通": "星科の生産現場における始業前ミーティング",
     "江西星科电子基材有限公司": "江西星科電子基材有限公司",
     "江西星科": "江西星科",
     "星科": "星科",
@@ -246,6 +255,16 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
     "通过行业展会展示电子布产品、制造现场与区域产业协同，与合作伙伴开展技术和需求交流。": "業界展示会では、電子級ガラス繊維クロス、生産体制、サプライチェーンの連携を紹介し、パートナー企業と技術や用途について意見交換しています。",
   },
   en: {
+    "江西鸿锭新型材料有限公司": "Jiangxi Hongding New Materials Co., Ltd.",
+    "星科": "Xingke",
+    "广建": "Guangjian",
+    "媒体走进上犹玻纤产业链，星科电子的电子级玻纤布生产、元源新材料的玻纤纱制造及区域协同成为报道重点。": "Media coverage of Shangyou’s glass fiber value chain highlighted Xingke’s electronic-grade glass fiber fabric production, Yuanyuan New Materials’ glass fiber yarn manufacturing and regional collaboration.",
+    "经济日报报道赣州支持企业成长的“榕树行动”，元源新材料在技术突破和带动下游企业集聚方面的实践被列为案例。": "Economic Daily reported on Ganzhou’s Rongshu Initiative for business growth, citing Yuanyuan New Materials’ technology advances and its role in attracting downstream manufacturers.",
+    "报道以元源新材料为案例，呈现企业依托既有玻纤制造基础，向电子级玻纤纱等更高附加值产品延伸的路径。": "Using Yuanyuan New Materials as a case study, the report shows how existing glass fiber manufacturing capabilities are supporting expansion into higher-value products such as electronic-grade glass fiber yarn.",
+    "赣南日报报道上犹优质企业持续增资扩产，元源新材料二期项目作为玻纤新材料产业扩容提质案例受到关注。": "Gannan Daily reported on continued investment and capacity expansion by manufacturers in Shangyou, highlighting Yuanyuan New Materials’ Phase II project as an example of growth and upgrading in advanced glass fiber materials.",
+    "江西日报报道上犹工业运行与数字化转型，元源新材料通过 ERP 系统和智能设备推进订单、生产、质检协同管理。": "Jiangxi Daily reported on industrial operations and digital transformation in Shangyou, including Yuanyuan New Materials’ use of ERP systems and smart equipment to coordinate orders, production and quality inspection.",
+    "中国国际复材展 · 元源新材料": "China Composites Expo · Yuanyuan New Materials",
+    "江西星科车间班前沟通": "Pre-shift briefing at Xingke’s production facility",
     "江西星科电子基材有限公司": "Jiangxi Xingke Electronic Substrate Co., Ltd.",
     "电子级玻璃纤维布": "Electronic-Grade Glass Fiber Fabric",
     "电子级玻纤布": "Electronic-grade glass fiber fabric",
@@ -487,6 +506,18 @@ const manualTranslations: Record<Exclude<Language, "zh">, Record<string, string>
 
 const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, string]>> = {
   ja: [
+    ["Guangjian", "広建"],
+    ["Yuanyuan ガラス繊維糸", "元源新材料のガラス繊維糸"],
+    ["星科 は", "星科は"],
+    ["工業グレードのガラス繊維クロス", "工業用ガラス繊維クロス"],
+    ["ガラス繊維クロス織り", "ガラス繊維クロス製織"],
+    ["織物現場", "製織現場"],
+    ["生地製造リンク", "織物製造工程"],
+    ["織りと成形", "製織"],
+    ["織物工房", "製織工場"],
+    ["産業ガラス繊維クロス織り生産現場", "工業用ガラス繊維クロス製織工場"],
+    ["高速レピア織機生産地", "高速レピア織機の生産エリア"],
+    ["精密な織物", "精密製織"],
     ["江西省興科", "江西星科"],
     ["江西興科", "江西星科"],
     ["興科", "星科"],
@@ -564,6 +595,19 @@ const targetNormalizations: Record<Exclude<Language, "zh">, Array<[string, strin
     ["1億メートル+", "1億メートル"],
   ],
   en: [
+    ["Industrial grade fiberglass cloth", "Industrial-Grade Glass Fiber Fabric"],
+    ["Industrial fiberglass cloth", "Industrial Glass Fiber Fabric"],
+    ["industrial fiberglass cloth", "industrial glass fiber fabric"],
+    ["Fiberglass cloth", "Glass Fiber Fabric"],
+    ["fiberglass cloth", "glass fiber fabric"],
+    ["Glass fiber cloth", "Glass Fiber Fabric"],
+    ["glass fiber cloth", "glass fiber fabric"],
+    ["Fiberglass fabrics", "Glass Fiber Fabrics"],
+    ["fiberglass fabrics", "glass fiber fabrics"],
+    ["Fiberglass yarn", "Glass Fiber Yarn"],
+    ["fiberglass yarn", "glass fiber yarn"],
+    ["Fiberglass", "Glass Fiber"],
+    ["fiberglass", "glass fiber"],
     ["electronic grade fiberglass cloth", "electronic-grade glass fiber fabric"],
     ["Electronic grade fiberglass cloth", "Electronic-grade glass fiber fabric"],
     ["electronic grade glass fiber cloth", "electronic-grade glass fiber fabric"],
@@ -648,9 +692,72 @@ export function applyDocumentLanguage() {
   document.querySelector<HTMLMetaElement>('meta[property="og:locale"]')?.setAttribute("content", openGraphLocales[language])
 }
 
+function normalizeChineseCompanyNames(value: string): string {
+  return value
+    .replaceAll("江西星科电子基材有限公司", "__XINGKE_LEGAL_ZH__")
+    .replaceAll("江西鸿锭新型材料有限公司", "__HONGDING_LEGAL_ZH__")
+    .replaceAll("赣州广建玻纤有限公司", "__GUANGJIAN_LEGAL_ZH__")
+    .replaceAll("江西星科", "星科")
+    .replaceAll("江西鸿锭", "江西鸿锭新型材料有限公司")
+    .replaceAll("赣州广建", "广建")
+    .replaceAll("__XINGKE_LEGAL_ZH__", "江西星科电子基材有限公司")
+    .replaceAll("__HONGDING_LEGAL_ZH__", "江西鸿锭新型材料有限公司")
+    .replaceAll("__GUANGJIAN_LEGAL_ZH__", "赣州广建玻纤有限公司")
+}
+
+function normalizeLocalizedCompanyNames(value: string, language: Exclude<Language, "zh">): string {
+  if (language === "ja") {
+    return value
+      .replaceAll("江西星科電子基材有限公司", "__XINGKE_LEGAL_JA__")
+      .replaceAll("江西鴻錠新型材料有限公司", "__HONGDING_LEGAL_JA__")
+      .replaceAll("江西星科", "星科")
+      .replaceAll("星科電子", "星科")
+      .replaceAll("江西鴻錠", "江西鴻錠新型材料有限公司")
+      .replaceAll("贛州広建玻纤有限公司", "広建")
+      .replaceAll("贛州広建", "広建")
+      .replaceAll("__XINGKE_LEGAL_JA__", "江西星科電子基材有限公司")
+      .replaceAll("__HONGDING_LEGAL_JA__", "江西鴻錠新型材料有限公司")
+  }
+
+  return value
+    .replaceAll("Jiangxi Xingke Electronic Substrate Co., Ltd.", "__XINGKE_LEGAL_EN__")
+    .replaceAll("Jiangxi Hongding New Materials Co., Ltd.", "__HONGDING_LEGAL_EN__")
+    .replaceAll("Jiangxi Xingke", "Xingke")
+    .replaceAll("Xingke Electronics", "Xingke")
+    .replaceAll("Jiangxi Hongding", "Jiangxi Hongding New Materials Co., Ltd.")
+    .replaceAll("Ganzhou Guangjian Fiberglass Co., Ltd.", "Guangjian")
+    .replaceAll("Ganzhou Guangjian", "Guangjian")
+    .replaceAll("__XINGKE_LEGAL_EN__", "Jiangxi Xingke Electronic Substrate Co., Ltd.")
+    .replaceAll("__HONGDING_LEGAL_EN__", "Jiangxi Hongding New Materials Co., Ltd.")
+}
+
+function normalizeIndustryTerms(value: string, language: Exclude<Language, "zh">): string {
+  if (language === "ja") {
+    return value
+      .replaceAll("元源新材料 New Materials Co., Ltd.", "元源新材料有限公司")
+      .replaceAll("広建 は", "広建は")
+      .replaceAll("工業グレードのガラス繊維クロス", "工業用ガラス繊維クロス")
+      .replaceAll("電子級ガラス繊維クロス織り", "電子級ガラス繊維クロス製織")
+      .replaceAll("広建産業ガラス繊維クロス織り生産現場", "広建の工業用ガラス繊維クロス製織工場")
+      .replaceAll("地域のガラス繊維産業のリンク", "地域ガラス繊維産業の各工程")
+      .replaceAll("第一段階", "第1期")
+      .replaceAll("50,000トンの生産ラインの第1段階", "年産5万トンの第1期生産ライン")
+  }
+
+  return value
+    .replaceAll("Yuanyuan New Materials料", "Yuanyuan New Materials")
+    .replaceAll("Industrial-Grade Glass Fiber Fabric manufacturing", "Industrial-Grade Glass Fiber Fabric Manufacturing")
+    .replaceAll("Glass Fiber Yarn manufacturing", "Glass Fiber Yarn Manufacturing")
+    .replaceAll("Industrial Glass Fiber Cloth", "Industrial Glass Fiber Fabric")
+    .replaceAll("Electronic grade glass fiber fabric", "Electronic-Grade Glass Fiber Fabric")
+    .replaceAll("electronic grade glass fiber fabric", "electronic-grade glass fiber fabric")
+    .replaceAll("post-processing", "finishing")
+}
+
 export function t(value: string): string {
   const language = getLanguage()
-  if (language === "zh" || !/[\u3400-\u9fff]/u.test(value) || value.startsWith("http")) return value
+  if (language === "zh") return normalizeChineseCompanyNames(value)
+  if (!/[\u3400-\u9fff]/u.test(value) || value.startsWith("http")) return value
 
   const dictionary = generatedTranslations[language] as Record<string, string>
   const manual = manualTranslations[language]
@@ -671,6 +778,8 @@ export function t(value: string): string {
 function normalizeTarget(value: string, language: Exclude<Language, "zh">): string {
   let normalized = value
   for (const [source, target] of targetNormalizations[language]) normalized = normalized.replaceAll(source, target)
+  normalized = normalizeLocalizedCompanyNames(normalized, language)
+  normalized = normalizeIndustryTerms(normalized, language)
   if (language === "ja") {
     normalized = toPoliteJapanese(normalized)
     if (/(?:です|ます|でした|ました|ています|されています|ください)$/u.test(normalized)) normalized += "。"

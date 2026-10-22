@@ -374,7 +374,7 @@ export const productPrinciples = [
 
 export const businesses = [
   {
-    name: "江西鸿锭",
+    name: "江西鸿锭新型材料有限公司",
     label: "矿物原料加工",
     description: "围绕叶腊石、石英砂、石灰石、白云石等玻纤矿物原料开展加工，为区域玻纤制造提供上游原料支持。",
     detail: "项目规划年产 40 万吨玻纤矿物原料",
@@ -390,7 +390,7 @@ export const businesses = [
     icon: Factory,
   },
   {
-    name: "江西星科",
+    name: "星科",
     label: "电子级玻纤布",
     description: "以整经、浆纱、并轴、喷气织造及后处理设备为基础，生产多型号电子级玻璃纤维布。",
     detail: "一期配置 200 台丰田喷气织机",
@@ -398,7 +398,7 @@ export const businesses = [
     icon: Rows,
   },
   {
-    name: "赣州广建",
+    name: "广建",
     label: "工业玻纤布",
     description: "配置高速剑杆设备，面向电气绝缘板材与工业基材等领域提供玻璃纤维布产品。",
     detail: "面向多类电气绝缘与工业增强应用",
