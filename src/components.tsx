@@ -228,8 +228,8 @@ function Header() {
 
         <div className="relative flex shrink-0 items-center gap-1 xl:hidden">
           <LanguageMenu compact />
-          <button type="button" aria-label={menuOpen ? "关闭网站菜单" : "打开网站菜单"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="flex size-11 items-center justify-center text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-            <span className="text-xs font-semibold tracking-[0.12em]">{menuOpen ? "关闭" : "菜单"}</span>
+          <button type="button" aria-label={menuOpen ? "关闭网站菜单" : "打开网站菜单"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="flex h-11 min-w-12 items-center justify-center text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <span className="whitespace-nowrap text-[11px] font-semibold">{menuOpen ? "关闭" : "菜单"}</span>
           </button>
           {menuOpen ? (
             <nav aria-label="移动端导航" className="absolute right-0 top-[62px] w-[min(21rem,calc(100vw-2.5rem))] border border-line bg-white p-3 shadow-[0_24px_60px_rgba(10,35,65,0.16)]">
